@@ -5,17 +5,71 @@
     <meta charset="UTF-8"> 
     <meta name="author" content="Samyak Nagrale">
     <meta name="keywords" content="HTML html5 HTML5">
-    <meta name="description" content="A basic understanding of HTML">
+    <meta name="description" content="A basic understanding of HTML"> 
+    <style>
+        table {border: 1px solid;}
+        th {border: 1px solid;}
+        tr {border: 1px solid;}
+    </style>
 </head>
 
 <body>
     <h1>HTML </h1>
     <p>HTML stands for Hyper Text Markup Language</p>
     <p>It is the standard markup language used to describe structure of Webpages.</p>
-    <p>Following are some useful resources to learn HTML</p>
+    <h2>Following are some useful resources to learn HTML</h2>
     <ul>
         <li><a href="https://www.w3schools.com/html/" target="_blank">W3 Schools</a></li>
         <li><a href="https://www.tutorialspoint.com/html5/index.htm" target="_blank">TutorialsPoint</a></li>
     </ul>
+
+    <p>A simple HTML document looks like the Following</p>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoN2DURJS1Cq2h8ijQpPgUUsk9v-0H01bjeA&s" alt="Simple HTML document" style="border: 2px solid black">
+
+    <table style="border: 2px solid black;">
+        <th colspan="2" style="border: 2px solid black;">
+            Employee Details 
+        </th>
+        <tr style="border: 2px solid black;">
+            <td>Name</td>
+            <td>SN</td>
+        </tr>
+        <tr> 
+            <td>phone number</td>
+            <td>+91 8010836671</td>
+        </tr>
+        <tr>
+        <td rowspan="2">Lenovo</td>
+        </tr>
+    </table>
+
+    <p><q>With great power comes great responsibility</q></p>
+
+    <h2>Sign Up for the Newsletter</h2>
+    <form action="https://www.w3schools.com/html/html_forms.asp" target="_blank">
+        <fieldset>
+            <legend>User Details</legend>
+            <label for="user_name">User Name: </label></br>
+            <input type="text" value="Samyak Nagrale" id="user_name"></br></br>
+
+            <label for="user_email">User Email: </label></br>
+            <input type="email" value="abc@gmail.com" id="user_email" required></br></br>
+
+        </fieldset>
+
+        <input type="checkbox" id = "promotion_updates">
+        <label for="promotion_updates">Do you want future promotions and updates from us?</label></br></br>
+
+        <input type="submit" value="Sign Up!" ></br></br>
+    </form>
+
+    <p>Lorem ipsum dolor sit amet.<div style="background-color: lightblue; margin: auto; width: 50%;"> i am div</div>
+    Lorem ipsum dolor sit amet.
+    <span style="background-color: lightgreen;">i am span</span>
+    Lorem ipsum dolor sit amet.
+    <div style="background-color: lightslategrey;">i am a div again</div>
+    </p>
+
+    <iframe src="https://www.google.com/" height="300px" width="75%">
 </body>
 </html>
