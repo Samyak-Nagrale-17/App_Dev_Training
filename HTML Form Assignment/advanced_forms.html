@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ellicium Solutions Job Portal</title>
+</head>
+<body>
+    <header>
+        <h1>Ellicium Job Portal</h1>
+        <nav>
+            <ul>
+                <li style="display: block; float: left; padding: 5px;"><a href="#">Home</a></li>
+                <li style="display: block; float: left; padding: 5px;"><a href="#">News</a></li>
+                <li style="display: block; float: left; padding: 5px;"><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header></br></br>
+
+    <section>
+        <h2><center>Internship Form</center></h2>
+        <p>Fill the following if you want to apply for an Internship with us</p>
+
+        <form action="acknowledgement.html">
+            <fieldset>
+                <legend>Basic Detials</legend>
+                <label for="fname">First Name</label><br>
+                <input type="text" id="fname" required><br><br>
+
+                <label for="lname">Last Name</label><br>
+                <input type="text" id="lname" required><br><br>
+
+                <label for="user_email">Email ID</label><br>
+                <input type="email" id="user_email" required><br><br>
+
+                <label for="user_phone">Phone Number</label><br>
+                <input type="tel" id="user_phone" pattern="+[0-9]{2}-[0-9]{10}" required><br><br>
+            </fieldset><br><br>
+
+            <fieldset>
+                <legend>Education Details</legend>
+
+                <fieldset>
+                    <legend>10th Details</legend>
+                    <label for="ssc_school">Enter your School Name</label><br>
+                    <input type="text"  id="ssc_school" required><br><br>
+    
+                    <label for="ssc_passing_year">Month and Year of Passing 10th</label><br>
+                    <input type="month"  id="ssc_passing_year" required><br><br>
+    
+                    <label for="ssc_marks">Enter your Percentage scored in 10th</label><br>
+                    <input type="number" min="0" max="100"  id="ssc_school" required><br><br>
+                </fieldset><br><br>
+            
+                <fieldset>
+                    <legend>12th Details</legend>
+                    <label for="hsc_school">Enter your Junior College Name</label><br>
+                    <input type="text"  id="hsc_school" required><br><br>
+    
+                    <label for="hsc_passing_year">Month and Year of Passing 12th</label><br>
+                    <input type="month"  id="hsc_passing_year" required><br><br>
+    
+                    <label for="hsc_marks">Enter your Percentage scored in 12th</label><br>
+                    <input type="number" min="0" max="100"  id="hsc_school" required><br><br>
+                </fieldset><br><br>
+
+                <fieldset>
+                    <legend>Undergraduate Details</legend>
+                    <label for="college_name">Enter your College Name</label><br>
+                    <input type="text"  id="college_name" required><br><br>
+
+                    <label for="user_stream">Enter your stream</label><br>
+                    <select id="user_stream">
+                        <option value="IT">Information Technology</option>
+                        <option value="CS">Computer Science</option>
+                        <option value="EnTC">Electronics and Telecommunication</option>
+                        <option value="Mech">Mechanical</option>
+
+                    </select><br><br>
+
+    
+                    <label for="year_passing_year">Month and Year of Graduation</label><br>
+                    <input type="month"  id="year_passing_year" required><br><br>
+    
+                    <label for="college_marks">Enter your CGPA (out of 10)</label><br>
+                    <input type="number" min="0" max="10" step="0.01" id="college_marks" required><br><br>
+                </fieldset><br><br>
+            </fieldset><br><br>
+
+            <fieldset>
+                <legend>Experience</legend>
+                <label for="prev_company">Enter Previous Company Name (leave blank if not applicable)</label><br>
+                <input type="text" id="prev_company"><br><br>
+
+                <label for="prev_company_years">Enter total Years of Experience</label><br>
+                <input type="number" id="prev_company_years"><br><br>
+
+                <label for="prev_company_pay_slips">Upload last 3 months Payslips of Previous Company</label><br>
+                <input type="file" id="prev_company_pay_slips"><br><br>
+            </fieldset><br><br>
+
+            <fieldset>
+                <legend>CV Details</legend>
+                
+                <label for="user_resume">Upload latest CV</label><br>
+                <input type="file" id="user_resume" required><br><br>
+            </fieldset><br><br>
+
+            <center><input type="submit" value="Apply"></center>
+        </form>
+    </section>
+
+    <footer>
+        <p><center>Copright &copy 2024 Ellicium Solutions</center></p>
+    </footer>
+
+</body>
+</html>
