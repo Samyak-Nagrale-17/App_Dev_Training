@@ -1,0 +1,7 @@
+header > h1 { 
+    color: red;
+    text-align: center;
+}
+
+article > h1 {color: blue;}
+
