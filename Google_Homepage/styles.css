@@ -193,24 +193,47 @@
 /* Footer */
 
 .footer{
-    height: 17px;
     background-color: #e7e6e6;
     padding: 15px 30px;
     font-size: 15px;
     color: #1f1f1f;
+    height: 17px;
 }
 
 .country-origin{
     height: 46px;
     background-color: #e7e6e6;
+    font-size: 15px;
+}
+
+.hr-footer{
+    color: #1f1f1f;
+    
 }
 
 .footer-options{    
     height: 46px;
     display: flex;
+    justify-content: space-between;
 }
 
 .options{
     text-decoration: none;
+    color: #1f1f1f;
+    height: 16px;
+}
+
+.options > a{
+    padding: 15px;
+}
+
+.left-foot, .right-foot{
+    display: flex; 
+}
+
+.footer-parent{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
