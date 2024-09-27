@@ -135,6 +135,11 @@
     width: 443px;
     height: 44px;
     border: none;
+    outline: none;
+}
+
+.search-text-input:focus{
+    outline: none;
 }
 
 .search-icons{
