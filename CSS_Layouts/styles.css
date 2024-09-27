@@ -1,0 +1,25 @@
+.parent-container{
+    background-color: blue;
+    height: 1000px;
+    width: 1000px;
+    position: relative;
+}
+
+.child{
+    background-color: red;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    
+}
+
+
+.child5{
+    position: sticky;
+    left: 20px;
+    right: 20px;
+    top: 100px;
+    bottom: 100px;
+}
+
+
