@@ -1,26 +1,5 @@
-*{
-    border:border-box;
-}
-
-.header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.gallery-parent{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 30px;
-    flex-direction: row;
-}
-
-.photo{
-    flex: 25%;
-}
-
-.photo > img{
-    height: 200px;
-    width: 150px;
+.grid-parent{
+    display: grid;
+    grid-template-columns: 4;
+    grid-template-rows: 4;
 }
