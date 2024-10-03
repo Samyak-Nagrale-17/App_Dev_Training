@@ -1,16 +1,11 @@
 * {
     margin: 0;
     padding: 0;
-    border: border-box;
+    box-sizing: border-box;
     font-family: "Bai Jamjuree", sans-serif;
     font-size: 18px;
     line-height: 1.6;
 }
-
-/* remove whitespace to right when resized */
-/* body,html{
-    overflow-x: hidden;
-} */
 
 .header {
     display: flex;
@@ -37,13 +32,13 @@
         .header__wrapper__h1 {
             font-size: 2em;
             font-weight: 600;
-            color: #4c565d;
+            color: hsl(210, 10%, 33%);
             padding: 0 0 0.5em 0;
             width: 60%;
         }
 
         .header__wrapper__description {
-            color: #c0c1c5;
+            color:  hsl(201, 11%, 66%);
             width: 60%;
             text-align: center;
             padding: 0 0 1em 0;
@@ -58,7 +53,7 @@
         gap: 0.8em;
 
         .header__buttons {
-            background-color: #27bba5;
+            background-color: hsl(171, 66%, 44%);;
             border: none;
             border-radius: 1.5em;
             padding: 0.5em 1.2em;
@@ -69,12 +64,12 @@
 
         .header__buttons:hover {
             cursor: pointer;
-            opacity: 0.7;
+            opacity: 0.9;
         }
 
         /* Download for Mac button */ 
         #header__buttons__mac {
-            background-color: #5f74fd;
+            background-color: hsl(233, 100%, 69%);
             box-shadow: 0 0.15em #4b5cca;
         }
     }
@@ -90,15 +85,15 @@
     .description__heading {
         font-size: 1.5em;
         font-weight: 600;
-        color: #4c565d;
+        color: hsl(210, 10%, 33%);
         text-align: center;
         padding: 1em 0 0.5em 0;
     }
 
     .description__text {
-        color: #c0c1c5;
+        color:  hsl(201, 11%, 66%);
         text-align: center;
-        width: 60%;
+        width: 50%;
         padding: 0 0 1em 0;
         font-size: 0.8em;
     }
@@ -110,7 +105,7 @@
     width: 100%;
 
     .features__image {
-        width: 55%;
+        width: 60%;
         img {
             width: 100%;
             height: 100%;
@@ -120,24 +115,24 @@
     }
 
     .features__list {
-        width: 45%;
+        width: 40%;
         display: flex;
         justify-content: center;
         flex-direction: column;
-        padding: 1em 4em;
+        padding: 0.5em 4em;
         row-gap: 1.5em;
 
         .features__list__container {
             padding: 1em 0;
             .features__list__heading {
-                color: #4c565d;
+                color: hsl(210, 10%, 33%);
                 font-size: 1.2em;
                 font-weight: 600;
                 padding: 0 0 0.3em 0;
             }
 
             .features__list_text {
-                color: #c0c1c5;
+                color:  hsl(201, 11%, 66%);
                 font-size: 0.7em;
             }
         }
@@ -156,13 +151,13 @@
     .portability__heading {
         font-size: 1.5em;
         font-weight: 600;
-        color: #4c565d;
+        color: hsl(210, 10%, 33%);
         text-align: center;
         padding: 1em 0 0.5em 0;
     }
 
     .portability__description {
-        color: #c0c1c5;
+        color:  hsl(201, 11%, 66%);
         text-align: center;
         width: 60%;
         padding: 0 0 1em 0;
@@ -183,7 +178,6 @@
 }
 
 .detailed_features {
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -212,16 +206,16 @@
                 object-fit: cover; 
             }
         }
-
+    
         .box__heading {
-            color: #4c565d;
+            color: hsl(210, 10%, 33%);
             font-size: 1.2em;
             font-weight: 600;
             padding: 0 0 0.3em 0;
         }
 
         .box__text {
-            color: #c0c1c5;
+            color:  hsl(201, 11%, 66%);
             font-size: 0.7em;
             text-align: center;
         }
@@ -249,13 +243,13 @@
     .download__heading {
         font-size: 1.5em;
         font-weight: 600;
-        color: #4c565d; 
+        color: hsl(210, 10%, 33%); 
         text-align: center;
         padding: 1em 0 0.5em 0;
     }
 
     .download__text {
-        color: #c0c1c5;
+        color:  hsl(201, 11%, 66%);
         text-align: center;
         width: 60%;
         padding: 0 0 1em 0;
@@ -273,7 +267,7 @@
         gap: 0.8em;
 
         .header__buttons {
-            background-color: #27bba5;
+            background-color: hsl(171, 66%, 44%);
             border: none;
             border-radius: 1.5em;
             padding: 0.5em 1.2em;
@@ -284,11 +278,11 @@
 
         .header__buttons:hover {
             cursor: pointer;
-            opacity: 0.7;
+            opacity: 0.9;
         }
 
         #header__buttons__mac {
-            background-color: #5f74fd;
+            background-color: hsl(233, 100%, 69%);
             box-shadow: 0 0.15em #4b5cca;
         }
     }
@@ -326,10 +320,10 @@
     
             .footer__links__text,.footer__links__text > a:visited{
                 text-decoration: none;
-                color: #4c565d;
+                color: hsl(210, 10%, 33%);
             }
             .footer__links__text:hover{
-                color: #219f8c;
+                color: hsl(171, 66%, 44%);
             }
         }
     }
@@ -343,16 +337,14 @@
 
     /* Change svg color on hover */
     .footer_socials_logo__link svg:hover path{
-        fill: #219f8c;
+        fill: hsl(171, 66%, 44%);
     }
 } 
 
-
 /* Media Queries for Mobile View (Max width is 375px)*/
-
 @media screen and (max-width: 375px){
     /* to avoid horizontal scrolling */
-    body,html{
+    body{
         overflow-x: hidden;
     }
 
@@ -551,9 +543,8 @@
             }
 
             .footer_socials_logo__link :hover{
-                color: #219f8c;
+                color: hsl(171, 66%, 44%);
             }
         }
     }
 }
-
