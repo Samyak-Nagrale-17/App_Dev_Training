@@ -3,8 +3,9 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Bai Jamjuree", sans-serif;
-    font-size: 18px;
-    line-height: 1.6;
+    font-size: 26px; 
+    line-height: 1.7;
+    /* border: 1px red solid; */ 
 }
 
 .header {
@@ -12,15 +13,21 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: 100%;
 
     .header__bg {
         width: 100%;
-        background-image: linear-gradient(to bottom, transparent, transparent, #ffffff), url("/images/bg-header-desktop.png");
-        /* opacity: 0.8; */
+        background: linear-gradient(to bottom, transparent, transparent, #ffffff), url("/images/bg-header-desktop.png");
+        background-size: cover;
+        background-position: center;
         display: flex;
-        justify-content: center;
+        justify-content: center;  
         align-items: center;
         padding: 6em 0 2em 0;
+
+        img{
+            scale: 1.1;
+        }
     }
 
     .header__wrapper {
@@ -28,20 +35,22 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        margin: 0 0 1em 0;
 
         .header__wrapper__h1 {
-            font-size: 2em;
+            font-size: 1.8em;
             font-weight: 600;
             color: hsl(210, 10%, 33%);
-            padding: 0 0 0.5em 0;
-            width: 60%;
+            padding: 0 0 0.2em 0;
+            text-align: center;
         }
 
         .header__wrapper__description {
             color:  hsl(201, 11%, 66%);
-            width: 60%;
+            width: 65%;
             text-align: center;
             padding: 0 0 1em 0;
+            font-size: 0.8em;
         }
     }
 
@@ -52,25 +61,27 @@
         /* add a gap between the 2 buttons */
         gap: 0.8em;
 
-        .header__buttons {
+        .header__buttons { 
+            font-size: 0.7em;
+            text-align: center;
             background-color: hsl(171, 66%, 44%);;
             border: none;
             border-radius: 1.5em;
-            padding: 0.5em 1.2em;
-            color: #ffffff;
+            padding: 0.6em 2.4em; 
+            color: #ffffff; 
             font-weight: 500;
-            box-shadow: 0 0.15em #219f8c;
+            box-shadow: 0 0.15em #219f8c,0 0.3em 0.8em #219f8ca9 ; 
         }
 
         .header__buttons:hover {
             cursor: pointer;
-            opacity: 0.9;
+            opacity: 0.85;
         }
 
         /* Download for Mac button */ 
         #header__buttons__mac {
             background-color: hsl(233, 100%, 69%);
-            box-shadow: 0 0.15em #4b5cca;
+            box-shadow: 0 0.15em #4b5cca , 0 0.3em 0.8em #4b5ccaa9;
         }
     }
 }
@@ -80,10 +91,10 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 3em 0;
+    margin: 4em 0 2em 0;
 
     .description__heading {
-        font-size: 1.5em;
+        font-size: 1.4em;
         font-weight: 600;
         color: hsl(210, 10%, 33%);
         text-align: center;
@@ -95,7 +106,7 @@
         text-align: center;
         width: 50%;
         padding: 0 0 1em 0;
-        font-size: 0.8em;
+        font-size: 0.75em;
     }
 }
 
@@ -105,63 +116,68 @@
     width: 100%;
 
     .features__image {
-        width: 60%;
+        width: 55%;
         img {
             width: 100%;
             height: 100%;
             object-fit: contain;
             object-position: -1.5em;
+
         }
     }
 
     .features__list {
-        width: 40%;
+        width: 50%;
         display: flex;
-        justify-content: center;
+        /* justify-content: center; */
         flex-direction: column;
-        padding: 0.5em 4em;
-        row-gap: 1.5em;
+        padding: 2.5em 2.5em 0 3em;
+        row-gap: 1.2em; 
 
         .features__list__container {
-            padding: 1em 0;
+            padding: 0 0 0.8em 0; 
             .features__list__heading {
                 color: hsl(210, 10%, 33%);
-                font-size: 1.2em;
+                font-size: 1em;
                 font-weight: 600;
-                padding: 0 0 0.3em 0;
+                padding: 0;
             }
 
             .features__list_text {
                 color:  hsl(201, 11%, 66%);
-                font-size: 0.7em;
+                font-size: 0.6em;
             }
         }
     }
 }
 
 .portability {
-    padding: 4.5em 0 0 0;
+    padding: 4.5em 0 0 0; 
     .portability__container {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin: 0 0 1.4em 0;
     }
 
     .portability__heading {
-        font-size: 1.5em;
+        font-size: 1.4em;
         font-weight: 600;
         color: hsl(210, 10%, 33%);
         text-align: center;
-        padding: 1em 0 0.5em 0;
+        padding: 1em 0 0.2em 0;
     }
 
     .portability__description {
         color:  hsl(201, 11%, 66%);
         text-align: center;
-        width: 60%;
+        width: 50%; 
         padding: 0 0 1em 0;
-        font-size: 0.8em;
+        font-size: 0.75em;
+        br{
+            display: none;
+        }
     }
         
     /* center the image */
@@ -170,10 +186,14 @@
         justify-content: center;
         align-items: center;
         padding: 1em 0;
+        margin:  0 0 1.2em 0 ;
+        width: 100%;
 
         img{
-            scale: 0.85;
-        }
+            max-width: 100%; 
+            height: auto;
+            scale: 1;
+        } 
     }    
 }
 
@@ -181,42 +201,45 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0 4%;
-    margin: 3em 0 0 0;
+    gap: 0 1.4em;
+    margin: 1em 0 0 0;
 
     #detailed_features_1{
         margin-top: 1em; 
     }
     #detailed_features_3{
-        margin-top: 1em;
+        margin-top: 0.1em;
     }
 
     .detailed_features__box {
         display: flex;
+        /* justify-content: flex-start; */
         justify-content: center;
-        align-items: center;
+        align-items:center;
         flex-direction: column;
 
         .box__logo {
+            /* padding:  0 0 2em 0; */
+            margin: 0 0 1em 0;
             width: 12%;
-            height: 12%;
+            height: 8%;
             img {
                 width: 100%;
-                height: 100%;
+                height: auto;
                 object-fit: cover; 
             }
         }
     
         .box__heading {
             color: hsl(210, 10%, 33%);
-            font-size: 1.2em;
+            font-size: 1em;
             font-weight: 600;
             padding: 0 0 0.3em 0;
         }
 
         .box__text {
             color:  hsl(201, 11%, 66%);
-            font-size: 0.7em;
+            font-size: 0.6em;
             text-align: center;
         }
     }
@@ -224,82 +247,91 @@
 
 .companylogo {
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin: 8em 6em;
-
+    justify-content: center;
+    margin: 6.8em 0 5.8em 0;
+    /* gap: 0 4em; */
+    width: 100%;
     .companylogo__image {
-        width: 20%;
         display: flex;
+        margin: 0 1.6em;
         justify-content: center;
+        align-items: center;
+        img{
+            max-width: 100%;
+            height: auto;   
+        }
     }
 }
 
 .download {
-    display: flex;
+    margin: 0 0 6em 0;
+    display: flex; 
     justify-content: center;
     align-items: center;
     flex-direction: column;
     .download__heading {
-        font-size: 1.5em;
+        font-size: 1.4em;
         font-weight: 600;
         color: hsl(210, 10%, 33%); 
         text-align: center;
-        padding: 1em 0 0.5em 0;
+        /* padding: 0 0 0.5em 0; */ 
     }
 
     .download__text {
         color:  hsl(201, 11%, 66%);
         text-align: center;
         width: 60%;
-        padding: 0 0 1em 0;
-        font-size: 0.8em;
+        padding: 0 0 2em 0;
+        font-size: 0.75em;
     }
 
     /* CSS for the 2 buttons */
     .header__buttons__container {
-        padding: 3em 0;
         display: flex;
         justify-content: center;
         align-items: center;
-        
         /* add a gap between the 2 buttons */
         gap: 0.8em;
 
-        .header__buttons {
-            background-color: hsl(171, 66%, 44%);
+        .header__buttons { 
+            font-size: 0.7em;
+            text-align: center;
+            background-color: hsl(171, 66%, 44%);;
             border: none;
             border-radius: 1.5em;
-            padding: 0.5em 1.2em;
-            color: #ffffff;
+            padding: 0.6em 2.4em; 
+            color: #ffffff; 
             font-weight: 500;
-            box-shadow: 0 0.15em #219f8c; 
+            box-shadow: 0 0.15em #219f8c,0 0.3em 0.8em #219f8ca9 ; 
         }
 
         .header__buttons:hover {
             cursor: pointer;
-            opacity: 0.9;
+            opacity: 0.85;
         }
 
+        /* Download for Mac button */ 
         #header__buttons__mac {
             background-color: hsl(233, 100%, 69%);
-            box-shadow: 0 0.15em #4b5cca;
+            box-shadow: 0 0.15em #4b5cca , 0 0.3em 0.8em #4b5ccaa9;
         }
     }
 }
 
 .footer{
+    padding: 1.4em 0;
     background-color: #f5f6f8;
     display: flex;
+    /* justify-content: space-between; */
     justify-content: center;
     align-items: center;
-    margin: 3em 0 0 0;
-    padding: 1.5em 0;
-    gap: 7em;
-    
+    /* gap: 2em; */
+    width: 100%;
     .footer__logo{
-        height: 3.5em; 
-        width: 3.5em;
+        translate: 5em;
+        height: 2.2em; 
+        width: 2.2em;
         img{
             width: 100%;
             height: 100%;
@@ -308,19 +340,20 @@
     }
 
     .footer__container{
+        /* translate: -5em; */
         display: flex;
-        gap: 0 5em; 
-        margin:  0 3em;
-        padding: 0 7em 0 0; 
-
+        gap: 0 2.8em; 
+        /* margin:  0 3em;
+        padding: 0 7em 0 0;  */
         .footer__links{
             display: flex;
             flex-direction: column;
-            gap: 0.5em 0 ;
-    
+            
             .footer__links__text,.footer__links__text > a:visited{
                 text-decoration: none;
                 color: hsl(210, 10%, 33%);
+                font-size: 0.7em;
+                padding: 0.1em 0;
             }
             .footer__links__text:hover{
                 color: hsl(171, 66%, 44%);
@@ -329,10 +362,24 @@
     }
 
     .footer_socials{
+        translate: -3em;
         display: flex;
         justify-content: center;
         align-items: center;
-        column-gap: 0.7em;
+        /* column-gap: 0.7em; */
+        gap: 1em;
+        max-width: 100%;
+
+        .footer_socials_logo{
+            width: 20%;
+            height: 20%;
+
+            .footer_socials_logo__link svg{
+                width: 100%;
+                height: auto;
+                /* scale: 1.4; */ 
+            }
+        }
     }
 
     /* Change svg color on hover */
@@ -341,11 +388,13 @@
     }
 } 
 
+
 /* Media Queries for Mobile View (Max width is 375px)*/
-@media screen and (max-width: 375px){
-    /* to avoid horizontal scrolling */
-    body{
-        overflow-x: hidden;
+@media screen and (max-width: 600px){ 
+
+    *{
+        /* border: 1px solid red; */
+        line-height: 1.5;
     }
 
     .header{
@@ -353,61 +402,72 @@
         
         .header__bg{
             background-image: linear-gradient(to bottom, transparent, transparent, #ffffff), url("/images/bg-header-mobile.png");
+            /* padding: 4em 0 1em 0; */ 
+            img{
+                scale: 1.3;
+            };
         }
 
         .header__wrapper{
+            margin: 0 0 0 0; 
             max-width: 100%;
             .header__wrapper__h1 {
-                width: 75%;
-                font-size: 1.5em;
+                padding: 0 0 0.4em 0;
+                width: 65%;
+                font-size: 1.2em;
                 text-align: center;
             }
             .header__wrapper__description {
+                padding: 0;
                 width: 75%;
-                font-size: 0.8em;
+                font-size: 0.7em;
             }
         }
 
         .header__buttons__container {
             flex-direction: column; 
             width: 100%;
-            margin: 1.2em 0 0 0;
+            margin: 1.4em 0 0 0;
 
             .header__buttons{
                 width: 80%;
-                padding: 0.8em 1.2em;
+                padding: 0.6em 1.2em;
                 margin: 0.15em 0;
-                font-size: 0.9em;
+                font-size: 0.7em;
             }
         }
     }
 
     .description{
-        margin: 4.5em 0 2em 0;
+        margin: 4.5em 0 1em 0;
         width: 100%;
 
         .description__heading{
-            width: 60%;
-            font-size: 1.3em;
+            width: 65%;
+            font-size: 1.2em;
+            line-height: 1.4; 
         }
         .description__text {
-            width: 90%;
+            width: 75%;
+            font-size: 0.7em;
         }
     }
 
     .features{
         align-items: center;
         flex-direction: column;
-
+        width: 100%;
         .features__image{
-            width: 85%;
+            width: 90%;
             img{
                 object-position: 0;
+                scale: 0.9;
             }
         } 
 
         .features__list {
             width: 100%;
+            padding: 1em 3em;
 
             .features__list__container{
                 width: 100%;
@@ -419,13 +479,18 @@
                 text-align: center;
 
                 .features__list__heading{
-                    width: 100%;
-                    font-size: 1.1em;
+                    width: 65%;
+                    font-size: 1em;
+                    padding: 0 0 0.2em 0;
                 }
 
                 .features__list_text{
-                    width: 100%;
-                    font-size: 0.8em;
+                    width: 100%; 
+                    font-size: 0.6em;
+                    text-align: center;
+                    br{
+                        display: none;
+                    }
                 }
             }
         }
@@ -434,22 +499,36 @@
     .portability{
         .portability__container{
             width: 100%;
+            margin: 0;
         }
 
         .portability__heading {
-            width: 80%;
-            font-size: 1.3em;
+            width: 65%;
+            font-size: 1.2em;
+            line-height: 1.2;
+            padding: 1em 0 0.2em 0;
         }
 
         .portability__description {
-            width: 80%;
+            width: 75%;
+            font-size: 0.7em;
+            br{
+                display: none;
+            }
         }
 
         .portability__image {
+            margin: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             img{
-                height: 100%;
                 width: 100%;
+                height: auto;
+                max-width: 100%;
                 object-fit: contain;
+                scale: 0.9;
             }
         }
     }
@@ -457,60 +536,117 @@
     .detailed_features{
         flex-direction: column;
         width: 100%;
+        /* #detailed_features_1,#detailed_features_3{margin: 0 0 1em 0;} */
+        #detailed_features_1{
+            margin: 1em 0 0 0;
+        }
+        #detailed_features_3{
+            margin: 0;
+        }
         .detailed_features__box{
+            /* justify-content: center; */
             width: 100%;
-            margin:  0 0 2.5em 0;
+            margin:  2em 0 2.5em 0;
 
             .box__logo{
-                width: 10%;
-                height: 10%;
+                width: 8%;
+                height: 8%;
                 padding:  0 0 1em 0;
+                margin: 0;
+
             }
             .box__heading{
-                font-size: 1.1em;
+                text-align: center;
+                width: 65%;
+                font-size: 1em;
                 padding: 0 0 0.4em 0;
             }
             .box__text{
-                width: 95%;
-                font-size: 0.8em;
+                width: 75%;
+                font-size: 0.6em;
             }
         }
     }
 
     .companylogo{
         flex-direction: column;
-        margin: 2em 0;
+        margin: 2.8em 0;
+        gap: 0;
         .companylogo__image{
-            padding: 2em 0;
+            padding: 1.6em 0;
+            img{
+                scale: 1.2;
+            }
         }
     }
 
     .download{
         width: 100%;
+        margin: 6em 0 0 0;
         .download__heading{
-            width: 70%;
-            font-size: 1.3em;
+            width: 65%;
+            font-size: 1.2em;
         }
         .download__text{
-            width: 80%; 
+            width: 75%;
+            font-size: 0.7em;
+            padding: 0;
+            br{
+                display: none;
+            } 
         }
         /* css for the 2 buttons */
         .header__buttons__container {
             flex-direction: column; 
             width: 100%;
-            margin: 1.2em 0 0 0;
+            margin: 1.4em 0 0 0;
 
             .header__buttons{
                 width: 80%;
-                padding: 0.8em 1.2em;
+                padding: 0.6em 1.2em;
                 margin: 0.15em 0;
-                font-size: 0.9em;
+                font-size: 0.7em;
             }
         }
     }
 
     .footer{
-        flex-direction: column;
+        margin: 6.2em 0 0 0;
+        padding: 2em 0 0 0;
+        flex-direction:  column;
+        justify-content: center;
+        .footer__logo{
+            translate: 0;
+        }
+
+        .footer__container{
+            gap: 0;
+            margin: 0;
+            translate: 0;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .footer__links{
+                text-align: center;
+                gap: 0;
+                .footer__links__text{
+                    padding: 0.2em 0 ;
+                    margin: 0.2em;
+                    font-size: 0.7em; 
+                }
+            }
+        }
+
+        .footer_socials{
+            translate: 0;
+            /* margin: 0 2em; */
+
+            .footer_socials_logo{
+                margin: 0 0.6em 1em 0.6em;
+            }
+        }
+        /* flex-direction: column;
         margin: 4em 0 0 0;
         gap: 3.5em;
         .footer__logo{
@@ -545,6 +681,6 @@
             .footer_socials_logo__link :hover{
                 color: hsl(171, 66%, 44%);
             }
-        }
+        } */
     }
 }
