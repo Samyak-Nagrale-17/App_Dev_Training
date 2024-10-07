@@ -1,0 +1,202 @@
+/* Importing the fonts */
+@font-face {
+    font-family: CenturyGothic;
+    src: url(fonts/centurygothic.ttf);
+} 
+
+@font-face {
+    font-family: CenturyGothicBold;
+    src: url(fonts/centurygothic_bold.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: CenturyGothic;
+    font-size: 18px;
+}
+
+
+/* reusable container class */
+.container{
+    padding: 1em 5em;
+}
+
+.navbar{
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1em;
+    .logo{
+        width: 5.6em;
+        height: 5.6em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .logo__text{ 
+            padding: 0 0 0 1em;
+            font-family: CenturyGothic;
+            font-size: 2em;
+            font-weight: 300;
+        }
+    }
+    
+    .links_container, .links_container a:visited{
+        display: flex;
+        gap: 4em;
+        color: black;
+        text-decoration: none;
+
+        .links{
+            text-decoration: none;
+        }
+    }
+    /* .links_container::after{
+        content: '';
+        width: 1em;
+    } */
+}
+
+.header{
+    
+    display: flex;
+    .img_container{
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .header__text{
+        
+        padding: 1em 0 1em 2em;
+        .header__text__heading{
+            font-size: 2.8em;
+            font-weight: 100;
+
+            .inner_text{
+                font-size: 1em;
+                font-weight: 600;
+                color: #f2cb28;
+            }
+            padding: 0 0 1em 0;
+        }
+
+        
+        .body__text{
+            font-size: 1.2em;
+            color: #636363;
+            padding: 0 0 2.8em 0;
+        }
+
+        .register_now{
+            /* flex: 0 0; */
+            cursor: pointer;
+            font-size: 1em;
+            padding: 1em 2em;
+            background-color: #44153f;
+            border: none;
+            color: #ffffff;
+            border-radius: 2em;
+        }
+    }
+
+}
+
+.about{
+    border: 1px solid red;
+    p{
+        font-size: 1.2em;
+        font-weight: 600;
+        /* text-align: center; */
+    }
+
+    .art_forms_container{
+        display: flex;
+        align-items: center;
+        justify-content: space-between; 
+        .art_form{
+            text-align: center;
+            padding: 1em;
+            width: auto;
+            height: auto;
+        }
+    }
+
+    .about_text{
+        width:50%;
+    }
+
+    .about_img{
+        width: 50%;
+
+        img{
+            width: 50%;
+            object-fit: contain;
+        }
+    }
+}
+
+.speakers{
+    background-color: #44153f;
+    h2{
+        font-size: 2em;
+        text-align: center;
+        color: #ffffff; 
+        padding: 1em 0 1em 0;
+    }
+
+    .card_container{
+        display: flex;
+        justify-content: center;
+        padding: 1em;
+        gap: 2em; 
+        .card{ 
+            background-color: #ffffff;
+            border-radius: 0.5em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 1em;
+            
+            .speaker_img{
+                width: 60%;
+                height: 60%;
+                border-radius: 50%;
+                filter: grayscale(50%);
+            }
+
+            .speaker__name{
+                font-size: 1.2em;
+                text-align: center;
+                font-weight: 600;
+            }
+            
+            .speaker__bio{
+                font-size: 1em;
+                text-align: center;
+                padding: 0.5em;
+            }
+        }
+    }
+}
+
+.schedule{
+    h2{
+        font-size: 2em;
+        text-align: center;
+        /* color: #ffffff;  */
+        padding: 1em 0 1em 0;
+    }
+}
