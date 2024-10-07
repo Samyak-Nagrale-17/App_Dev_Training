@@ -23,7 +23,7 @@
         justify-content: center;  
         align-items: center;
         padding: 6em 0 2em 0;
-        
+
         img{
             scale: 1.1;
         }
@@ -359,7 +359,7 @@
     }
 
     .footer_socials{
-        translate: -3em;
+        translate: -5em;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -371,7 +371,7 @@
             height: 20%;
 
             .footer_socials_logo__link svg{
-                width: 100%;
+                width: auto;
                 height: auto; 
             }
         }
@@ -432,7 +432,6 @@
             }
         }
     }
-
 
     .description{
         margin: 4.5em 0 0 0;
