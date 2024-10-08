@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Art Workshop by Hath Ki Kala</title>
     <link rel="stylesheet" href="styles.css">
+
+    <!-- importing fontawesome icons -->
+    <script src="https://kit.fontawesome.com/143357f5d9.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <nav class="navbar container">
@@ -35,23 +38,61 @@
         </div>
     </header>
 
+    <!-- About section -->
     <section class="about container">
-        <p>Art forms available</p>
+        <p class="small_heading">Art forms available</p>
         <div class="art_forms_container">
-            <div class="art_form" id="madhubhani">Madhubhani</div>
-            <div class="art_form" id="warli">Warli</div>
-            <div class="art_form" id="kalamkari">Kalamkari</div>
-            <div class="art_form" id="gond">Gond</div>
+            <div class="art_form" id="madhubhani">
+                <div class="art_form__text">
+                    Madhubhani
+                </div>
+            </div>
+            <div class="art_form" id="warli">
+                <div class="art_form__text">
+                    Warli
+                </div>
+            </div>
+            <div class="art_form" id="kalamkari">
+                <div class="art_form__text">
+                    Kalamkari
+                </div>
+            </div>
+            <div class="art_form" id="gond">
+                <div class="art_form__text">
+                    Gond
+                </div>
+            </div>
         </div>
 
-        <div class="about_text">
-            <p>In this in-person Traditional Indian Art Workshop with 4 experts from different artistic backgrounds</p>
-            <p>Hands-on workshop for Beginners.</p>
-            <p>Learn 4 different Art styles: Madhubani, Warli, Kalamkari and Gond</p>
+        <div class="about__wrapper">
+            <h2>Workshop Details</h2>
+            <div class="about__wrapper__content">
+                <div class="about_text">
+                    <div class="feature_container">
+                        <div class="features">Offline Workshop</div>
+                        <div class="features">Beginner Friendly</div>
+                        <div class="features">Materials Included</div>
+                    </div>
+                    <ul>
+                        <li>In this in-person Traditional Indian Art Workshop with 4 experts from different artistic backgrounds.</li>
+                        <li>Hands-on workshop for Beginners.</li>
+                        <li>Learn 4 different Art styles: Madhubani, Warli, Kalamkari and Gond.</li>
+                        <li>Location: Amala earth concept store 60, Community Center, Basant Lok, Vasant Vihar, 110070, New Delhi</li>
+                        <li>Date:19th November 2024 to 21st November (3 days )</li>
+                        <li>Beginner Friendly</li>
+                        
+                    </ul>
+
+                    
+
+                    
+                </div>
+                <div class="about_img">
+                    <img src="assests/artist_demo.webp" alt="artist_painting">
+                </div>
+            </div>
         </div>
-        <!-- <div class="about_img">
-            <img src="assests/kalamkari_1.webp" alt="artist_painting">
-        </div> -->
+        
     </section>
 
     <!-- speakers -->
@@ -83,63 +124,71 @@
         <h2>Schedule</h2>
 
         <table>
-            <tr>
-                <th>Date</th>
-                <th>Timing</th>
-                <th>Activity</th>
-                <th>Instructor</th>
-            </tr>
-            <tr>
-                <td>19<sup>th</sup> November</td>
-                <td>6:00 PM - 7:30 PM</td>
-                <td>Warli Painting</td>
-                <td>Preeti Karn</td>
-            </tr>
-            <tr>
-                <td>7:30 PM - 8:00 PM</td>
-                <td>Break</td>
-            </tr>
-            <tr>
-                <td>8:00 PM - 9:00 PM</td>
-                <td>Gond Painting</td>
-                <td>Jatin Das</td>
-            </tr>
-            <tr>
-                <td>20<sup>th</sup> November</td>
-                <td>6:00 PM - 7:30 PM</td>
-                <td>Gond Painting</td>
-                <td>Jatin Das</td>
-            </tr>
-            <tr>
-                <td>7:30 PM - 8:00 PM</td>
-                <td>Break</td>
-            </tr>
-
-            <tr>
-                <td>8:00 PM - 9:00 PM</td>
-                <td>Madhubhani Painting</td>
-                <td>Tyeb Mehta</td>
-            </tr>
-            <tr>
-                <td>21<sup>st</sup> November</td>
-                <td>5:00 PM - 6:00 PM</td>
-                <td>Madhubhani Painting</td>
-                <td>Tyeb Mehta</td>
-            </tr>
-            <tr>
-                <td>6:00 PM - 7:30 PM</td>
-                <td>Kalamkari Painting</td>
-                <td>Preeti Karn</td>
-            </tr>
-            <tr>
-                <td>7:30 PM - 8:00 PM</td>
-                <td>Break</td>
-            </tr>
-            <tr>
-                <td>8:00 PM - 9:00 PM</td>
-                <td>Exhibition</td>
-            </tr>
-        </table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Timing</th>
+                    <th>Activity</th>
+                    <th>Instructor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="3">19th November</td>
+                    <td>6:00 PM - 7:30 PM</td>
+                    <td>Warli Painting</td>
+                    <td>Preeti Karn</td>
+                </tr>
+                <tr>
+                    <td>7:30 PM - 8:00 PM</td>
+                    <td>Break</td>
+                    <td> - </td>
+                </tr>
+                <tr>
+                    <td>8:00 PM - 9:00 PM</td>
+                    <td>Gond Painting</td>
+                    <td>Jatin Das</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">20th November</td>
+                    <td>6:00 PM - 7:30 PM</td>
+                    <td>Gond Painting</td>
+                    <td>Jatin Das</td>
+                </tr>
+                <tr>
+                    <td>7:30 PM - 8:00 PM</td>
+                    <td>Break</td>
+                    <td> - </td>
+                </tr>
+                <tr>
+                    <td>8:00 PM - 9:00 PM</td>
+                    <td>Madhubani Painting</td>
+                    <td>Tyeb Mehta</td>
+                </tr>
+                <tr>
+                    <td rowspan="4">21st November</td>
+                    <td>5:00 PM - 6:00 PM</td>
+                    <td>Madhubani Painting</td>
+                    <td>Tyeb Mehta</td>
+                </tr>
+                <tr>
+                    <td>6:00 PM - 7:30 PM</td>
+                    <td>Kalamkari</td>
+                    <td>Preeti Karn</td>
+                </tr>
+                <tr>
+                    <td>7:30 PM - 8:00 PM</td>
+                    <td>Break</td>
+                    <td> - </td>
+                </tr>
+                <tr>
+                    <td>8:00 PM - 9:00 PM</td>
+                    <td>Exhibition</td>
+                    <td> - </td>
+                </tr>
+            </tbody>
+            </table>
+             
     </section>
 
     <!-- contact -->

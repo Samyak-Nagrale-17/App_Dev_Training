@@ -249,6 +249,7 @@
     margin: 6.8em 0;
     /* gap: 0 4em; */
     width: 100%;
+
     .companylogo__image {
         display: flex;
         margin: 0 1.8em;
@@ -286,7 +287,7 @@
 
     /* CSS for the 2 buttons */
     .header__buttons__container {
-        display: flex;
+       display : flex;
         justify-content: center;
         align-items: center;
         /* add a gap between the 2 buttons */
@@ -404,7 +405,7 @@
         }
 
         .header__wrapper{
-            margin: 0 0 0 0; 
+            margin: 0; 
             max-width: 100%;
             .header__wrapper__h1 {
                 padding: 0 0 0.4em 0;

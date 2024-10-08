@@ -115,36 +115,109 @@
 
 .about{
     border: 1px solid red;
-    p{
+    p.small_heading{
         font-size: 1.2em;
         font-weight: 600;
-        /* text-align: center; */
+        text-align: center;
     }
 
     .art_forms_container{
         display: flex;
         align-items: center;
-        justify-content: space-between; 
+        justify-content: center; 
         .art_form{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
             text-align: center;
-            padding: 1em;
-            width: auto;
-            height: auto;
+            /* padding: 1em; */
+            width: 16.5em;
+            height: 16.5em;
+            
+            .art_form__text{
+                text-align: center;
+                padding: 1em 1em 1em 1em;
+                /* width: 100%; */
+                color: white;
+                bottom: 0;
+                background-image: linear-gradient(to bottom, transparent, #44153f);
+            }
         }
     }
 
-    .about_text{
-        width:50%;
+    /* background images for each art form */
+    #madhubhani{
+        background-image: url(assests/madhubani_2.avif);
+        background-size: 100% 100%;
     }
 
-    .about_img{
-        width: 50%;
+    #warli{
+        background-image: url(assests/warli_1.jfif);
+        background-size: 100% 100%;
+    }
 
-        img{
-            width: 50%;
-            object-fit: contain;
+    #kalamkari{
+        background-image: url(assests/kalamkari_1.webp);
+        background-size: 100% 100%;
+    }
+
+    #gond{
+        background-image: url(assests/gond_1.jpg);
+        background-size: 100% 100%;
+    }
+
+    .about__wrapper{
+
+        h2{
+            font-size: 2em;
+            text-align: center; 
+            padding: 1em 0 1em 0;
         }
+
+        .about__wrapper__content{
+            display: flex;
+            .about_text{
+                width:50%;
+    
+                .feature_container{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 4em;
+                    .features{
+                        font-size: 1em;
+                        padding: 0.6em 0.6em;
+                        background-color: #44153f;
+                        border: none;
+                        color: #ffffff;
+                        border-radius: 2em;
+                    }
+                }
+                
+                li{
+                    font-size: 1em;
+                    font-weight: 100;
+                }
+
+                p{
+                    font-size: 1em;
+                    font-weight: 100;
+                }
+            }
+        
+            .about_img{
+                width: 50%;
+        
+                img{
+                    width: 100%;
+                    height: 60%;
+                    object-fit: cover;
+                }
+            }
+        }
+        
     }
+    
 }
 
 .speakers{
@@ -193,10 +266,20 @@
 }
 
 .schedule{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     h2{
         font-size: 2em;
         text-align: center;
         /* color: #ffffff;  */
         padding: 1em 0 1em 0;
+    }
+
+    table{
+        font-size: 1em;
+        text-align: center;
+        
     }
 }
