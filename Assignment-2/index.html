@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Art Workshop by Hath Ki Kala</title>
+    <title>चित्रकला</title>
     <link rel="stylesheet" href="styles.css">
 
     <!-- importing fontawesome icons -->
@@ -15,15 +15,19 @@
             <img src="assests/logo.jpg" alt="navbar-logo">
             <div class="logo__text">
                 चित्रकला
+                <span>Art Studio</span>
             </div>
+            
+
         </div>
         
         <div class="links_container">
             <a href="#" class="links">Home</a>
-            <a href="#" class="links">About</a>
-            <a href="#" class="links">Artists</a>
-            <a href="#" class="links">Workshops</a>
-            <a href="#" class="links">Contact</a>
+            <a href="#about" class="links">About</a>
+            <a href="#artists" class="links">Artists</a>
+            <a href="#workshops" class="links">Workshops</a>
+            <a href="#contact" class="links">Contact</a>
+            <a href="#" class="links" id="sign_in">Sign In</a>
         </div>
     </nav>
     <header class="header container">
@@ -33,14 +37,15 @@
 
         <div class="header__text">
             <h1 class="header__text__heading">Experience Traditional Indian Artisans and their works by <span class="inner_text">learning from them live</span></h1>
-            <p class="body__text">Learn a variety of traditional indian art forms such as Madhubhani, Kalamkari, Gond and many more from Artisans themselves in our 3 day workshop from <strong>19<sup>th</sup> November to 21<sup>st</sup> November</strong></p>
+            <p class="body__text">Learn a variety of traditional indian art forms such as Madhubhani, Kalamkari, and more from Artisans themselves in our 3 day workshop from <strong>19<sup>th</sup> November to 21<sup>st</sup> November</strong></p>
             <button class="register_now">Register</button>
         </div>
     </header>
 
     <!-- About section -->
-    <section class="about container">
-        <p class="small_heading">Art forms available</p>
+    <section class="about container" id="about">
+        <!-- <p class="small_heading">Art forms available</p> -->
+        <h2>Art forms available</h2>
         <div class="art_forms_container">
             <div class="art_form" id="madhubhani">
                 <div class="art_form__text">
@@ -74,18 +79,60 @@
                         <div class="features">Materials Included</div>
                     </div>
                     <ul>
-                        <li>In this in-person Traditional Indian Art Workshop with 4 experts from different artistic backgrounds.</li>
+                        <li>Live in-person Traditional Indian Art Workshop with 3 experts from different artistic backgrounds.</li>
                         <li>Hands-on workshop for Beginners.</li>
-                        <li>Learn 4 different Art styles: Madhubani, Warli, Kalamkari and Gond.</li>
-                        <li>Location: Amala earth concept store 60, Community Center, Basant Lok, Vasant Vihar, 110070, New Delhi</li>
-                        <li>Date:19th November 2024 to 21st November (3 days )</li>
-                        <li>Beginner Friendly</li>
-                        
+                        <li>Learn 4 different Art styles: Madhubani, Warli, Kalamkari and Gond.</li>                        
                     </ul>
 
-                    
+                    <div class="workshop_details">
+                        <table>
+                            <tr>
+                                <td><i class="fa-solid fa-location-dot" style="color: #44153f;"></i></td>
+                                <td>Amala earth concept store 60, Community Center, Basant Lok, Vasant Vihar, 110070, New Delhi.</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa-regular fa-calendar-days" style="color: #44153f;"></i></td>
+                                <td>19<sup>th</sup> November 2024 to 21<sup>st</sup> November.</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa-solid fa-signal" style="color: #44153f;"></i></td>
+                                <td>Beginner Friendly.</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa-solid fa-language" style="color: #44153f;"></i></td>
+                                <td>Hindi/English.</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa-solid fa-certificate" style="color: #44153f;"></i></td>
+                                <td>Certificate upon completion.</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa-solid fa-couch" style="color: #44153f;"></i></td>
+                                <td>Limited slots available</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa-solid fa-cart-shopping" style="color: #44153f;"></i></td>
+                                <td>₹1999 <span class="small_text">(Inclusive of all taxes)</span></td>
+                            </tr>
+                        </table>
+                    </div>  
 
-                    
+                    <!-- offers -->
+                    <div class="workshop_note">
+                        <p class="workshop_note__text">
+                            Learn something new  this festive season, <span>Enroll now!</span>
+                        </p>
+                    </div>
+
+                    <!-- payment details -->
+                    <div class="payment_details">
+                        <button class="register_now">Register</button>    
+                        <div class="offer_container">
+                            <div class="offer"><i class="fa-solid fa-tag" style="color: #66FF00;"></i> Get upto 10% OFF on this purchase</div>
+                            <div class="offer">View all offers</div>
+                        </div>
+                    </div>
+                     
                 </div>
                 <div class="about_img">
                     <img src="assests/artist_demo.webp" alt="artist_painting">
@@ -96,25 +143,38 @@
     </section>
 
     <!-- speakers -->
-    <section class="speakers container">
+    <section class="speakers container" id="artists">
         <h2>Meet your Instructors</h2>
         <div class="card_container">
             <div class="card">
-                <img src="assests/artist_1.jpg" alt="artist_1" class="speaker_img">
+                <img src="assests/artist_2.jpg" alt="artist_1" class="speaker_img">
                 <p class="speaker__name">Preeti Karn</p>
-                <p class="speaker__bio">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, fugiat. Lorem ipsum dolor sit amet.</p>
+                <p class="speaker__bio">A master of traditional Indian arts, Preeti specializes in Warli and Kalamkari painting, bringing their rich cultural heritage to life through intricate designs and storytelling.</p>
+                <div class="socials">
+                    <a href="https://www.youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
+                </div>
             </div>
 
             <div class="card">
                 <img src="assests/artist_1.jpg" alt="artist_2" class="speaker_img">
                 <p class="speaker__name">Tyeb Mehta</p>
-                <p class="speaker__bio">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet, aspernatur. Lorem ipsum dolor sit amet.</p>
+                <p class="speaker__bio">Known for his unique interpretation of Indian folk art, Tyeb Mehta will guide you through the vibrant world of Madhubani painting, renowned for its vivid colors and mythological themes.</p>
+                <div class="socials">
+                    <a href="https://www.youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
+                </div>
             </div>
 
             <div class="card">
-                <img src="assests/artist_1.jpg" alt="artist_3" class="speaker_img">
+                <img src="assests/artist_3.jpg" alt="artist_3" class="speaker_img">
                 <p class="speaker__name">Jatin Das</p>
-                <p class="speaker__bio">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla, deleniti?Lorem ipsum dolor sit amet.</p>
+                <p class="speaker__bio">A celebrated artist with a deep connection to Gond painting, Jatin brings this tribal art form's folklore and symbolism to light, using bold patterns and earthy tones.</p>
+                <div class="socials">
+                    <a href="https://www.youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
+                </div>
             </div>
         </div>
     </section>
@@ -188,13 +248,146 @@
                 </tr>
             </tbody>
             </table>
-             
+
+            <h2 class="heading__workshop">Upcoming Workshops</h2>
+            <div class="upcoming_workshops">
+                <!-- upcoming workshop 1 -->
+                <div class="workshop" id="workshop1">
+                    <img src="assests/pottery_1.jfif" alt="pottery_1">
+
+                    <div class="workshop__container">
+                        <div class="workshop__heading">Pottery Workshop</div>
+                        <div class="workshop__text">Join our Pottery Workshop and master the art of shaping clay into beautiful, handmade creations<br>
+                            <span>2<sup>nd</sup> December Onwards</span>
+                        </div>
+                        
+                        <button class="register_now">Register</button>
+                    </div>
+                </div> 
+
+                <!-- upcoming workshop 2 -->
+                <div class="workshop" id="workshop2">
+                    <img src="assests/sculpture_1.jfif" alt="sculpture_1">
+
+                    <div class="workshop__container">
+                        <div class="workshop__heading">Sculpture Workshop</div>
+                        <div class="workshop__text">Explore the art of shaping clay, wood, or metal into stunning 3D creations<br>
+                            <span>10<sup>th</sup> December Onwards</span>
+                        </div>
+                        <button class="register_now">Register</button>
+                    </div>
+                </div> 
+
+                <!-- upcoming workshop 3 -->
+                <div class="workshop" id="workshop3">
+                    <img src="assests/calligraphy_3.jpg" alt="calligraphy">
+
+                    <div class="workshop__container">
+                        <div class="workshop__heading">Calligraphy Workshop</div>
+                        <div class="workshop__text">Master the timeless elegance of beautiful lettering with calligraphy techniques<br>
+                            <span>14<sup>th</sup> December Onwards</span>
+                        </div>
+                        <button class="register_now">Register</button>
+                    </div>
+                </div> 
+                
+
+            </div>
     </section>
 
     <!-- contact -->
-    <section class="contact">
+    <section class="contact container" id="contact">
+        <h2>Contact Us</h2>
+    
+        <div class="contact_flex_container">
+            <div class="contact_us">
+                <form action="#">
+                    <div class="user_input">
+                        <label for="name">Name<span>*</span></label><br>
+                        <input type="text" id="name" required>
+                    </div>
+                    
+                    <div class="user_input">
+                        <label for="email">E-mail<span>*</span></label><br>
+                        <input type="email" id="email"required>
+                    </div>
 
+                    <div class="user_input">
+                        <label for="phone_number">Contact Number</label><br>
+                        <input type="number" id="phone_number">
+                    </div>
+
+                    <div class="user_input">
+                        <label for="message">Message<span>*</span></label><br>
+                        <textarea id="message"></textarea>
+                    </div>
+
+                    <div class="user_input"> 
+                        <input type="submit" class="submit_button">
+                    </div>
+                </form>
+            </div>
+                
+            <div class="contact_info">
+                <div class="info" id="info1">
+                    <span>Customer queries: </span> <a href="">customersupport@chitrakala.com</a>
+                </div>
+
+                <div class="info" id="info2">
+                    <p><span>WhatsApp: </span>+91 81008 36771</p>
+                </div>
+
+                <div class="info" id="info3">
+                    <span>Mailing Address:</span><br>
+                    <p>Chitrakala Art Studio</p>
+                    <p>Amala earth concept store 60, Community Center, Basant Lok, <br>Vasant Vihar, 110070, New Delhi.</p>
+                </div>
+
+                <!-- google map -->
+                <div id="google_map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.545565057211!2d77.20463341055964!3d28.523317088931588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1d007696a309%3A0xe0446a3f7a437bde!2sAmala%20Earth%20Store!5e0!3m2!1sen!2sin!4v1728383633535!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
     </section>
 
+    <!-- footer -->
+    <section class="footer container">
+        <div class="logo">
+            <img src="assests/logo-removebg-preview.png" alt="navbar-logo">
+            <div class="logo__text">
+                चित्रकला
+            </div>
+        </div>
+
+        <div class="links">
+            <div class="links__container">
+                <a href="" class="link">Blog</a>
+                <a href="" class="link">Shop</a>
+            </div>
+            <div class="links__container">
+                <a href="" class="link">Community</a>
+                <a href="contact" class="link">Contact Us</a>
+            </div>
+            <div class="links__container">
+                <a href="about" class="link">About Us</a>
+                <a href="" class="link">Terms of Service</a>
+            </div>
+            <div class="links__container">
+                <a href="" class="link">Refund Policy</a>
+            </div>
+        </div>
+
+        <div class="socials">
+            <a href="https://www.youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.x.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
+            <a href="https://www.pinterest.com" target="_blank"><i class="fa-brands fa-pinterest"></i></a>
+        </div>
+        <!-- <div class="copy_wrapper"> -->
+        <p class="rights">&copy; 2024 Chitrakala Art Studio. All Rights Reserved</p>
+        
+    </section>
 </body>
 </html>
