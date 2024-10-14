@@ -122,18 +122,52 @@ console.log("Datatype of NaN is " + typeof NaN)
     console.log(array1);
 }
 
-// milliseconds after 12 am
+// // milliseconds after 12 am
+// {
+//     let hoursSeconds = h * 3600
+//     let minuteSeconds = m * 60
+//     let totalSeconds = hoursSeconds + minuteSeconds + s
+//     let totalMilliseconds = totalSeconds * 1000
+//     // after second
+// }
+
+
+// array
 {
-    let hoursSeconds = h * 3600
-    let minuteSeconds = m * 60
-    let totalSeconds = hoursSeconds + minuteSeconds + s
-    let totalMilliseconds = totalSeconds * 1000
-    // after second
+    let data = [1,2,'asdf','asdf','qweqwe',true, 123,34,12]
+    console.log(data);
+    
+    let variants = new Array('16', '16 Plus', '16 Pro', '16 Pro Max')
+    console.log(variants);   
 }
 
 
 //sort
 {
     let array1 = [12,23,34,5,567,26,234,2,45,25,25,2,5]
+    array1.sort((a,b) => b-a)
+    console.log(array1);
+}
+
+// count vowels in str
+{
+    function getVowelCount(str){
+        let vowels = ['a','e','i','o','u']
+        let totalVowelCount = 0
+
+        for(let i = 0; i < str.length; i++){
+            if(vowels.includes(str[i])){
+                totalVowelCount++
+            }
+        }
+        return totalVowelCount
+    }
+
+    let ans = getVowelCount("askldfjsdlkfjasdfasvba")
+    console.log(`\n Total count of vowels is ${ans}`);
+}
+
+// slice, splice in js
+{
     
 }
