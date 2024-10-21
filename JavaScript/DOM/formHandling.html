@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form handling</title>
+</head>
+<body>
+    
+    <form action="#" id="userForm1">
+        <label for="name">Name</label>
+        <input type="text" class="clearedVal" id="username"><br>
+
+        <label for="email">Email</label>
+        <input type="text" class="clearedVal" id="userEmail"><br>
+
+        <input type="submit" id="submitButton">
+        <input type="button" value="Clear" id="clearButton" onclick="reset()"> 
+    </form>
+
+    <script>
+        // console.log(`User form: ${document.forms['userForm1']}`)
+        // console.log(`User form: ${document.querySelector("#userForm1")}`)
+        console.log(document.querySelector("#userForm1"))
+
+        // overwrite the submit button
+        function submitMessage(event){
+            // event.preventDefault()
+            alert('Form succesfullysubmitted! :)')
+            console.log('form submitted')
+
+        }
+        const userFormButton = document.querySelector("#submitButton")
+        userFormButton.addEventListener('click', submitMessage)
+
+        // print all form elements
+        let userForm1 = document.querySelector("form")
+        console.log(userForm1.elements)
+
+
+        // custom form validation function
+        // function customFormValidation(event, userForm1){
+        //     event.preventDefault()
+
+        //     const email = document.getElementById("userEmail")
+        //     const username = document.getElementById("username")
+
+        //     if(!emailIsValid(email)){
+        //         alert("Please enter a valid email ... ")
+        //         return
+        //     }
+
+        //     console.log("Validation succesfull ... submitting form ... ")
+        //     userForm1.submit()
+        // }
+
+        // // validate email
+        // function emailIsValid(email){
+        //     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        // }
+
+        // prevent default behaviour preventDefault() 
+        userForm1.addEventListener('submit', (event) => {
+            event.preventDefault()
+            const email = document.getElementById("userEmail")
+            const username = document.getElementById("username")
+            
+            if(emailIsValid(email)){
+                alert("Please enter a valid email ... ")
+                return
+            }
+            
+            console.log("Validation succesfull ... submitting form ... ")
+            userForm1.submit()
+        })
+
+        // validate email
+        function emailIsValid(email){
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>Todo List</title>
+</head>
+<body>
+    <div class="container">
+        <div class="todo_app">
+            <h2>TODO</h2>
+
+            <div class="inputBox">
+                <input type="text" id="addTaskInput" placeholder="Add a task">
+                <button id="addTaskButton" onclick="addNewTask()">Add</button>
+            </div>
+
+            <div class="taskContainer">
+                <ul class="taskList">
+                    <!-- <li class="newTask"><i class="fa-regular fa-circle-check tick"></i><span class="taskDesc">Task 1</span><i class="fa-regular fa-circle-xmark cross"></i></li> -->
+                </ul>
+
+                <div class="filterContainer">
+                    <i class="fa-solid fa-filter"></i>
+                    <button id="filterAll">All</button>
+                    <button id="filterCompleted">Completed</button>
+                    <button id="filterTodo">Todo</button>
+                </div>
+
+                <div class="buttonContainer">
+                    <button id="deleteAllTasks" onclick="deleteAllTasks()">Clear All</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- script.js -->
+    <script src="script.js"></script>
+</body>
+</html>

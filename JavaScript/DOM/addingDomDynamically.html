@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adding Elements Dynamically using DOM</title>
+</head>
+<body>
+    <div class="wrapper">
+        <p>Add an <strong>TODO</strong> by clicking the button</p>
+        <button id="addPara" onclick="insertElement()">Add paragraph tag</button>
+        <button id="removePara" onclick="removeElement()">Remove a paragraph tag</button>
+        <button id="toogleView" onclick="toogleParaDisplay()">Toggle view of paragraphs</button>
+        <div class="paraWrapper"></div>
+    </div>
+</body>
+<script>    
+    function insertElement(){
+        let paraWrapper = document.querySelector("div.paraWrapper")
+
+        let newParagraph = document.createElement("p")
+        newParagraph.textContent = "Paragraph Tag"
+        newParagraph.style.fontWeight = 600
+        newParagraph.style.border = "2px solid red"
+
+
+        // add a edit button inside it
+        let editButtonPara = document.createElement("button")
+        editButtonPara.textContent = "Edit this para"
+        editButtonPara.onclick = function(){
+            newParagraph.textContent = "Edit mode!"
+            let editInput = document.createElement("input")
+            editInput.type = "text"
+            editInput.style.height = "16px"
+            newParagraph.append(editInput)
+
+            editInput.onblur = function(){
+                if(editInput.value){
+                    newParagraph.innerHTML = editInput.value
+                }
+            }
+
+        }
+        newParagraph.appendChild(editButtonPara)
+
+
+        paraWrapper.append(newParagraph)
+    }
+
+    function removeElement(){
+        let paraWrapper = document.querySelector("div.paraWrapper")
+        paraWrapper.lastElementChild.remove()
+    }
+
+    function toogleParaDisplay(){
+        
+        let paraWrapper = document.querySelector("div.paraWrapper")
+        
+        if(paraWrapper.style.display === "none"){
+            paraWrapper.style.display = "block"
+        }
+        else{
+            paraWrapper.style.display = "none"
+        }
+    }
+
+    // events
+    function domLoaded(event){
+        // alert("DOM built")
+        console.log(event.type, " ", event.target)
+    }
+
+    document.addEventListener("DOMContentLoaded", domLoaded,once = true)
+
+    // prevent default behaviour of element
+    // let toogleViewButton = document.querySelector("#toggleView")
+    // toogleViewButton.addEventListener('click',event.target.preventDefault())
+
+</script>
+</html>

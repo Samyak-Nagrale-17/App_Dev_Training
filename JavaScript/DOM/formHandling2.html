@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<body>
+    <h2>User registration</h2>
+    <form id="registrationForm">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username">
+        </div>
+
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email">
+        </div>
+
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"> 
+        </div>
+
+        <div>
+            <input type="submit" value="Register">
+        </div>
+    </form>
+
+    <div id="errorMessages"></div>
+    
+    <script>
+        // custome form validation
+
+        const registrationForm = document.getElementById("registrationForm")
+        const errorMessages = document.getElementById("errorMessages")
+
+        // event handler
+        registrationForm.addEventListener('submit', (event) => {
+            // prevent default
+            event.preventDefault()
+
+            // destructure form elements
+            const {username, email, password} = registrationForm.elements
+
+            errorMessages.innerHTML = ""
+
+            if(!username.value.trim){
+                displayError("Username is required ...")
+                return
+            }
+
+            if(!email.value.trim || validateEmail(email)){
+                displayError("Enter valid email ... ")
+                return
+            }
+            
+            if(!password.value.trim || validatePassword(password)){
+                displayError("Password")
+                return
+            }
+            alert("Registration sucessfull ... ")
+        })
+
+        function validateEmail(email){
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function validatePassword(password){
+            return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/.test(password);
+        }
+
+    </script>
+</body>
+</html>

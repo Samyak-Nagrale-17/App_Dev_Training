@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM edit and remove elements</title>
+    <style>
+        .selectClass{
+            background-color: red;
+            padding: 10px;
+        }
+
+        .selectClass2{
+            background-color: blue;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body style="background-color: #212121; color: #ffffff;">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+    // add element    
+    function addListItem(parent,text){
+        const listItem = document.createElement("li")
+        listItem.appendChild(document.createTextNode(text))
+        parent.appendChild(listItem)
+        return
+    }
+     
+    addListItem(document.querySelector(".language"), "C++")
+    addListItem(document.querySelector(".language"), "Python")
+    addListItem(document.querySelector(".language"), "Java")
+    addListItem(document.querySelector(".language"), "Typescript")
+
+    // edit element
+    const secondLanguage = document.querySelector("li:nth-child(2)")
+    const newLi = document.createElement("li")
+    newLi.textContent = "Rust!@#"
+    secondLanguage.replaceWith(newLi)
+
+    // replace javascript li with typescript li
+    const jsLang = document.querySelector("li:nth-child(1)")
+    const newLi2 = document.createElement("li")
+    newLi2.textContent = "JS"
+    jsLang.replaceWith(newLi2)
+
+    // remove
+    const lastLang = document.querySelector("li:last-child")
+    lastLang.remove() 
+
+    // insertAdjacentElement
+    const ulList = document.querySelector('.language')
+    ulList.insertAdjacentHTML('afterend', '<p>After the ul</p>')
+    ulList.insertAdjacentHTML('beforeend', '<p>before end of ul</p>')
+
+    const cloneUlList = ulList.cloneNode(true)
+    document.querySelector('.language').after(cloneUlList)
+
+    // classList: style the element
+    const cloneClassList = cloneUlList.classList
+    // add a class
+    cloneClassList.add("selectClass","selectClass2")
+    // toggle class on and off
+    cloneClassList.toggle("selectClass2")
+    // remove class from classList
+    cloneClassList.remove("selectClass")
+</script>
+</html>
