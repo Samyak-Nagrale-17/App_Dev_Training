@@ -4,6 +4,7 @@ const taskList = document.querySelector("ul.taskList")
 const clearAllButton = document.getElementById("deleteAllTasks")
 const inputValidation = /^[a-zA-Z1-9]/;
 const inputValidationCategory = /^[a-zA-Z]/;
+
 // arrayof json objects
 let taskArray = []
 
@@ -31,6 +32,7 @@ function addNewTask() {
 
     const li = document.createElement("li")
     li.classList.add("newTask")
+    
     // add icons
     li.innerHTML = 
     `
@@ -55,7 +57,7 @@ function addNewTask() {
     // toggleClearAllButton()
 
     // create an object
-    
+
     let listJson = {
         taskId: taskId,
         taskDesc: taskDesc,
@@ -66,7 +68,7 @@ function addNewTask() {
 
     // push new task in taskArray
     taskArray.push(JSON.stringify(listJson))
-    console.log(`Following was pushed in localstorage: ${taskArray}`)
+    // console.log(`Following was pushed in localstorage: ${taskArray}`)
     
     saveData()
     addEventListenerToTaskDesc()
@@ -154,10 +156,68 @@ function addEventListenerToTaskDesc(){
     // const spansCategory = document.querySelectorAll("li span.taskLabel")
     // add the event listener to each of them
     // spansCategory.forEach(span => {
-    //     span.addEventListener('click', editTaskDescription)
-    // })
+        // span.addEventListener('click', editTaskLabel)
+    // }) 
 }
 
+// edit the task label i.e. category/label
+function editTaskLabel(event){
+    let spanWrapper = event.target.parentElement
+    const span = spanWrapper.querySelector("span.taskLabel")
+    // if task is marked as completed, user cannot edit it
+    if (span. classList.contains("completed")) return
+
+    const currentDesc = span.textContent
+    const input = document.createElement("input")
+    input.type = "text"
+    input.value = currentDesc
+
+    // style the input same as span check if if possible with same class
+    // toggle the class in classList of input
+    const computedStyle = window.getComputedStyle(span);
+    input.style.width = computedStyle.width; 
+    input.style.height = computedStyle.height; 
+    input.style.fontSize = computedStyle.fontSize; 
+    input.style.padding = computedStyle.padding; 
+    input.style.border = computedStyle.border; 
+
+    spanWrapper.insertBefore(input, span)
+    span.remove()
+    input.focus()
+
+    input.addEventListener("blur", function () {
+        const newDesc = input.value.trim() || currentDesc
+        
+        // do input validation on this new change
+        if(inputValidation.test(newDesc) == false){
+            alert("Please enter valid task description...")
+            input.focus() 
+            input.value = ""
+        }
+        span.textContent = newDesc
+        spanWrapper.insertBefore(span, input)
+        input.remove()
+
+        // clear this
+        // // Update taskDesc in taskArray
+        // const taskId = li.getAttribute("data-task-id");
+        // for (let i = 0; i < taskArray.length; i++) {
+        //     let taskObject = JSON.parse(taskArray[i]);
+        //     if (taskObject.taskId == taskId) {
+        //         // Update the taskDesc
+        //         taskObject.taskDesc = newDesc; 
+        //         // Update taskArray
+        //         taskArray[i] = JSON.stringify(taskObject); 
+        //         break;
+        //     }
+        // }
+        saveData()
+    })
+    saveData() 
+}
+
+
+// edit the task desc
 function editTaskDescription(event){
     let li = event.target.parentElement
     const span = li.querySelector("span.taskDesc")
@@ -346,7 +406,7 @@ function showData(){
         
         tempTaskArray.forEach(taskString => {
             const taskObject = JSON.parse(taskString)
-            console.log(taskObject) 
+            // console.log(taskObject) 
             const li = document.createElement('li')
             li.classList.add('newTask') 
             li.setAttribute('data-task-id', taskObject.taskId)
@@ -354,7 +414,7 @@ function showData(){
             const tickIcon = (completedClass == "completed") ? "fa-solid" : "fa-regular"
             const taskLabel = taskObject.taskLabel ? taskObject.taskLabel.toString() : "Default"
             const taskLabelCompleted = completedClass ? "completed" : "";
-        console.log("taskLabelCompleted value is (completed/)", taskLabelCompleted) 
+            // console.log("taskLabelCompleted value is (completed/)", taskLabelCompleted) 
             li.innerHTML = 
             `
             <i class="${tickIcon} fa-circle-check tick"></i>

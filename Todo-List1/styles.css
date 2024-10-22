@@ -7,9 +7,12 @@
 }
 
 body{
-    background-image: url(/assests/pexels-joyston-judah-331625-933054.jpg);
+    /* background-image: url(/assests/pexels-joyston-judah-331625-933054.jpg);
     background-repeat: no-repeat;
-    background-size: 100% 100%; 
+    background-size: 100% 100%;  */
+    /* background-color: #5b84c4; */
+    /* background-color: #86cefa; */
+    background-color: #3373c4;
 }
 
 .container{ 
@@ -32,6 +35,12 @@ body{
     max-height: auto;
     border-radius: 4px;
     padding: 0 0 0.6em 0;
+}
+
+.todo_app::after{
+    content: '';
+    display: block;
+    height: 4em;
 }
 
 .todo_app h2{
@@ -70,7 +79,7 @@ body{
 .inputBox button{
     /* width: 50%; */
     font-size: 1em;
-    background-color: #fc6601;
+    background-color: #f98125;
     border: none;
     color: #ffffff;
     font-weight: 600;
@@ -80,11 +89,14 @@ body{
     /* align-self: center; */
 }
 
+.inputBox button:hover{
+    background-color: #fc6601;
+}
+
 .taskContainer{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: #ffffff;
     max-height: auto;
-    margin-top: 1em; 
+    margin-top: 0.6em; 
     border-radius: 0.2em;
 }
 
@@ -103,14 +115,6 @@ body{
     border-bottom: 0.1em solid #B7B7B7;
     /* height: 3em;
     max-height: auto; */
-    /* for the removal animation */
-    /* transition: all 0.5s ease; */
-}
-
-/* removal animation from the tasklist */
-.taskContainer ul.taskList li.newTask.removing {
-    opacity: 0; /* Fade out */
-    transform: translateY(-10px); /* Slide up */
 }
 
 .taskContainer ul.taskList li.newTask input{
@@ -144,12 +148,6 @@ body{
     display: block; 
     white-space: normal;
 }
-
-/* style the scrollbars inside the span */
-/* li.newTask span::-webkit-scrollbar{ */
-    /* width: 0.9em; */
-    /* background-color: #f1f1f1; */
-/* } */
 
 .taskContainer ul.taskList li.newTask .cross{
     font-size: 1.4em;
@@ -187,7 +185,7 @@ body{
 }
 
 #deleteAllTasks{
-    background-color :#fc6601;
+    background-color :#f98125;
     border: none;
     color: #ffffff;
     font-weight: 600;
@@ -195,6 +193,10 @@ body{
     cursor: pointer; 
     font-size: 1.2em;
     border-radius: 0.2em;
+}
+
+#deleteAllTasks:hover{
+    background-color: #fc6601;
 }
 
 .filterContainer{
@@ -228,10 +230,6 @@ body{
     font-weight: 500;
 }
 
-/* filter background toggle */
-/* .filterContainer .currentFilter{
-    background-color: lightgray; 
-} */
 
 /* filter background toggle for the filter buttons*/
 .filterContainer .active {
@@ -264,17 +262,13 @@ body{
     font-size: 0.9em;
 }
 
-/* .taskLabel{
-    font-weight: 600;
-} */
-
 .spanWrapper span::-webkit-scrollbar{
     background: lightgray;
     width: 0.5em;
     border-radius:0.5em;
 }
+
 .spanWrapper span::-webkit-scrollbar-thumb{
     background: gray;
     border-radius:0.5em;
 }
-
