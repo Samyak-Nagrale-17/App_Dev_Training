@@ -1,117 +1,121 @@
-// Select main elements
-const addTaskButton = document.getElementById("addTaskButton");
-const addTaskInput = document.getElementById("addTaskInput");
-const taskList = document.querySelector("ul.taskList");
-const clearAllButton = document.getElementById("deleteAllTasks");
-// Add new task
+const addTaskButton = document.getElementById("addTaskButton")
+const addTaskInput = document.getElementById("addTaskInput")
+const taskList = document.querySelector("ul.taskList")
+const clearAllButton = document.getElementById("deleteAllTasks")
+
+
+// arrayof json objects
+let taskArray = []
+// add new task
 function addNewTask() {
-   const taskDesc = addTaskInput.value.trim();
-   if (taskDesc === "") {
-       alert("Cannot add an empty task");
-       return;
-   }
-   const li = document.createElement("li");
-   li.classList.add("newTask");
-   // Add the task description and icons
-   li.innerHTML = `
-<i class="fa-regular fa-circle-check tick"></i>
-<span class="taskDesc">${taskDesc}</span>
-<i class="fa-regular fa-circle-xmark cross"></i>
-   `;
-   taskList.appendChild(li);
-   addTaskInput.value = "";
-   toggleClearAllButton();
-   saveData();
+    let taskDesc = addTaskInput.value.trim()
+    if (taskDesc === "") {
+        alert("Cannot add an empty task ... \nPlease provide a task description ...")
+        return
+    }
+
+    // add a taskId
+    let taskId = taskArray.length
+    li.setAttribute("data-task-id", taskId)
+
+    const li = document.createElement("li")
+    li.classList.add("newTask")
+    // add icons
+    li.innerHTML = `
+    <i class="fa-regular fa-circle-check tick"></i>
+    <span class="taskDesc">${taskDesc}</span>
+    <i class="fa-regular fa-circle-xmark cross"></i>
+    `;
+    // taskList.insertBefore(li,taskList.firstChild)
+    taskList.append(li)  
+    //clear the input feild
+    addTaskInput.value = ""
+    // display filter and clear all as non-zero tasks
+    // toggleClearAllButton()
+
+    // create an object
+    
+    let listJson = {
+        taskId: taskId,
+        taskDesc: taskDesc,
+        completed:false
+    };
+
+    taskArray.push(JSON.stringify(listJson))
+    console.log(`Following was pushed in localstorage: ${taskArray}`)
+    saveData()
 }
-// Event Delegation: Handle clicks on taskList (for tick and cross icons)
-taskList.addEventListener("click", function (event) {
-   const target = event.target;
-   const li = target.closest("li");
-   if (!li) return; // If click is not on a task item, ignore
-   if (target.classList.contains("tick")) {
-       toggleTaskComplete(li);
-   } else if (target.classList.contains("cross")) {
-       removeTask(li);
-   } else if (target.tagName === "SPAN") {
-       editTaskDescription(li);
-   }
-});
-// Mark task as complete or incomplete
-function toggleTaskComplete(li) {
-   const span = li.querySelector("span.taskDesc");
-   if (span.classList.contains("completed")) {
-       span.classList.remove("completed");
-       li.querySelector(".tick").classList.replace("fa-solid", "fa-regular");
-   } else {
-       span.classList.add("completed");
-       li.querySelector(".tick").classList.replace("fa-regular", "fa-solid");
-   }
-   saveData();
+
+
+// mark as complete. change status as 'completed'
+// add event listener to all existing tick icons
+function checkTickIcon(){
+    const tickIcons = document.querySelectorAll('i.tick')
+
+    tickIcons.forEach(icon => {
+        icon.addEventListener('click', markAsComplete)
+    })
 }
-// Remove task
-function removeTask(li) {
-   li.remove();
-   toggleClearAllButton();
-   saveData();
+
+function markAsComplete(event){
+    const li = event.target.parentElement
+    // const taskDesc = li.querySelector('.taskDesc').textContent
+    const taskId = li.getAttribute("data-task-id")
+
+
+    // check if already completed
+    if(li.querySelector('.taskDesc').classList.contains('completed')){
+        return
+    }
+    else{
+        li.querySelector('.taskDesc').classList.add('completed')
+    }
+
+    // find this task in the  taskArray to update its status as completed
+    for(let i = 0; i < taskArray.length; i++){
+        let taskObject = JSON.parse(taskArray[i])
+
+        if(taskObject.taskId == taskId){
+            taskObject.completed = true
+            //update the taskArray
+            taskArray[i] = JSON.stringify(taskObject)
+            break;
+        }
+    }
+    saveData();
 }
-// Edit task description
-function editTaskDescription(li) {
-   const span = li.querySelector("span.taskDesc");
-   if (span.classList.contains("completed")) return; // Prevent editing completed tasks
-   const currentDesc = span.textContent;
-   const input = document.createElement("input");
-   input.type = "text";
-   input.value = currentDesc;
-   li.insertBefore(input, span);
-   span.remove();
-   input.addEventListener("blur", function () {
-       const newDesc = input.value.trim() || currentDesc;
-       span.textContent = newDesc;
-       li.insertBefore(span, input);
-       input.remove();
-       saveData();
-   });
-   input.focus();
+
+
+function saveData(){
+    localStorage.setItem("tasks", taskArray) 
 }
-// Clear all tasks
-clearAllButton.addEventListener("click", function () {
-   if (confirm("Are you sure you want to delete all tasks?")) {
-       taskList.innerHTML = "";
-       toggleClearAllButton();
-       saveData();
-   }
-});
-// Show or hide Clear All button
-function toggleClearAllButton() {
-   clearAllButton.style.display = taskList.children.length ? "block" : "none";
+
+function showData(){
+    const tasks = localStorage.getItem("tasks")
+    if(tasks){
+        taskArray = JSON.parse(tasks)
+        taskList.innerHTML = ""
+
+
+        taskArray.forEach(taskString => {
+            const taskObject = JSON.parse(taskString)
+            const li = document.createElement('li')
+            li.classList.add('newTask')
+
+            li.setAttribute('data-task-id', taskObject.taskId)
+
+            const completedClass = taskObject.completed ? "completed" : ""
+
+            li.innerHTML = 
+            `
+                <i class="fa-regular fa-circle-check tick"></i>
+                <span class="taskDesc ${completedClass}">${taskDesc}</span>
+                <i class="fa-regular fa-circle-xmark cross"></i>
+            `
+
+            taskList.appendChild(li)
+            //reattach event listeners after loading data
+            checkTickIcon()
+        })
+    }
 }
-// Filter tasks
-const filterAll = document.getElementById("filterAll");
-const filterCompleted = document.getElementById("filterCompleted");
-const filterTodo = document.getElementById("filterTodo");
-filterAll.addEventListener("click", () => filterTasks("all"));
-filterCompleted.addEventListener("click", () => filterTasks("completed"));
-filterTodo.addEventListener("click", () => filterTasks("todo"));
-function filterTasks(filter) {
-   const tasks = document.querySelectorAll("li.newTask");
-   tasks.forEach(task => {
-       const isCompleted = task.querySelector("span").classList.contains("completed");
-       if (filter === "all" || (filter === "completed" && isCompleted) || (filter === "todo" && !isCompleted)) {
-           task.style.display = "flex";
-       } else {
-           task.style.display = "none";
-       }
-   });
-}
-// Save and load tasks from localStorage
-function saveData() {
-   localStorage.setItem("data", taskList.innerHTML);
-}
-function showTask() {
-   const savedData = localStorage.getItem("data");
-   if (savedData) {
-       taskList.innerHTML = savedData;
-       toggleClearAllButton();
-   }
-}
-document.addEventListener("DOMContentLoaded", showTask);

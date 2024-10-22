@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Summit 2024</title>
-
     <link rel="stylesheet" href="styles.css">
 
     <!-- importing from google font -->
@@ -13,12 +12,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
     <!-- fontawesome icons -->
-    <script src="https://kit.fontawesome.com/143357f5d9.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/143357f5d9.js" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body>
-
     <!-- navbar -->
-    <section class="navbar">
+    <section class="navbar" id="navbar">
         <div class="container">
             <div class="navbar_wrapper">
                 <div class="logo">
@@ -26,12 +25,11 @@
                 </div>
 
                 <div class="link_container">
-                    <div class="link_box"><a href="">Home</a></div>
-                    <div class="link_box"><a href="">About us</a></div>
-                    <div class="link_box"><a href="">Speakers</a></div>
-                    <div class="link_box"><a href="">Schedule</a></div>
-                    <div class="link_box"><a href="">Sponsers</a></div>
-                    <div class="link_box"><a href="">Contact us</a></div>
+                    <div class="link_box"><a href="#">Home</a></div>
+                    <div class="link_box"><a href="#about">About us</a></div>
+                    <div class="link_box"><a href="#speakers">Speakers</a></div>
+                    <div class="link_box"><a href="#schedule">Schedule</a></div>
+                    <div class="link_box"><a href="#contact_us">Contact us</a></div>
                 </div>
 
                 <div class="navbar__buttons">
@@ -43,14 +41,14 @@
     </section>
 
     <!-- header section -->
-    <section class="header">
+    <section class="header" id="header">
         <div class="container">
             <div class="header_wrapper">
                 <div class="content">
                     <div class="main_heading">
-                        <span>“Where the future goes to be born”-Guardian&#9679; </span>
-                        <span id="event_date">November 11 -14</span>
-                        <span>&#9679; New York City</span>
+                        <span>The largest tech conference where future is born</span><br>
+                        <span id="event_date">November 11 -14 </span>
+                        <span> in New York City</span>
                     </div>
                     
                     <div class="header_text">
@@ -72,7 +70,7 @@
     </section>
 
     <!-- about us -->
-    <section class=" about">
+    <section class=" about" id="about">
         <div class="container">
             <div class="about_wrapper">
                 <div class="img_wrapper">
@@ -98,7 +96,7 @@
     </section>
 
     <!-- speakers -->
-    <section class="speakers">
+    <section class="speakers" id="speakers">
         <div class="container">
             <div class="speakers_wrapper">
                 <span class="subheading">Meet your 2024 speakers</span>
@@ -112,36 +110,36 @@
                         </div>
     
                         <div class="card">
-                            <img src="assests/Prasenjit_Mukherjee-removebg-preview.png" alt="speaker1">
-                            <div class="card__heading">Prasenjit Mukherjee</div>
-                            <div class="card__content">CIO & CDO, JWIL Infra Ltd</div>
+                            <img src="assests/Ashish_Pandey-removebg-preview.png" alt="speaker2">
+                            <div class="card__heading">Ashish Pandey</div>
+                            <div class="card__content">Global CIO, Dabur India</div>
                         </div>
     
                         <div class="card">
-                            <img src="assests/Prasenjit_Mukherjee-removebg-preview.png" alt="speaker1">
-                            <div class="card__heading">Prasenjit Mukherjee</div>
-                            <div class="card__content">CIO & CDO, JWIL Infra Ltd</div>
+                            <img src="assests/Yusuf_Hashmi-removebg-preview.png" alt="speaker3">
+                            <div class="card__heading">Dr. Yusuf Hashmi</div>
+                            <div class="card__content">Group CISO, Jubilant Bhartia Group</div>
                         </div>
                     </div>
                     
                     <!-- row 2 -->
                     <div class="card_row">
                         <div class="card">
-                            <img src="assests/Prasenjit_Mukherjee-removebg-preview.png" alt="speaker1">
-                            <div class="card__heading">Prasenjit Mukherjee</div>
-                            <div class="card__content">CIO & CDO, JWIL Infra Ltd</div>
+                            <img src="assests/Rajat_Yadav-removebg-preview.png" alt="speaker4">
+                            <div class="card__heading">Rajat Yadav</div>
+                            <div class="card__content">Head - IT, JCB India</div>
                         </div>
     
                         <div class="card">
-                            <img src="assests/Prasenjit_Mukherjee-removebg-preview.png" alt="speaker1">
-                            <div class="card__heading">Prasenjit Mukherjee</div>
-                            <div class="card__content">CIO & CDO, JWIL Infra Ltd</div>
+                            <img src="assests/Baidyanath_Kumar-removebg-preview.png" alt="speaker5">
+                            <div class="card__heading">Baidyanath Kumar</div>
+                            <div class="card__content">CISO, JK Cement</div>
                         </div>
     
                         <div class="card">
-                            <img src="assests/Prasenjit_Mukherjee-removebg-preview.png" alt="speaker1">
-                            <div class="card__heading">Prasenjit Mukherjee</div>
-                            <div class="card__content">CIO & CDO, JWIL Infra Ltd</div>
+                            <img src="assests/Vishal_Jain-removebg-preview.png" alt="speaker6">
+                            <div class="card__heading">Vishal Jain</div>
+                            <div class="card__content">CIO & Head IT, Hero Steels</div>
                         </div>
                     </div>
                 </div>
@@ -149,9 +147,193 @@
         </div>
     </section>
 
+    <!-- schedule -->
+    <section class="schedule" id="schedule">
+        <div class="container">
+            <div class="schedule_wrapper">
+                <span class="subheading">Schedule</span>
+                
+                
+                <div class="date_wrapper">
+                    <!-- nov 11 -->
+                    <div class="text-container left-container">
+                        <img src="assests/black-dot-with-circle-vector-icon_302321-2478-removebg-preview.png" alt="black_dot">
+                        <div class="text-box">
+                            <h2>November 11</h2>
+                            <p>Opening keynote</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat temporibus vero ea quisquam atque voluptates magni labore consequatur.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- nov 12 -->
+                    <div class="text-container right-container">
+                        <img src="assests/black-dot-with-circle-vector-icon_302321-2478-removebg-preview.png" alt="black_dot">
+                        <div class="text-box">
+                            <h2>November 12</h2>
+                            <p>Talk on "AI driven drug discovery"</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat temporibus vero ea quisquam atque voluptates magni labore consequatur.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- nov 13 -->
+                    <div class="text-container left-container">
+                        <img src="assests/black-dot-with-circle-vector-icon_302321-2478-removebg-preview.png" alt="black_dot">
+                        <div class="text-box">
+                            <h2>November 13</h2>
+                            <p>Panel discussion on "Robotics in the age of GenAI"</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat temporibus vero ea quisquam atque voluptates magni labore consequatur.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- nov 14 -->
+                    <div class="text-container right-container">
+                        <img src="assests/black-dot-with-circle-vector-icon_302321-2478-removebg-preview.png" alt="black_dot">
+                        <div class="text-box">
+                            <h2>November 14</h2>
+                            <p>Hands-on workshops</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat temporibus vero ea quisquam atque voluptates magni labore consequatur.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- contact us  -->
+    <section class="contact" id="contact_us">
+        <div class="container">
+            <div class="contact_wrapper">
+                <span class="subheading">Contact us</span>
+
+                <!-- wrapper -->
+                <div class="content_wrapper">
+                    <div class="contact_details">
+                        <!-- address -->
+                        <div class="contact_info">
+                            <i class="fa-solid fa-house-chimney"></i>
+                            <div class="text_wrapper">
+                                <p class="main_text">Address</p>
+                                <p class=" text_content">429 11th Ave, New York, NY 10001, United States</p>
+                            </div>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="contact_info">
+                            <i class="fa-solid fa-phone"></i>
+                            <div class="text_wrapper">
+                                <p class="main_text">Phone</p>
+                                <p class=" text_content">571-457-2321</p>
+                            </div>
+                        </div>
+
+                        <!-- email -->
+                        <div class="contact_info">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div class="text_wrapper">
+                                <p class="main_text">Email</p>
+                                <p class=" text_content">info@websummitnyc.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- contact form -->
+                    <div class="contact_form">
+                        <form action="#contact_us">
+                            <p>Send a message</p>
+
+                            <label for="username">Name</label>
+                            <input type="text" id="username" required>
+
+                            <label for="useremail">Email</label>
+                            <input type="email" id="useremail" required>
+
+                            <label for="usermessage">Message</label>
+                            <input type="text" id="usermessage" required> 
+
+                            <input type="submit" id="submitbutton">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- footer -->
     <section class="footer">
-        <div class="container"></div>
+        <div class="container">
+            <div class="footer_wrapper">
+                
+                <!-- logos -->
+                <div class="footerlogo">
+                    <img src="assests/Web_Summit_logo.svg.png" alt="Web_Summit_logo" id="footerlogo">
+                </div>
+
+                <!-- Quicklinks -->
+                <div class="linkscommon">
+                    <span class="linkheading">Quicklinks</span>
+                    <div class="links">
+                        <a href="#navbar">Home</a>
+                        <a href="#about">About us</a>
+                        <a href="#speakers">Speakers</a>
+                        <a href="#schedule">Schedule</a>
+                        <a href="#contact_us">Contact us</a>
+                    </div>
+                </div>
+
+                <!-- companylinks -->
+                <div class="linkscommon">
+                    <p class="linkheading">Company</p>
+                    <div class="links">
+                        <a href="">About us</a>
+                        <a href="">Careers</a>
+                        <a href="">Apply to speak</a>
+                        <a href="">Impact</a>
+                        <a href="">Blog</a>
+                    </div>
+                </div>
+
+                <!-- support -->
+                <div class="linkscommon">
+                    <p class="linkheading">Support</p>
+                    <div class="links">
+                        <a href="">Report an issue</a>
+                        <a href="">Tickets</a>
+                        <a href="">Refund</a>
+                    </div>
+                </div>
+
+                <!-- event links -->
+                <div class="linkscommon">
+                    <p class="linkheading">Our events</p>
+                    <div class="links">
+                        <a href="">Web Summit - London</a>
+                        <a href="">Web Summit - HK</a>
+                        <a href="">Web Summit - Paris</a>
+                        <a href="">Web Summit - Sydney</a>
+                        <a href="">Web Summit - Texas</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="socials_below_footer">
+                <div class="socials">
+                    <p>Follow us</p>
+                    <div class="socailslinks">
+                        <i class="fa-brands fa-facebook" style="color: #1877F2;"><a href=""></a></i>
+                        <i class="fa-brands fa-linkedin" style="color: #0072b1;"><a href=""></a></i>
+                        <i class="fa-brands fa-x-twitter" style="color: #000000;"><a href=""></a></i>
+                        <i class="fa-brands fa-instagram" style="color: #E4405F;"><a href=""></a></i>
+                    </div>
+                </div>
+                <div class="footer_copy">
+                    <p>&copy; Web Summit 2024</p>
+                </div>
+            </div>
+        </div>
     </section>
     
 </body>
