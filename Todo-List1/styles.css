@@ -4,7 +4,6 @@
     box-sizing: border-box;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 18px;
-
 }
 
 body{
@@ -52,6 +51,9 @@ body{
 .inputBox{
     display: flex;
     font-size: 1.2em;
+    flex-direction: column;
+    gap: 0.4em;
+    /* align-items: center; */
 }
 
 .inputBox input{
@@ -62,18 +64,20 @@ body{
     padding: 0.4em 1em;
     color: black;
     font-weight: 500;
-    border-radius: 0.2em 0 0 0.2em;
+    border-radius: 0.2em
 }
 
 .inputBox button{
+    /* width: 50%; */
     font-size: 1em;
     background-color: #fc6601;
     border: none;
     color: #ffffff;
     font-weight: 600;
-    border-radius: 0 0.2em 0.2em 0;
+    border-radius: 0.2em;
     padding: 0.4em 1em;
     cursor: pointer;
+    /* align-self: center; */
 }
 
 .taskContainer{
@@ -99,10 +103,8 @@ body{
     border-bottom: 0.1em solid #B7B7B7;
     /* height: 3em;
     max-height: auto; */
-
     /* for the removal animation */
-    transition: all 0.5s ease;
-
+    /* transition: all 0.5s ease; */
 }
 
 /* removal animation from the tasklist */
@@ -123,16 +125,34 @@ body{
     flex: 1;
     width: 100%;
     padding: 0.4em;
-    max-height: 4em; 
+    max-height: 4.4em; 
     overflow-y: auto; 
     overflow-x: hidden;
     display: block; 
     white-space: normal; 
 }
 
+.taskContainer ul.taskList li.newTask .spanWrapper span{
+    font-size: 1em;
+    flex: 1;    
+    display: flex;
+    width: 100%;
+    padding: 0.4em;
+    max-height: 4.4em; 
+    overflow-y: auto; 
+    overflow-x: hidden;
+    display: block; 
+    white-space: normal;
+}
+
+/* style the scrollbars inside the span */
+/* li.newTask span::-webkit-scrollbar{ */
+    /* width: 0.9em; */
+    /* background-color: #f1f1f1; */
+/* } */
 
 .taskContainer ul.taskList li.newTask .cross{
-    font-size: 1.2em;
+    font-size: 1.4em;
     padding: 0 0.4em;
     margin-left: auto;
 }
@@ -142,12 +162,16 @@ body{
 }
 
 .taskContainer ul.taskList li.newTask .tick{
-    padding:  0 0.4em;
-    font-size: 1.2em;
+    padding:  0 0.4em 0 0.5em;
+    font-size: 1.4em;
 }
 
 .taskContainer ul.taskList li.newTask .tick:hover{
     color: #66FF00;
+}
+
+.taskContainer ul.taskList li.newTask .fa-solid:hover{
+    color: black;
 }
 
 .completed{
@@ -182,6 +206,7 @@ body{
     position: relative;
     padding: 0.4em 0 ;
 }
+
 .filterContainer i{
     font-size: 1.2em;
     position: absolute;
@@ -212,3 +237,44 @@ body{
 .filterContainer .active {
     background-color: lightgray; 
 }
+
+.taskContainer ul.taskList li.newTask .spanWrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+}
+
+.taskContainer ul.taskList li.newTask .spanWrapper .taskDesc{
+    font-size: 1.2em;
+    flex: 1 ;
+}
+
+.taskContainer ul.taskList li.newTask .spanWrapper .taskLabel{
+    font-size: 1.2em;
+    /* padding: 0.4em; */
+    /* max-height: 4.4em;  */
+    max-height: 3.2em;
+    overflow-y: auto; 
+    overflow-x: hidden;
+    display: block; 
+    white-space: normal; 
+}
+
+.taskContainer ul.taskList li.newTask strong{
+    font-size: 0.9em;
+}
+
+/* .taskLabel{
+    font-weight: 600;
+} */
+
+.spanWrapper span::-webkit-scrollbar{
+    background: lightgray;
+    width: 0.5em;
+    border-radius:0.5em;
+}
+.spanWrapper span::-webkit-scrollbar-thumb{
+    background: gray;
+    border-radius:0.5em;
+}
+

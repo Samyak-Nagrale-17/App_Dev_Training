@@ -16,12 +16,22 @@
 
             <div class="inputBox">
                 <input type="text" id="addTaskInput" placeholder="Add a task">
+                <input type="text" id="addTaskInputCategory" placeholder="Add a category/label">
                 <button id="addTaskButton" onclick="addNewTask()">Add</button>
             </div>
+            
 
             <div class="taskContainer">
                 <ul class="taskList">
-                    <!-- <li class="newTask"><i class="fa-regular fa-circle-check tick"></i><span class="taskDesc">Task 1</span><i class="fa-regular fa-circle-xmark cross"></i></li> -->
+                    <!-- <li class="newTask">
+                        <i class="fa-regular fa-circle-check tick"></i>
+                        <div class="spanWrapper">
+                            <span class="taskDesc">added via html Task 1</span>
+                            <span class="taskLabel">Category</span>
+                        </div>
+                        <i class="fa-regular fa-circle-xmark cross"></i> 
+                        <span class="taskLabel"></span>
+                    </li> --> 
                 </ul>
 
                 <div class="filterContainer">
@@ -36,7 +46,7 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
     <!-- js link --> 
     <script src="script2.js"></script>
 </body>
