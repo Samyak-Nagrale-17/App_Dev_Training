@@ -64,6 +64,7 @@ function addNewTask() {
         completed:false,
         taskLabel:taskLabel.value
     };
+
     taskLabel.value= ""
 
     // push new task in taskArray
@@ -161,116 +162,113 @@ function addEventListenerToTaskDesc(){
 }
 
 // edit the task label i.e. category/label
-function editTaskLabel(event){
-    let spanWrapper = event.target.parentElement
-    const span = spanWrapper.querySelector("span.taskLabel")
-    // if task is marked as completed, user cannot edit it
-    if (span. classList.contains("completed")) return
+// function editTaskLabel(event){
+//     let spanWrapper = event.target.parentElement
+//     const span = spanWrapper.querySelector("span.taskLabel")
+//     // if task is marked as completed, user cannot edit it
+//     if (span. classList.contains("completed")) return
 
-    const currentDesc = span.textContent
-    const input = document.createElement("input")
-    input.type = "text"
-    input.value = currentDesc
+//     const currentDesc = span.textContent
+//     const input = document.createElement("input")
+//     input.type = "text"
+//     input.value = currentDesc
 
-    // style the input same as span check if if possible with same class
-    // toggle the class in classList of input
+//     // style the input same as span check if if possible with same class
+//     // toggle the class in classList of input
+//     const computedStyle = window.getComputedStyle(span);
+//     input.style.width = computedStyle.width; 
+//     input.style.height = computedStyle.height; 
+//     input.style.fontSize = computedStyle.fontSize; 
+//     input.style.padding = computedStyle.padding; 
+//     input.style.border = computedStyle.border; 
+
+//     spanWrapper.insertBefore(input, span)
+//     span.remove()
+//     input.focus()
+
+//     input.addEventListener("blur", function () {
+//         const newDesc = input.value.trim() || currentDesc
+        
+//         // do input validation on this new change
+//         if(inputValidation.test(newDesc) == false){
+//             alert("Please enter valid task description...")
+//             input.focus() 
+//             input.value = ""
+//         }  
+//         span.textContent = newDesc
+//         spanWrapper.insertBefore(span, input)
+//         input.remove()
+
+//         // // Update taskDesc in taskArray
+//         const taskId = li.getAttribute("data-task-id");
+//         taskArray = taskArray.filter(taskString => {
+//             let taskObject = JSON.parse(taskString)
+//             if(taskObject.taskId == taskId){
+//                 taskObject.taskDesc = newDesc
+//             }  
+//         })
+//         saveData() 
+//         showData() 
+//     }) 
+    
+// }
+
+function editTaskDescription(event) {
+    let li = event.target.parentElement.parentElement;
+    const spanWrapper = li.querySelector("div.spanWrapper");
+    const span = li.querySelector("span.taskDesc");
+
+    if (span.classList.contains("completed")) return;
+
+    const currentDesc = span.textContent;
+    const input = document.createElement("input");
+    input.type = "text";
+    input.value = currentDesc;
+
     const computedStyle = window.getComputedStyle(span);
-    input.style.width = computedStyle.width; 
-    input.style.height = computedStyle.height; 
-    input.style.fontSize = computedStyle.fontSize; 
-    input.style.padding = computedStyle.padding; 
-    input.style.border = computedStyle.border; 
+    input.style.width = computedStyle.width;
+    input.style.height = computedStyle.height;
+    input.style.fontSize = computedStyle.fontSize;
+    input.style.padding = computedStyle.padding;
+    input.style.border = computedStyle.border;
 
-    spanWrapper.insertBefore(input, span)
-    span.remove()
-    input.focus()
+    spanWrapper.insertBefore(input, span);
+    span.remove();
+    input.focus();
 
     input.addEventListener("blur", function () {
-        const newDesc = input.value.trim() || currentDesc
-        
-        // do input validation on this new change
-        if(inputValidation.test(newDesc) == false){
-            alert("Please enter valid task description...")
-            input.focus() 
-            input.value = ""
+        const newDesc = input.value.trim() || currentDesc;
+
+        if (inputValidation.test(newDesc) == false) {
+            alert("Please enter a valid task description...");
+            input.focus();
+            input.value = "";
+            return;
         }
-        span.textContent = newDesc
-        spanWrapper.insertBefore(span, input)
-        input.remove()
 
-        // clear this
-        // // Update taskDesc in taskArray
-        // const taskId = li.getAttribute("data-task-id");
-        // for (let i = 0; i < taskArray.length; i++) {
-        //     let taskObject = JSON.parse(taskArray[i]);
-        //     if (taskObject.taskId == taskId) {
-        //         // Update the taskDesc
-        //         taskObject.taskDesc = newDesc; 
-        //         // Update taskArray
-        //         taskArray[i] = JSON.stringify(taskObject); 
-        //         break;
-        //     }
-        // }
-        saveData()
-    })
-    saveData() 
-}
+        span.textContent = newDesc;
+        spanWrapper.insertBefore(span, input);
+        input.remove();
 
-
-// edit the task desc
-function editTaskDescription(event){
-    let li = event.target.parentElement
-    const span = li.querySelector("span.taskDesc")
-    // if task is marked as completed, user cannot edit it
-    if (span.classList.contains("completed")) return 
-    
-    const currentDesc = span.textContent
-    const input = document.createElement("input")
-    input.type = "text"
-    input.value = currentDesc
-
-    // style the input same as the span
-    const computedStyle = window.getComputedStyle(span);
-    input.style.width = computedStyle.width; 
-    input.style.height = computedStyle.height; 
-    input.style.fontSize = computedStyle.fontSize; 
-    input.style.padding = computedStyle.padding; 
-    input.style.border = computedStyle.border; 
-
-    li.insertBefore(input, span)
-    span.remove() 
-    //autofocus the input field
-    input.focus() 
-    
-    input.addEventListener("blur", function () {
-        const newDesc = input.value.trim() || currentDesc
+        const currentTaskId = parseInt(li.getAttribute('data-task-id'));
         
-        // do input validation on this new change
-        if(inputValidation.test(newDesc) == false){
-            alert("Please enter valid task description...")
-            input.focus() 
-            input.value = ""
-        }
-        span.textContent = newDesc
-        li.insertBefore(span, input)
-        input.remove()
-
-        // Update taskDesc in taskArray
-        const taskId = li.getAttribute("data-task-id");
+        // Update taskArray
         for (let i = 0; i < taskArray.length; i++) {
             let taskObject = JSON.parse(taskArray[i]);
-            if (taskObject.taskId == taskId) {
-                // Update the taskDesc
-                taskObject.taskDesc = newDesc; 
-                // Update taskArray
-                taskArray[i] = JSON.stringify(taskObject); 
+
+            if (taskObject.taskId === currentTaskId) {
+                taskObject.taskDesc = newDesc; // Update the task description
+                taskArray[i] = JSON.stringify(taskObject); // Save it back to the array
                 break;
             }
         }
-        saveData()
-    })
-    saveData() 
+
+        saveData(); // Save updated taskArray to localStorage
+    });
 }
+
+
+
 
 // clear all tasks. remove all the tasks from the taskArray as well
 clearAllButton.addEventListener('click', deleteAllTasks)
@@ -398,7 +396,7 @@ function showData(){
     const tasks = localStorage.getItem("tasks")
     if(tasks){
         taskArray = JSON.parse(tasks)
-        // taskList.innerHTML = ""
+        taskList.innerHTML = ""
 
         //reverse the taskArray
         // original taskArray is unchanged

@@ -136,6 +136,11 @@ body{
     white-space: normal; 
 }
 
+.taskContainer ul.taskList li.newTask .spanWrapper{
+    /* border: 1px solid red; */
+    flex: 1;
+}
+
 .taskContainer ul.taskList li.newTask .spanWrapper span{
     font-size: 1em;
     flex: 1;    
@@ -245,6 +250,7 @@ body{
 .taskContainer ul.taskList li.newTask .spanWrapper .taskDesc{
     font-size: 1.2em;
     flex: 1 ;
+    /* border: 1px solid red; */
 }
 
 .taskContainer ul.taskList li.newTask .spanWrapper .taskLabel{
@@ -256,6 +262,7 @@ body{
     overflow-x: hidden;
     display: block; 
     white-space: normal; 
+    /* border: 1px solid red; */
 }
 
 .taskContainer ul.taskList li.newTask strong{
@@ -271,4 +278,12 @@ body{
 .spanWrapper span::-webkit-scrollbar-thumb{
     background: gray;
     border-radius:0.5em;
+}
+
+
+
+/* temp. clear this once you change it */
+.importantTask {
+    background-color: #ffdddd;  /* Light red background */
+    border-left: 5px solid #ff0000;  /* Red border */
 }

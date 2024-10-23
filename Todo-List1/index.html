@@ -17,14 +17,21 @@
             <div class="inputBox">
                 <input type="text" id="addTaskInput" placeholder="Add a task">
                 <input type="text" id="addTaskInputCategory" placeholder="Add a category/label">
+                <!-- Add a dropdown list for priority -->
+                <label for="taskPriority">Priority:</label>
+                <select id="taskPriority">
+                    <option value="normal">Normal</option>
+                    <option value="important">Important</option>
+                </select>
                 <button id="addTaskButton" onclick="addNewTask()">Add</button>
+                
             </div>
             
             <div class="taskContainer">
                 <ul class="taskList">
                     <!-- <li class="newTask">
                         <i class="fa-regular fa-circle-check tick"></i>
-                        <div class="spanWrapper">
+                        <div class="spanWrapper"> 
                             <span class="taskDesc">added via html Task 1</span>
                             <span class="taskLabel">Category</span>
                         </div>
@@ -33,10 +40,18 @@
                     </li> --> 
                 </ul>
 
+                <!-- filter by task status -->
                 <div class="filterContainer">
-                    <button id="filterAll" class="">All</button>
-                    <button id="filterTodo" class="">Todo</button>
-                    <button id="filterCompleted" class="">Completed</button>
+                    <p>Filter by status</p>
+                    <button id="filterAll" class="filterButton">All</button>
+                    <button id="filterTodo" class="filterButton">Todo</button>
+                    <button id="filterCompleted" class="filterButton">Completed</button>
+                </div>
+                <!-- filter by priority -->
+                <div class="filterContainer">
+                    <p>Filter by Priority</p>
+                    <button id="filterImportant" class="filterButton">Important</button>
+                    <button id="filterNormal" class="filterButton">Normal</button>
                 </div>
 
                 <div class="buttonContainer">
@@ -46,6 +61,6 @@
         </div>
     </div>
     <!-- js link --> 
-    <script src="script2.js"></script>
+    <script src="script3.js"></script>
 </body>
 </html>
