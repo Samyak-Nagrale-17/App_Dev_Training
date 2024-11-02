@@ -7,6 +7,10 @@
     
     <!-- fontawesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- chart.js cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    
     <title>Todo List</title>
 </head>
 <body>
@@ -15,16 +19,15 @@
             <h2>TODO</h2>
 
             <div class="inputBox">
-                <input type="text" id="addTaskInput" placeholder="Add a task">
-                <input type="text" id="addTaskInputCategory" placeholder="Add a category/label">
-                <!-- Add a dropdown list for priority -->
-                <label for="taskPriority">Priority:</label>
-                <select id="taskPriority">
-                    <option value="normal">Normal</option>
+                <input type="text"  class="inputClass" id="addTaskInput" placeholder="Add a task">
+                <input type="text"  class="inputClass"  id="addTaskInputCategory" placeholder="Add a category/label">
+                <!-- Add a dropdown list for priority --> 
+                <select id="taskPriority" class="inputClass">
+                    <option value="none" id="selectPlaceholder" selected>Select a priority for the task</option>
                     <option value="important">Important</option>
+                    <option value="normal">Normal</option> 
                 </select>
                 <button id="addTaskButton" onclick="addNewTask()">Add</button>
-                
             </div>
             
             <div class="taskContainer">
@@ -35,21 +38,22 @@
                             <span class="taskDesc">added via html Task 1</span>
                             <span class="taskLabel">Category</span>
                         </div>
+                        <span class="priorityLabel ">${taskObject.priority}</span>
                         <i class="fa-regular fa-circle-xmark cross"></i> 
-                        <span class="taskLabel"></span>
                     </li> --> 
                 </ul>
 
                 <!-- filter by task status -->
-                <div class="filterContainer">
+                <div class="filterContainer" id="filterStatusContainer">
                     <p>Filter by status</p>
                     <button id="filterAll" class="filterButton">All</button>
                     <button id="filterTodo" class="filterButton">Todo</button>
                     <button id="filterCompleted" class="filterButton">Completed</button>
                 </div>
+
                 <!-- filter by priority -->
-                <div class="filterContainer">
-                    <p>Filter by Priority</p>
+                <div class="filterContainer" id="filterPriorityContainer">
+                    <p>Filter by priority</p>
                     <button id="filterImportant" class="filterButton">Important</button>
                     <button id="filterNormal" class="filterButton">Normal</button>
                 </div>
@@ -59,8 +63,12 @@
                 </div>
             </div>
         </div>
+
+        <!-- canvas for chart-->
+        <!-- <canvas id="myChart" style="width:100%;max-width:700px"></canvas> -->
+         
     </div>
     <!-- js link --> 
-    <script src="script3.js"></script>
+    <script src="script2.js"></script>
 </body>
 </html>

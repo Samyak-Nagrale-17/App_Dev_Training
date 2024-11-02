@@ -10,15 +10,12 @@ body{
     /* background-image: url(/assests/pexels-joyston-judah-331625-933054.jpg);
     background-repeat: no-repeat;
     background-size: 100% 100%;  */
-    /* background-color: #5b84c4; */
-    /* background-color: #86cefa; */
-    background-color: #3373c4;
+    background-color: #87CEEB;
 }
 
 .container{ 
     margin: auto;
     width: 98vw;
-    /* max-width: 100vw;  */
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -44,11 +41,11 @@ body{
 }
 
 .todo_app h2{
-    font-size: 2.4em;
+    font-size: 3.2em;
     color: white;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.2em;
-    
+    color: black;
 }
 
 .todo_app h2::after{
@@ -62,10 +59,9 @@ body{
     font-size: 1.2em;
     flex-direction: column;
     gap: 0.4em;
-    /* align-items: center; */
 }
 
-.inputBox input{
+.inputBox .inputClass{
     font-size: 1em;
     flex: 1;
     background-color: #F5F5F7;
@@ -76,8 +72,11 @@ body{
     border-radius: 0.2em
 }
 
+#taskPriority #selectPlaceholder{
+    color: #818D8E; 
+}
+
 .inputBox button{
-    /* width: 50%; */
     font-size: 1em;
     background-color: #f98125;
     border: none;
@@ -86,7 +85,6 @@ body{
     border-radius: 0.2em;
     padding: 0.4em 1em;
     cursor: pointer;
-    /* align-self: center; */
 }
 
 .inputBox button:hover{
@@ -113,15 +111,12 @@ body{
     align-items: center;
     padding:  0.6em 0;
     border-bottom: 0.1em solid #B7B7B7;
-    /* height: 3em;
-    max-height: auto; */
 }
 
 .taskContainer ul.taskList li.newTask input{
     font-size: 1em;
     width: 100%;
     padding: 0.4em;
-    /* height: 100%; */
 }
 
 .taskContainer ul.taskList li.newTask span{
@@ -137,7 +132,6 @@ body{
 }
 
 .taskContainer ul.taskList li.newTask .spanWrapper{
-    /* border: 1px solid red; */
     flex: 1;
 }
 
@@ -214,10 +208,11 @@ body{
     padding: 0.4em 0 ;
 }
 
-.filterContainer i{
+
+.filterContainer p{
     font-size: 1.2em;
     position: absolute;
-    left: 0.6em;
+    left: 1em;
 }
 
 .filterContainer button{
@@ -236,7 +231,6 @@ body{
 }
 
 
-/* filter background toggle for the filter buttons*/
 .filterContainer .active {
     background-color: lightgray; 
 }
@@ -250,19 +244,16 @@ body{
 .taskContainer ul.taskList li.newTask .spanWrapper .taskDesc{
     font-size: 1.2em;
     flex: 1 ;
-    /* border: 1px solid red; */
 }
 
-.taskContainer ul.taskList li.newTask .spanWrapper .taskLabel{
+.taskContainer ul.taskList li.newTask .spanWrapper .taskLabel,
+.taskContainer ul.taskList li.newTask .spanWrapper .priorityLabel {
     font-size: 1.2em;
-    /* padding: 0.4em; */
-    /* max-height: 4.4em;  */
     max-height: 3.2em;
     overflow-y: auto; 
     overflow-x: hidden;
     display: block; 
     white-space: normal; 
-    /* border: 1px solid red; */
 }
 
 .taskContainer ul.taskList li.newTask strong{
@@ -280,10 +271,7 @@ body{
     border-radius:0.5em;
 }
 
-
-
-/* temp. clear this once you change it */
 .importantTask {
-    background-color: #ffdddd;  /* Light red background */
-    border-left: 5px solid #ff0000;  /* Red border */
+    background-color: #ffdddd; 
+    border-left: 0.3em solid #ff0000; 
 }

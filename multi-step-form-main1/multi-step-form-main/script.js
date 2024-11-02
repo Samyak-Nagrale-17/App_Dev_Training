@@ -2,9 +2,9 @@
 const regForm = document.querySelector("#multistepForm")
 const steps = document.querySelectorAll(".step")
 const sidebarStepIcons = document.querySelectorAll(".currStepIcon")
-const prevButtons = document.querySelectorAll("#prevButton")
-const nextButtons = document.querySelectorAll("#nextButton")
-const confirmButton = document.querySelector("#confirmButton")
+const prevButtons = document.querySelector("#prevButton")
+const nextButtons = document.querySelector("#nextButton")
+
 
 // object for finalPrice Calculation
 let selectedPlanDetails = {
@@ -18,37 +18,32 @@ let selectedPlanDetails = {
 // current step tracking
 // start at step 0
 let currentStep = 0
+updateButtons()
 
-// convert button NodeLists to arrays for easier handling with events
-let prevButtonsArray = Array.from(prevButtons)
-let nextButtonsArray = Array.from(nextButtons)
-
-// set up event listeners for navigation buttons
-prevButtonsArray.forEach((prevButton) => {
-    prevButton.addEventListener('click', (event) => {
-        event.preventDefault()
-        moveToPreviousStep()
-    })
+prevButtons.addEventListener('click', (event) => {
+    event.preventDefault()
+    moveToPreviousStep()
 })
 
-nextButtonsArray.forEach((nextButton) => {
-    nextButton.addEventListener('click', (event) => {
-        event.preventDefault()
-        // for input validation
-        if(currentStep == 0 && !validateUserInput()){
-            console.log("clicked on next button")
-            return
-        } 
-        // for order summary
-        if(currentStep == 2){
-            updateOrderSummary()
-        }
-        moveToNextStep()
-    })
+nextButtons.addEventListener('click', (event) => {
+    event.preventDefault()
+    if(currentStep == 0 && !validateUserInput() ){
+        console.log("clicked on next button")
+        return
+    } 
+
+    // for order summary
+    if(currentStep == 2){
+        updateOrderSummary()
+    }
+
+    moveToNextStep()
 })
+
 
 // function to navigate to the previous step
 function moveToPreviousStep() {
+    updateButtons()
 
     // hide current step
     steps[currentStep].classList.remove('active')
@@ -58,12 +53,13 @@ function moveToPreviousStep() {
     currentStep -= 1
     steps[currentStep].classList.add('active')
     sidebarStepIcons[currentStep].classList.add("currStepActive")
+
 }
     
 // function to navigate to the next step
 function moveToNextStep() {  
     console.log(currentStep)
-
+    updateButtons()
     // hide current step
     steps[currentStep].classList.remove('active')
     sidebarStepIcons[currentStep].classList.remove("currStepActive")
@@ -72,6 +68,33 @@ function moveToNextStep() {
     currentStep += 1
     steps[currentStep].classList.add('active')
     sidebarStepIcons[currentStep].classList.add("currStepActive")
+
+    
+}
+
+
+// toggle the buttons based on currentStep value
+function updateButtons(){
+    console.log(`Inside updateButton function ... currentStep is${currentStep}`)
+    if(currentStep == 0){
+        prevButtons.classList.add("hideButton")
+    } else{
+        // prevButtons.style.display = "block"
+        prevButtons.classList.remove("hideButton")
+    }
+
+    if(currentStep == steps.length-1){
+        nextButtons.style.display = "hidden"
+    } else{
+        nextButtons.style.display = "block"
+    }
+
+    // hide the button container on last page i.e. thank you page
+    if(currentStep > 2){  
+        document.querySelector(".buttonContainer").style.display = "none"
+        // sidebarStepIcons[2 ].classList.add("currStepActive")
+    }
+
 }
 
 function validateUserInput(){

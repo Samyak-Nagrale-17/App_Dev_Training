@@ -13,21 +13,22 @@
   
   <title>Frontend Mentor | Multi-step form</title>
 </head>
-<body> 
+<body>
     <form action="" id="multistepForm">
         <!-- all content inside --> 
         <div class="formContainer">
             <!-- sidebar -->
             <div class="sidebar">
-                <!-- icon step 1 --> 
+                <!-- icon step 1 -->
                 <div class="currStep">
+                    <!-- <img src="assets/images/icon-checkmark.svg" alt="checkmark" class="currStepActive"> -->
                     <div class="currStepIcon currStepActive">1</div>
                     <div class="currStepDetails">
                         <span class="currStepSpan">STEP 1</span>
                         <b>YOUR INFO</b>
                     </div>
                 </div>
-            
+
                 <!-- icon step 2 -->
                 <div class="currStep">
                     <!-- <img src="assets/images/icon-checkmark.svg" alt="checkmark"> -->
@@ -39,7 +40,7 @@
                 </div>
 
                 <!-- icon step 3 -->
-                <div class="currStep">
+                <div class="currStepIcon currStep">
                     <!-- <img src="assets/images/icon-checkmark.svg" alt="checkmark"> -->
                     <div class="currStepIcon ">3</div>
                     <div class="currStepDetails">
@@ -59,67 +60,59 @@
                 </div>
             </div>
             
-
-            <!-- wrap all these steps inside a sigle wrapper for responsive -->
-            <div class="allStepsWrapper">
-                <!-- step 1 - personal info -->
-            <div class="step active step1"> 
+            <!-- step 1 - personal info -->
+            <div class="step active step1">
                 <div class="userInputSection">
                     <div class="header">
                         <h1>Personal Info</h1>
-                        <p>Please provide your name, email address, and phone number.<p>
+                        <p>Please provide your name, email address, and phone number<p>
                     </div>
                 
-                    <form class="step1form">
-                        <div class="formContentWrapper">
-                            <div class="userInput">
-                                <div class="label">
-                                    <label for="username">Name</label>
-                                    <p class="error" id="usernameErr">This field is required</p>
-                                </div>
-                                <input type="text" placeholder="e.g. Stephen King" id ="username">
+                    <form class="stepForm">
+                        <div class="userInput">
+                            <div class="label">
+                                <label for="username">Name</label>
+                                <p>This field is required</p>
                             </div>
-    
-                            <div class="userInput">
-                                <div class="label">
-                                    <label for="useremail">Email Address</label>
-                                    <p class="error" id="useremailErr">This field is required</p>
-                                </div>
-                                <input type="email" placeholder="e.g. stephenking@lorem.com" id="useremail">
-                            </div>
-    
-                            <div class="userInput">
-                                <div class="label">
-                                    <label for="userphone">Phone Number</label>
-                                    <p class="error" id="userphoneErr">This field is required</p>
-                                </div>
-                                <input type="tel" placeholder="e.g. +1 234 567 890" id="userphone">            
-                            </div>
+                            <input type="text" placeholder="e.g. Stephen King" id ="username">
                         </div>
-                        
+
+                        <div class="userInput">
+                            <div class="label">
+                                <label for="useremail">Email Address</label>
+                                <p>This field is required</p>
+                            </div>
+                            <input type="email" placeholder="e.g. stephenking@lorem.com" id="useremail">
+                        </div>
+
+                        <div class="userInput">
+                            <div class="label">
+                                <label for="userphone">Phone Number</label>
+                                <p>This field is required</p>
+                            </div>
+                            <input type="tel" placeholder="e.g. +1 234 567 890" id="userphone">            
+                        </div>
                     </form>
 
-                    <!-- add buttons to each page
+                    <!-- add buttons to each page -->
                     <div class="buttonContainer">
-                        <button id="prevButton" tabindex="-1" disabled>Go Back</button>
+                        <button id="prevButton">Go Back</button>
                         <button id="nextButton">Next Step</button>
                         <button id="confirmButton">Confirm</button>
-                    </div> -->  
+                    </div>
                 </div>
             </div>
 
             <!-- step 2  - select your plan -->
             <div class="step  step2">
-                <!-- all content inside here -->
                 <div class="userInputSection">
-                    <!-- header -->
                     <div class="header">
                         <h1>Select your plan</h1>
-                        <p>You have the option of monthly or yearly billing.</p>
+                        <p>You have the option of monthly or yearly billing</p>
                     </div>
                     
-                    <!-- 3 cards -->
                     <form class="stepForm">
+                        <!-- arcade plan monthly -->
                         <div class="planCardWrapper">
                             <!-- arcade plan card -->
                             <div class="planCard selected">
@@ -128,7 +121,6 @@
                                 <div class="planDetails chosen">
                                     <p>Arcade</p>
                                     <p class="priceTag">$9/mo</p>
-                                    <p class="offer">2 months free</p>
                                 </div> 
                             </div>
 
@@ -139,8 +131,7 @@
                                 <div class="planDetails">
                                     <p>Advanced</p>
                                     <p class="priceTag">$12/mo</p>
-                                    <p class="offer">2 months free</p>
-                                </div> 
+                                </div>
                             </div>
 
                             <!-- pro plan card -->
@@ -150,16 +141,21 @@
                                 <div class="planDetails">
                                     <p>Pro</p>
                                     <p class="priceTag">$15/mo</p>
-                                    <p class="offer">2 months free</p>
                                 </div>
                             </div>
                         </div>
                     </form>
-                    
-                    <!-- toggle switch --> 
+
+                    <!-- monthly/yearly toggle switch -->
+                    <!-- <div class="monthlyYearlySwitch">
+                        <p id="monthly">Monthly</p>
+                        <input type="checkbox" id="toggleMonthlyYearlySwitch">
+                        <p id="yearly">Yearly</p>
+                    </div> -->
+
                     <div class="switcher">
                         <p class="monthly sw-active">Monthly</p>
-                        <label class="switch">
+                        <label for="switch">
                             <input type="checkbox">
                             <span class="slider round"></span>
                         </label>
@@ -167,115 +163,103 @@
                     </div>
 
                     <!-- add buttons for navigation -->
-                    <!-- <div class="buttonContainer">
+                    <div class="buttonContainer">
                         <button id="prevButton">Go Back</button>
                         <button id="nextButton">Next Step</button>
-                    </div> -->
+                        <button id="confirmButton">Confirm</button>
+                    </div>
                 </div>
-    
             </div>
 
             <!-- step 3 Pick add-ons -->
-            <div class="step  step3"> 
-                <!-- all content inside this -->
+            <div class="step  step3">
                 <div class="userInputSection">
                     <div class="header">
                         <h1>Pick add-ons</h1>
                         <p>Add-ons help enhance your gaming experience</p>
                     </div>
-                
-                    <form class="stepForm">        
-                        <div class="box" data-id="1">
+
+                    <form class="stepForm">
+                        <div class="box"data-id="1">
                             <input type="checkbox" id="online">
                             <div class="description">
                                 <label for="online">Online service</label>
                                 <small>Access to multiplayer games</small>
                             </div>
-                            <p class="priceAddon">+$1/mo</p> 
+                            <p class="price">+$1/mo</p> 
                         </div>
 
-                        <div class="box" data-id="2">
+                        <div class="box"data-id="2">
                             <input type="checkbox" id="larger">
                             <div class="description">
                                 <label for="larger">Larger storage</label>
                                 <small>Extra 1TB of cloud save</small>
                             </div>
-                            <p class="priceAddon">+$2/mo</p> 
+                            <p class="price">+$2/mo</p> 
                         </div>
 
-                        <div class="box" data-id="3">
+                        <div class="box"data-id="3">
                             <input type="checkbox" id="profile">
-                            <div class="description">
+                            <div class="profile">
                                 <label for="online">Customizable profile</label>
                                 <small>Custom theme on your profile</small>
                             </div>
-                            <p class="priceAddon">+$2/mo</p> 
+                            <p class="price">+$2/mo</p> 
                         </div>
 
                     </form>
 
                     <!-- add buttons for nav -->
-                    <!-- <div class="buttonContainer">
+                    <div class="buttonContainer">
                         <button id="prevButton">Go Back</button>
                         <button id="nextButton">Next Step</button>
-                    </div> -->
+                        <button id="confirmButton">Confirm</button>
+                    </div>
                 </div>
             </div>
 
-            <!-- step 4 finishing up -->
-            <div class="step step4">            
+            <!-- step 4 -->
+            <div class="step  step4">            
                 <div class="userInputSection">
                     <div class="header">
                         <h1>Finishing up</h1>
                         <p>Double-check everything looks OK before confirming</p>
                     </div>
 
-                    <!-- order summary -->
-                    <div class="orderSummary">
-                        <div class="orderDetails">
-                            <div class="planSummary">
-                                <div class="planSummaryText">
-                                    <p class="chosenPlan">Arcade (Monthly)</p>
-                                    <a href="">Change</a>
-                                </div>
-                                <p class="planSummaryPrice">$9/mo</p>
-                            </div>
-                            
-                            <hr>
-
-                            <div class="addOnWrapper">
-                                <!-- addon1 -->
-                                <!-- <div class="addOn">
-                                    <div class="addOntext">Online service</div>
-                                    <div class="addOnPrice">+$1/mo</div>
-                                </div> -->
-
-                                <!-- addon2 -->
-                                <!-- <div class="addOn">
-                                    <div class="addOntext">Larger storage</div>
-                                    <div class="addOnPrice">+$2/mo</div>
-                                </div> -->
-                            </div>
-                            
+                    <div class="selection-box">
+                        <div class="selection-container">
+                          <div class="selected-plan">
+                            <p class="plan-name">Arcade(Monthly)</p>
+                            <p class="plan-price">$9/mo</p>
+                          </div>
+                          <hr />
+                          <div class="addons">
+                            <template>
+                              <div class="selected-addon">
+                                <span class="service-name">Online serivice</span>
+                                <span class="servic-price">+$1/mo</span>
+                              </div>
+                            </template>
+                          </div>
                         </div>
-
-                        <div class="total">
-                            <p class="orderText">Total (per month)</p>
-                            <p class="totalPrice">+$12/mo</p>
-                        </div>
+                        <p class="total">Total (per month) <b>+$12/mo</b></p>
                     </div>
-                    
+
                     <!-- add buttons for nav -->
-                    <!-- <div class="buttonContainer">
+                    <div class="buttonContainer">
                         <button id="prevButton">Go Back</button>
-                        <button id="nextButton">Confirm</button>
-                    </div> -->
+                        <button id="nextButton">Next Step</button>
+                        <button id="confirmButton">Confirm</button>
+                    </div>
                 </div>
+
+                
             </div>
 
             
             <!-- step 5 thank you  -->
-            <div class="step step5">    
+            <div class="step  step5">
+                
                 <div class="userInputSection">
                     <img src="assets/images/icon-thank-you.svg" alt="thank-you-img">
 
@@ -288,18 +272,15 @@
                         </p>
                     </div>
                 </div>
-            </div>
-            <!-- step5 end -->
-            </div>
+                <!-- no need for these buttons -->
+                <!-- add buttons for nav -->
+                <!-- <div class="buttonContainer">
+                    <button id="prevButton">Go Back</button>
+                    <button id="nextButton">Next Step</button>
+                    <button id="confirmButton">Confirm</button>
+                </div> -->
 
-            <!-- 1 button container for all pages -->
-             <!-- add buttons to each page -->
-             <div class="buttonContainer">
-                <button id="prevButton">Go Back</button>
-                <button id="nextButton">Next Step</button>
-                <button id="confirmButton">Confirm</button>
-            </div> 
-
+            </div>
         </div>
     </form>
     
