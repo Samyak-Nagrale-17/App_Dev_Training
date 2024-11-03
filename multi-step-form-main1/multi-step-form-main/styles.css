@@ -42,7 +42,8 @@ body{
   height: inherit;
   width: inherit;
   padding: 0.8em;
-  gap: 4.8em;
+  /* gap: 7em; */
+  gap: 6.2em;
   position: relative;
 }
 
@@ -107,7 +108,8 @@ body{
 .step{
   display: none;
   /* justify-self:right; */
-  width: 489px;
+  /* width: 489px; */
+  width: 28em;
 }
 .step.active{
   display: block;
@@ -159,7 +161,8 @@ body{
 
 .userInput .label label{
   color: var(--Marine-blue);
-  font-size: 0.8em;
+  font-size: 0.9em;
+  font-weight: 400;
 }
 
 .userInput .label .error{
@@ -195,16 +198,10 @@ body{
   justify-content: space-between; 
   cursor: default;
   position: absolute;
-  bottom: 1em;
-  left: 19.2em;
+  bottom: 2em;
+  left: 19.5em;
 } 
 
-/* .step1 #prevButton, .step1 #prevButton:hover{
-  display: hidden;
-  color: var(--White); 
-  cursor: normal;
-  cursor: default;
-} */
 
 .hideButton{
   /* display: hidden; */
@@ -218,6 +215,7 @@ body{
   color: var(--Cool_gray); 
   font-weight: 500;
   cursor: pointer;
+  padding: 0 0 0 3.6em;
 }
 
 #prevButton:hover{
@@ -228,7 +226,7 @@ body{
   border: none;
   background-color: var(--Marine-blue);
   color: var(--White);
-  padding: 0.8em;
+  padding: 1em;
   font-size: 0.9em;
   border-radius: 0.4em;
   cursor: pointer;
@@ -319,11 +317,11 @@ body{
 /* toggle slider */
 /* SWITCH classes */
 .switcher {
-  background-color: var(--Magnolia);
+  background-color: var(--Alabaster);
   display: flex;
   align-items: center;
   gap: 0.5em;
-  /* padding: 0.5em 0; */
+  padding: 0.5em 0;
   justify-content: center;
   border-radius: 0.4em;
 }
@@ -343,22 +341,49 @@ body{
 
 
 /* ADD ONS */
+
+.step3 .userInputSection{
+  /* border: 1px solid red; */
+  border: none;
+}
+
 .step3 form{
+  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
   flex: 1;
-  justify-content: center;
+  /* justify-content: center; */
   gap: 0.8em;
 }
 
 .box{
   border: 1px solid var(--Light_gray);
   border-radius: 0.6em;
-  padding: 1em;
+  padding: 1.1em;
   display: flex;
   align-items: center;
   cursor: pointer;
   gap: 1em;
+}
+
+.custom-check{
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+}
+
+/* for svg as checkbx */
+.box input[type="checkox"]{
+  display: none;
+}
+
+.box input[type="checkbox"]:checked + .custom-check{
+  background-image: url(assets/images/icon-checkmark.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
 }
 
 .price{
@@ -406,8 +431,9 @@ body{
 
 /* usedby both step 4 and 5 */
 .selected {
-  border: 1px solid var(--Marine-blue);
-  background-color: var(--Magnolia);
+  /* border: 1px solid var(--Marine-blue); */
+  border: 1px solid var(--Purplish_blue);
+  background-color: var(--Alabaster);
 }
 
 

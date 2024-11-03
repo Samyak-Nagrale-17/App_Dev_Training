@@ -54,6 +54,7 @@ function moveToPreviousStep() {
     steps[currentStep].classList.add('active')
     sidebarStepIcons[currentStep].classList.add("currStepActive")
 
+    saveToLocalStorage()
 }
     
 // function to navigate to the next step
@@ -66,10 +67,16 @@ function moveToNextStep() {
 
     // increment step and show the next step
     currentStep += 1
-    steps[currentStep].classList.add('active')
-    sidebarStepIcons[currentStep].classList.add("currStepActive")
 
-    
+    if(currentStep < steps.length){
+        steps[currentStep].classList.add('active')
+
+        if(sidebarStepIcons[currentStep]){
+            sidebarStepIcons[currentStep].classList.add("currStepActive")
+        }
+    }    
+
+    saveToLocalStorage()
 }
 
 
@@ -90,11 +97,19 @@ function updateButtons(){
     }
 
     // hide the button container on last page i.e. thank you page
-    if(currentStep > 2){  
-        document.querySelector(".buttonContainer").style.display = "none"
-        // sidebarStepIcons[2 ].classList.add("currStepActive")
-    }
+    // if(currentStep > 2){  
+    //     document.querySelector(".buttonContainer").style.display = "none"
+    //     // sidebarStepIcons[2 ].classList.add("currStepActive")
+    // }
 
+    // hide the buttons on the last container
+    if(currentStep >= 4){
+        document.querySelector(".buttonContainer").style.display = "none"
+        console.log("Reached thank you page");
+        sidebarStepIcons[3].classList.add("currStepActive")
+    } else{
+        document.querySelector(".buttonContainer").style.display = "flex"
+    }
 }
 
 function validateUserInput(){
@@ -142,7 +157,7 @@ function validateUserInput(){
 
 // page 2 switcher
 const switcher = document.querySelector(".switch")
-switcher.addEventListener("click", () => {
+switcher.addEventListener("click", () => {   // click to change
   const val = switcher.querySelector("input").checked
   if (val) {
     document.querySelector(".monthly").classList.remove("sw-active")
@@ -155,7 +170,7 @@ switcher.addEventListener("click", () => {
   }
   // change prices from monthly rates to yearly rates
   switchPrice(val)
-
+  saveToLocalStorage()
   // update the object on switch
   // this is buggy. fix it
   updateObject(val); 
@@ -191,6 +206,8 @@ function switchPrice(checked){
     priceAddon[1].innerHTML = `$${monthlyPriceAddon[1]}/mo`
     priceAddon[2].innerHTML = `$${monthlyPriceAddon[1]}/mo`
   }
+
+  saveToLocalStorage()
 }
 
 // fix this function.
@@ -207,6 +224,9 @@ function updateObject(checked){
     } else{
         console.log(`inside udpateObject ... addOns not checked`)
     }
+
+
+    saveToLocalStorage()
 
     // if(checked){
     //     // change the addon prices from month to year
@@ -240,6 +260,8 @@ plans.forEach((plan) => {
         const currSelectedPlanPrice = plan.querySelector(".planDetails .priceTag").textContent
         selectedPlanDetails.plan = currSelectedPlan  
         selectedPlanDetails.planCost = currSelectedPlanPrice
+
+        saveToLocalStorage()
     })
 })
 
@@ -262,36 +284,62 @@ function addOffersInPlans(checked){
 
 // get the checkboxes inside the boxes
 const inputCheckboxes = document.querySelectorAll(".box input")
-// add a event listener to all 3 checkbozes to change bg of selected plan
+// // add a event listener to all 3 checkbozes to change bg of selected plan
+// inputCheckboxes.forEach((inputCheckbox) => {
+//     inputCheckbox.addEventListener('click', function(){
+//         const currAddOn = inputCheckbox.parentElement
+//         if(inputCheckbox.checked){
+//             // const currAddOn = inputCheckbox.parentElement
+//             currAddOn.classList.toggle("ad-selected")
+//             // inputCheckbox.parentElement.classList.toggle("ad-selected")
+
+//             //add the selected addon to object
+//             const selectAddon = currAddOn.querySelector(".description label").textContent
+//             const selectAddonPrice = currAddOn.querySelector(".priceAddon").textContent
+
+//             selectedPlanDetails.addOns.push({"description":selectAddon, "price":selectAddonPrice})
+
+//         } else{
+//             // remove the bg on unchecking the input checkbox
+//             // inputCheckbox.parentElement.classList.toggle("ad-selected")
+//             currAddOn.classList.toggle("ad-selected")
+//             // selectedPlanDetails.addOns.push({"description":selectAddon, "price":selectAddonPrice})
+//             selectedPlanDetails.addOns.pop()
+
+//             // search for the currAddOn in the selectedPlanDetails.addOns and then delete that from the array of ojects
+//             const selectAddon = currAddOn.querySelector(".description label").textContent
+//             let tempAddOns = selectedPlanDetails.addOns.filter((addOn) => {
+//                 return addOn.description != selectAddon
+//             })
+
+//             selectedPlanDetails.addOns = tempAddOns
+//         }
+//     })
+// })
+
+// when adding selected add ons
 inputCheckboxes.forEach((inputCheckbox) => {
     inputCheckbox.addEventListener('click', function(){
         const currAddOn = inputCheckbox.parentElement
+        const selectAddon = currAddOn.querySelector(".description label").textContent
+
+        const addOn = addOns.find(addOn => addOn.description === selectAddon)
+
         if(inputCheckbox.checked){
-            // const currAddOn = inputCheckbox.parentElement
             currAddOn.classList.toggle("ad-selected")
-            // inputCheckbox.parentElement.classList.toggle("ad-selected")
 
-            //add the selected addon to object
-            const selectAddon = currAddOn.querySelector(".description label").textContent
-            const selectAddonPrice = currAddOn.querySelector(".priceAddon").textContent
-
-            selectedPlanDetails.addOns.push({"description":selectAddon, "price":selectAddonPrice})
-
-        } else{
-            // remove the bg on unchecking the input checkbox
-            // inputCheckbox.parentElement.classList.toggle("ad-selected")
-            currAddOn.classList.toggle("ad-selected")
-            // selectedPlanDetails.addOns.push({"description":selectAddon, "price":selectAddonPrice})
-            selectedPlanDetails.addOns.pop()
-
-            // search for the currAddOn in the selectedPlanDetails.addOns and then delete that from the array of ojects
-            const selectAddon = currAddOn.querySelector(".description label").textContent
-            let tempAddOns = selectedPlanDetails.addOns.filter((addOn) => {
-                return addOn.description != selectAddon
+            selectedPlanDetails.addOns.push({
+                description:selectAddon,
+                price: `$${addOn.monthly}/mo`, // start with monthly prices
+                monthly:addOn.monthly,
+                yearly:addOn.yearly
             })
-
-            selectedPlanDetails.addOns = tempAddOns
+        } else{
+            currAddOn.classList.toggle("ad-selected")
+            // remove the addon
+            selectedPlanDetails.addOns = selectedPlanDetails.addOns.filter(addOn => addOn.description !== selectAddon)
         }
+        saveToLocalStorage()
     })
 })
 
@@ -364,4 +412,28 @@ function updateOrderSummary(){
         document.querySelector(".totalPrice").textContent = `$${totalPrice}/yr`
         document.querySelector(".orderText").textContent = `Total (per year)`
     }
+
+    saveToLocalStorage()
 }
+
+
+function saveToLocalStorage() {
+    
+    localStorage.setItem("selectedPlanDetails", JSON.stringify(selectedPlanDetails))
+    localStorage.setItem("currentStep", currentStep)
+}
+
+function loadFromLocalStorage() {
+    const savedPlanDetails = localStorage.getItem("selectedPlanDetails")
+
+    if(savedPlanDetails){
+        selectedPlanDetails = JSON.parse(savedPlanDetails)
+    }
+
+    const savedCurrentStep = localStorage.getItem("currentStep")
+    if (savedCurrentStep){
+        currentStep = parseInt(savedCurrentStep,10)
+    }
+}
+
+document.addEventListener("DOMContentLoaded", loadFromLocalStorage)
