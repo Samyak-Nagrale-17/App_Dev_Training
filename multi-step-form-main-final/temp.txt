@@ -1,3 +1,5 @@
+
+
 // selecting all necessary elements
 const regForm = document.querySelector("#multistepForm")
 const steps = document.querySelectorAll(".step")
@@ -10,7 +12,8 @@ let selectedPlanDetails = {
     plan:null,
     planCost: null,
     duration: "monthly", 
-    addOns :[]
+    addOns :[],
+    isCompleted:false
 }
 
 let userDetails = {
@@ -36,26 +39,26 @@ prevButtons.addEventListener('click', (event) => {
 })
 
 nextButtons.addEventListener('click', (event) => {
-    event.preventDefault()
-    console.log("Next button clicked") 
+    event.preventDefault();
+    console.log("Next button clicked"); 
 
     //validate the input on step0
     if(currentStep === 0 && !validateUserInput()) {
-        console.log("Validation failed")
+        console.log("Validation failed");
         return
     }
 
     // if any plan is selected or not
     if (currentStep === 1) {
-        const selectedPlan = document.querySelector(".planCard.selected")
+        const selectedPlan = document.querySelector(".planCard.selected");
         if (!selectedPlan) {
-            alert("Please select a plan before proceeding to the next step.")
+            alert("Please select a plan before proceeding to the next step.");
             return
         }
     }
 
     if(currentStep === 2){
-        updateOrderSummary()
+        updateOrderSummary();
     } 
     moveToNextStep();
     
@@ -125,9 +128,9 @@ function updateButtons(){
     // hide the buttons on the last container i.e.Thankyou screen
     if(currentStep >= 4){
         // enable refresh
-        // selectedPlanDetails.isComplete = true
+        selectedPlanDetails.isCompleted = true
         document.querySelector(".buttonContainer").style.display = "none"
-        console.log("Reached thank you page")
+        console.log("Reached thank you page");
         sidebarStepIcons[3].classList.add("currStepActive")
     } else{
         document.querySelector(".buttonContainer").style.display = "flex"
@@ -139,9 +142,9 @@ function updateButtons(){
 }
 
 function validateUserInput(){
-    const username = document.getElementById("username").value.trim()
-    const useremail = document.getElementById("useremail").value.trim()
-    const userphone = document.getElementById("userphone").value.trim()
+    const username = document.getElementById("username").value.trim();
+    const useremail = document.getElementById("useremail").value.trim();
+    const userphone = document.getElementById("userphone").value.trim();
 
     let isValid = true;
 
@@ -150,7 +153,7 @@ function validateUserInput(){
     isValid =  isValid & validateField(userphone, /^\d{10}$/, "userphoneErr", "userphone", "phone")
 
     // store any changes
-    saveToLocalStorage()
+    saveToLocalStorage();
     return isValid
 }
 
@@ -171,7 +174,6 @@ function validateField(value, pattern, errorElementId, inputElementId, userDetai
         return true
     }
 }
-
 
 // page 2 switcher to switch between monthly and yearly
 const switcher = document.querySelector(".switch")
@@ -300,12 +302,12 @@ function addOffersInPlans(checked){
     }
 }
 
+
 const addOns = [
     { description: "Online service", monthly: 1, yearly: 10 },
     { description: "Larger storage", monthly: 2, yearly: 20 },
     { description: "Customizable profile", monthly: 2, yearly: 20 },
 ]
-
 const inputCheckboxes = document.querySelectorAll(".box input")
 // When adding selected add-ons
 inputCheckboxes.forEach((inputCheckbox) => {
@@ -445,7 +447,7 @@ function loadFromLocalStorage() {
     const savedCurrentStep = localStorage.getItem("currentStep")
     if (savedCurrentStep){
         currentStep = parseInt(savedCurrentStep)
-    }
+    } 
 
     const savedUserDetails = localStorage.getItem("userDetails")
     if(savedUserDetails){
@@ -459,13 +461,28 @@ function loadFromLocalStorage() {
 function showCurrentStep() {
     // hide all steps initially
     steps.forEach(step => step.classList.remove('active'));
-    sidebarStepIcons.forEach(icon => icon.classList.remove("currStepActive"))
+    sidebarStepIcons.forEach(icon => icon.classList.remove("currStepActive"));
+
+
+    // temp
+    // redirect from thank you page to 1st page
+    // if(currentStep == 4){ 
+    //     currentStep = 0
+    //     steps[currentStep].classList.add('active');
+    //     sidebarStepIcons[currentStep].classList.add("currStepActive");
+
+    //     // clear the local storage
+    //     localStorage.clear()
+    //     // save the changes
+    //     saveToLocalStorage()
+    // }
+
 
     // show the current step
     if (currentStep < steps.length) {
-        // 5 steps, 4 sideStepIcons. 
+        // 5 steps, 4 sidebaricons. 
         steps[currentStep].classList.add('active');
-        sidebarStepIcons[currentStep].classList.add("currStepActive")
+        sidebarStepIcons[currentStep].classList.add("currStepActive");
         // log currentStep
         console.log(`Inside the showCurrentStep() ......`);
     
@@ -477,21 +494,15 @@ function showCurrentStep() {
             loadSelectedPlan()
         }
 
-
+        // Update the UI for step 3 (pick add-ons)
         else if (currentStep === 2) {
-            updateAddOnsUI()
+            updateAddOnsUI() // Call the new helper function
         }
 
         // bug fixed
         else if(currentStep === 3){
             updateOrderSummary()
         }
-
-        // when thank you is refreshed, go to 1st page
-        // if(currentStep === 4){
-        //     // sidebarStepIcons[currentStep-1].classList.add("currStepActive");
-        //     redirectToFirstPage()
-        // }
     }
 }
 
@@ -557,6 +568,7 @@ function updateAddOnsUI() {
     })
 
     saveToLocalStorage()
+
 }
 
 // function to display user details when browser is refreshed
@@ -583,7 +595,3 @@ changeLink.addEventListener('click', function(event){
 })
 
 document.addEventListener("DOMContentLoaded", loadFromLocalStorage())
-
-
-
-
