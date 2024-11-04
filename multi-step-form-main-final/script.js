@@ -10,8 +10,7 @@ let selectedPlanDetails = {
     plan:null,
     planCost: null,
     duration: "monthly", 
-    addOns :[],
-    isComplete:false
+    addOns :[]
 }
 
 let userDetails = {
@@ -27,17 +26,13 @@ let currentStep = localStorage.getItem('currentStep') !== null
     ? parseInt(localStorage.getItem('currentStep'))  
     : 0; 
 
-
 updateButtons()
-
-// callin this wil reset localStorage everytimhe it is refreshed
-// saveToLocalStorage() 
 
 prevButtons.addEventListener('click', (event) => {
     event.preventDefault()
     moveToPreviousStep()
     //temp
-    loadFromLocalStorage()
+    // loadFromLocalStorage()
 })
 
 nextButtons.addEventListener('click', (event) => {
@@ -65,7 +60,8 @@ nextButtons.addEventListener('click', (event) => {
     moveToNextStep();
     
     //temp
-    loadFromLocalStorage()
+    // loadFromLocalStorage()
+    // saveToLocalStorage()
 }) 
 
 // function to navigate to the previous step
@@ -130,7 +126,7 @@ function updateButtons(){
     // hide the buttons on the last container i.e.Thankyou screen
     if(currentStep >= 4){
         // enable refresh
-        selectedPlanDetails.isComplete = true
+        // selectedPlanDetails.isComplete = true
         document.querySelector(".buttonContainer").style.display = "none"
         console.log("Reached thank you page");
         sidebarStepIcons[3].classList.add("currStepActive")
@@ -140,71 +136,24 @@ function updateButtons(){
         // selectedPlanDetails.isComplete = false  
     } 
 
-    saveToLocalStorage()
+    // saveToLocalStorage()
 }
 
 function validateUserInput(){
-    // const username = document.getElementById("username").value.trim()
-    // const useremail = document.getElementById("useremail").value.trim()
-    // const userphone = document.getElementById("userphone").value.trim()
-
-    // let isValid = true
-
-    // // validate the username
-    // const usernamePattern = /^[a-zA-Z-_]/
-    // if(!usernamePattern.test(username)){
-    //     document.getElementById("usernameErr").style.display = "block"
-    //     document.getElementById("username").style.border = "1px solid hsl(354, 84%, 57%)"
-    //     isValid = false 
-    // }
-    // else{
-    //     document.getElementById("usernameErr").style.display = "none"
-    //     userDetails.username = username;
-    // }
-
-    // // validate the email
-    // const useremailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    // if(!useremailPattern.test(useremail)){
-    //     document.getElementById("useremailErr").style.display = "block"
-    //     document.getElementById("useremail").style.border = "1px solid hsl(354, 84%, 57%)"
-    //     isValid = false
-    // }
-    // else{
-    //     document.getElementById("useremailErr").style.display = "none"
-    //     userDetails.email = useremail
-    // }
-
-    // //validate usernumber
-    // const userphonePattern = /^\d{10}$/
-    // if(!userphonePattern.test(userphone)){
-    //     document.getElementById("userphoneErr").style.display = "block"
-    //     document.getElementById("userphone").style.border = "1px solid hsl(354, 84%, 57%)"
-    //     isValid = false
-    // }
-    // else{
-    //     document.getElementById("userphoneErr").style.display = "none"
-    //     userDetails.phone = userphone
-    // }
-
-    // // save the valid things in the userDetailsObject
-    // saveToLocalStorage() 
-    // return isValid
-
     const username = document.getElementById("username").value.trim();
     const useremail = document.getElementById("useremail").value.trim();
     const userphone = document.getElementById("userphone").value.trim();
 
     let isValid = true;
 
-    isValid &= validateField(username, /^[a-zA-Z-_]+$/, "usernameErr", "username", "username");
-    isValid &= validateField(useremail, /^[^\s@]+@[^\s@]+\.[^\s@]+$/, "useremailErr", "useremail", "email");
-    isValid &= validateField(userphone, /^\d{10}$/, "userphoneErr", "userphone", "phone");
+    isValid = isValid & validateField(username, /^[a-zA-Z-_]+$/, "usernameErr", "username", "username")
+    isValid = isValid & validateField(useremail, /^[^\s@]+@[^\s@]+\.[^\s@]+$/, "useremailErr", "useremail", "email")
+    isValid =  isValid & validateField(userphone, /^\d{10}$/, "userphoneErr", "userphone", "phone")
 
     // store any changes
     saveToLocalStorage();
     return isValid
 }
-
 
 //validate helper function
 function validateField(value, pattern, errorElementId, inputElementId, userDetailsKey) {
@@ -401,7 +350,8 @@ function getPrice(str){
         let price = str.match(/(\d+)/)
         return price ? parseInt(price[0]) : null
     }
-    return null; // Return null if str is not a valid string
+    // null if str not valid
+    return null
 }
 
 
@@ -485,19 +435,17 @@ function saveToLocalStorage() {
     localStorage.setItem("selectedPlanDetails", JSON.stringify(selectedPlanDetails))
     localStorage.setItem("currentStep", currentStep) 
     localStorage.setItem("userDetails", JSON.stringify(userDetails))  
-}
+}       
 
 function loadFromLocalStorage() {
     const savedPlanDetails = localStorage.getItem("selectedPlanDetails")
-
     if(savedPlanDetails){
         selectedPlanDetails = JSON.parse(savedPlanDetails)
-        console.log(selectedPlanDetails)
-    }
+    } 
 
     const savedCurrentStep = localStorage.getItem("currentStep")
     if (savedCurrentStep){
-        currentStep = parseInt(savedCurrentStep,10)
+        currentStep = parseInt(savedCurrentStep)
     }
 
     const savedUserDetails = localStorage.getItem("userDetails")
@@ -505,9 +453,8 @@ function loadFromLocalStorage() {
         userDetails = JSON.parse(savedUserDetails)
     }
 
+    showCurrentStep() 
     updateButtons() 
-    // to display the steps
-    showCurrentStep()
 }
 
 function showCurrentStep() {
@@ -519,23 +466,24 @@ function showCurrentStep() {
     if (currentStep < steps.length) {
         steps[currentStep].classList.add('active');
         sidebarStepIcons[currentStep].classList.add("currStepActive");
-        
+        // log currentStep
+        console.log(`Inside the showCurrentStep() ......`);
+    
         // add switch case here
         if (currentStep === 0) {
             loadUserDetails()
         }
-
-        if (currentStep === 1) {
+        else if (currentStep === 1) {
             loadSelectedPlan()
         }
 
         // Update the UI for step 3 (pick add-ons)
-        if (currentStep === 2) {
+        else if (currentStep === 2) {
             updateAddOnsUI() // Call the new helper function
         }
 
         // bug fixed
-        if(currentStep === 3){
+        else if(currentStep === 3){
             updateOrderSummary()
         }
 
@@ -548,7 +496,7 @@ function showCurrentStep() {
 
 // function to load the selected plan from selectedPlanDetails
 function loadSelectedPlan() { 
-    console.log("called the loadSelectedPlan function ...");
+    // console.log("called the loadSelectedP    lan function ...");
     const selectedPlan = selectedPlanDetails.plan
     const duration = selectedPlanDetails.duration
     const switcher = document.querySelector(".switch")
@@ -576,6 +524,7 @@ function loadSelectedPlan() {
 
     // update the plan prices
     // call the switch prices function. review this 
+    saveToLocalStorage()
 }
 
 
@@ -605,6 +554,9 @@ function updateAddOnsUI() {
             checkbox.parentElement.classList.remove("ad-selected")
         }
     })
+
+    saveToLocalStorage()
+
 }
 
 // function to display user details when browser is refreshed
@@ -616,8 +568,9 @@ function loadUserDetails(){
         document.getElementById('useremail').value = userDetails.email 
         document.getElementById('userphone').value = userDetails.phone 
     }
-} 
 
+    // saveToLocalStorage()
+} 
 
 // the change link on click
 const changeLink = document.querySelector("#changePlanLink")
@@ -629,22 +582,5 @@ changeLink.addEventListener('click', function(event){
     updateButtons() 
 })
 
+document.addEventListener("DOMContentLoaded", loadFromLocalStorage())
 
-// redirect from from thank you to first page on refresh
-function redirectToFirstPage(){
-    
-    // do this if currentStep == 4
-    if(selectedPlanDetails.isComplete){
-       // empty the all data
-       localStorage.clear() 
-    }
-    // save the changes
-    // saveToLocalStorage()
-}
-
-// call loadFromLocalStorage whenever we refresh/ dom loads
-document.addEventListener("DOMContentLoaded", ()=>{
-    loadFromLocalStorage()
-    redirectToFirstPage()
-})
-// document.addEventListener("DOMContentLoaded", loadFromLocalStorage())
