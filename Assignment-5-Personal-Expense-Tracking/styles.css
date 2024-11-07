@@ -1,0 +1,261 @@
+:root{
+    --Light-gray:#F6F3E7;
+    --Dark-green:#182D27;
+    --Leafy-green:#48B4A0;
+    --Black:#000000;
+    --White: #ffffff;
+    --Gray: #808080;
+    --Dark-Blue:#091057;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, sans-serif;
+}
+ 
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+.container{
+    /* margin: auto; */
+    /* width: 96%; */
+    /* border: 1px solid red; */
+
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    height: 100vh;
+    width: 100vw;
+}
+
+.navbar{
+    /* border: 1px solid red; */
+    height: 100%;
+    width: 16%;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    padding: 1em;
+    position: relative;
+    background-color: var(--Dark-Blue);
+    gap: 1em;
+}
+
+.navBarh2{
+    color: var(--White);
+    font-size: 1.6em;
+}
+
+#main{
+    width: 84%;
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+}
+
+.chartWrapper{
+    /* border: 1px solid red; */
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    /* border: 1px solid var(--Gray); */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.canvasWrapper{
+    width: 65%;
+}
+
+.expenseListWrapper{
+    height: 100%;
+    width: 90%;
+    text-align: center;
+    /* border: 1px solid var(--Gray); */
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    gap: 1em;
+}
+
+.listDisplay{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6em;
+    overflow-y: auto;
+}
+
+.expenseDiv{
+    display: flex;
+    flex-direction: column;
+    padding: 0.8em;
+    border: 1px solid var(--Black);
+    border-radius: 0.4em;
+    gap: 0.4em;
+}
+
+.expenseDiv .row1{
+    margin-right: auto;
+}
+
+.expenseDiv .row2{
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonWrapper{
+    display: flex;
+    gap: 1em;
+}
+
+.expenseDivDescription{
+    /* border: 1px solid red; */
+    width: 10em;
+    max-width: 14em;
+    text-align: left;
+    /* overflow: clip; */
+    overflow: hidden; /* Hide overflow content */
+    white-space: nowrap; /* Prevent text from wrapping */
+    text-overflow: ellipsis; /* Truncate and add "..." for overflow */
+}
+
+input.expenseDivDescription{
+    border: none;
+    font-size: 1em;
+    /* padding: 0.4em; */ 
+}
+
+.deleteExpenseDiv{
+    border: none;
+    background: none;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.editExpenseDiv{
+    border: none;
+    background: none;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.totalExpensesWrapper{
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    /* padding: 1.6em 1em; */
+}
+
+
+/* add expense button */
+/* #addExpenseButton{
+    border: none;
+    padding: 1em;
+    width: 90%;
+    font-weight: 700;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 0.4em;
+    background-color: var(--White);
+} */
+
+.linkDiv{
+    padding: 1em;
+    width: 90%;
+    font-weight: 700;
+    font-size: 1em;
+    border-radius: 0.4em;
+    background-color: var(--White);
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
+.linkDiv:hover{
+    background-color: lightgray;
+}
+
+
+#modalHeading{
+    display: flex;
+    justify-content: space-between;
+}
+
+#closeButtonModal{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+#closeButtonModal i{
+    font-size: 1.6em;
+}
+
+
+.modal-overlay{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.hide{
+    display: none;
+}
+
+.modal-wrapper{
+    /* border: 1px solid gray; */
+    border-radius: 0.4em;
+    height: 70%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    justify-content: space-between;
+    gap: 0em;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: var(--White);
+    font-size: 1.4em;
+}
+
+.inputWrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1em;
+}
+
+.modal-wrapper input, .modal-wrapper select{
+    font-size: 1em;
+} 
+
+#addExpenseButtonModal{
+    border: none;
+    padding: 0.6em;
+    width: 40%;
+    font-weight: 500;
+    font-size: 0.9em;
+    cursor: pointer;
+    background-color: var(--Dark-Blue);
+    color: var(--White); 
+}
+
+#editExpenseButtonModal{
+    border: none;
+    padding: 1em;
+    width: 40%;
+    font-weight: 700;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
