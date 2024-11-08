@@ -18,7 +18,8 @@
     <div class="container">
         <!-- navbar -->
         <nav class="navbar"> 
-            <h2 class="navBarh2">Expense Tracker</h2> 
+            <!-- <h2 class="navBarh2">Expense Tracker</h2>  -->
+            <h2 class="navBarh2">PocketGuard</h2> 
             <!-- <button id="addExpenseButton" class="linkDiv">Add Expense</button> -->
 
             <!-- <div class="linkDiv">
@@ -51,7 +52,8 @@
                     </div>
                     <!-- <label for="expenseAmount">Expense amount</label>
                     <span id="amountErr" class="errMsg hide">Required</span> -->
-                    <input type="text" name="expenseAmount" id="expenseAmount">
+                    <!-- <input type="text" name="expenseAmount" id="expenseAmount"> -->
+                    <input type="number" name="expenseAmount" id="expenseAmount">
                 </div>
                 
                 <div class="inputWrapper">
@@ -65,8 +67,8 @@
                 </div> 
                 <div class="inputWrapper">
                     <div class="labelDetails">
-                        <span id="categoryErr" class="errMsg hide">Required</span>
                         <label for="expenseCategory">Select a category</label>
+                        <span id="categoryErr" class="errMsg hide">Required</span>
                     </div>
                     <!-- <span id="categoryErr" class="errMsg hide">Required</span>
                     <label for="expenseCategory">Select a category</label> -->
@@ -85,14 +87,13 @@
                     </div>
                     <!-- <label for="inputDate">Expense Date</label>
                     <span id="dateErr" class="errMsg hide">Required</span> -->
-                    <input type="date" id="inputDate"> 
+                    <input type="date" id="inputDate" min="2000-01-01" max="2050-12-31"> 
                 </div>
                 <button id="addExpenseButtonModal">Add Expense</button>
                 <button id="editExpenseButtonModal" class="hide">Save changes</button> 
             </div>
         </div>
         
-
         <section id="main">
             <!-- chart -->
             <div class="chartWrapper hide">
@@ -175,37 +176,7 @@
                             </button>
                         </div>
                     </div>  -->
-
-                    <!-- add all lists here -->                    
-                    <!-- <div class="expenseDiv">
-                        
-                        <div class="row1">
-                            <div class="expenseDivDate">05-11-2024</div>
-                        </div>
-
-                        <div class="row2">
-                            <div class="expenseDivDescription">Petrol for car</div>
-                            <div class="expenseDivAmount">$100</div>
-                            <div class="expenseDivCategory">Food</div>
-
-                            <div class="buttonWrapper">
-                                <button class="editExpenseDiv">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </button>
-                                <button class="deleteExpenseDiv">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>  -->
-
                 </div>
-
-                <!-- <div class="totalExpensesWrapper">
-                    <p>Total Expenses</p>
-                    
-                    <p id="totalExpensesSum"></p>  
-                </div> -->
             </div>
         </section>
     </div>

@@ -5,7 +5,10 @@
     --Black:#000000;
     --White: #ffffff;
     --Gray: #808080;
-    --Dark-Blue:#091057;
+    /* --Dark-Blue:#091057; */
+    /* --Dark-Blue:#0094F6; */
+    --Dark-Blue:#0053B2;
+    --Dark-Blue2:#0053B2;
 }
 
 *{
@@ -47,8 +50,9 @@ body{
 
 .navBarh2{
     color: var(--White);
-    font-size: 1.6em;
-    /* font-size: 1.8em; */
+    text-align: center;
+    /* font-size: 1.6em; */
+    font-size: 2em;
 }
 
 #main{
@@ -165,7 +169,6 @@ body{
 /* .expenseDiv .row1{
     margin-right: auto;
 }
-
 .expenseDiv .row2{
     display: flex;
     justify-content: space-between;
@@ -209,7 +212,6 @@ body{
     text-align: left;
     margin-right: 1em;
 }
-
 
 input.expenseDivDescription{
     border: none;
@@ -286,8 +288,7 @@ input.expenseDivDescription{
     cursor: pointer;
     border-radius: 0.4em;
     color: var(--White);
-    background-color: var(--Dark-Blue);
-
+    background-color: var(--Dark-Blue2);
 }
 
 .linkDiv{
@@ -306,7 +307,6 @@ input.expenseDivDescription{
     background-color: lightgray;
 }
 
-
 #modalHeading{
     display: flex;
     justify-content: space-between;
@@ -321,7 +321,6 @@ input.expenseDivDescription{
 #closeButtonModal i{
     font-size: 1.6em;
 }
-
 
 .modal-overlay{
     position: fixed;
@@ -364,6 +363,12 @@ input.expenseDivDescription{
     padding: 0.2em;
 } 
 
+#expenseAmount::-webkit-outer-spin-button,
+#expenseAmount::-webkit-inner-spin-button{
+    margin: 0;
+    -webkit-appearance: none;
+}
+
 .labelDetails{
     display: flex;
     justify-content: space-between;
@@ -398,7 +403,7 @@ input.expenseDivDescription{
     display: flex;
     gap: 10em;
     text-align: center;
-    background-color: var(--Dark-Blue);
+    background-color: var(--Dark-Blue2);
     color: var(--White);
     font-size: 1.2em;
     padding: 0.8em;

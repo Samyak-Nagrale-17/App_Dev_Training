@@ -13,9 +13,13 @@ const chartWrapperDiv = document.querySelector('.chartWrapper')
 const expenseListWrapperDiv = document.querySelector('.expenseListWrapper')
 const sortAscendingButton = document.querySelector('#sortAscending')
 const sortDescendingButton = document.querySelector('#sortDescending')
+const doughnutChart = document.querySelector('#doughnutChart')
+const lineChart = document.querySelector('#lineChart')
 
 // main expense list
 let expenseList = []
+
+// state of sort: 'ascending,descending,null'
 let currentSort = null
 
 //sort by amount ascending
@@ -58,7 +62,7 @@ function resetSort() {
 
 function sortExpenseAscending(){
     // make a copy of expenselist
-    let tempExpenseList = [...expenseList]
+    let tempExpenseList = [...expenseList] 
     // sort it
     tempExpenseList = tempExpenseList.sort(
         (p1,p2) => (p1.expenseAmount < p2.expenseAmount) ? 1 : (p1.expenseAmount > p2.expenseAmount) ? -1:0)
@@ -77,16 +81,15 @@ function sortExpenseDescending(){
 
     tempExpenseList = tempExpenseList.sort(
         (p1,p2) => (p1.expenseAmount > p2.expenseAmount) ? 1 : (p1.expenseAmount < p2.expenseAmount) ? -1:0)
-
+    
     // add a default parameter to reloadExpenseList
     tempReloadExpenseList(tempExpenseList)
-    currentSort = 'descending'
+    currentSort = 'descending' 
     localStorage.setItem('sortState', currentSort)  
     updateButtonStyles()
 }
-
-
-function tempReloadExpenseList(list = temp){
+// function tempReloadExpenseList(list = temp)
+function tempReloadExpenseList(list){
     listDisplay.innerHTML = ""
     // Use the specified list (sorted list or original list)
     list.forEach((item) => {
@@ -100,7 +103,6 @@ showExpenseListButton.addEventListener('click', () => {
     chartWrapperDiv.classList.add('hide')
     localStorage.setItem('activeSection', 'expenseList')
 })
-
 
 // show summary
 showSummaryButton.addEventListener('click', () => {
@@ -128,8 +130,8 @@ function clearModal(){
     document.querySelector('#expenseAmount').value = ""
     document.querySelector('#expenseDescription').value = ""
     document.querySelector('#expenseCategory').value = ""
-    // document.querySelector('#inputDate').value = ""
-    document.querySelector('#inputDate').value = new Date().toISOString().split("T")[0]
+    document.querySelector('#inputDate').value = ""
+    // document.querySelector('#inputDate').value = new Date().toISOString().split("T")[0]
 
     // clear the errors too
     const amountErr = document.querySelector('#amountErr')
@@ -169,20 +171,21 @@ function deleteSelectedExpenseDiv(Event){
     updateChartData2()
     //remove it
     eTarget.remove()
+    // alert("Deleted succesfully")
 }
 
 function editSelectedExpenseDiv(Event){
     // modalOverlay.classList.toggle("hide")
 
     const expenseDiv = Event.target.closest("div.expenseDiv")
-    console.log(expenseDiv)
+    // console.log(expenseDiv)
     
     const expenseDivId = expenseDiv.getAttribute("dataExpenseId")
-    console.log(expenseDivId)
+    // console.log(expenseDivId)
 
     // search for it in the object
     const expenseToEdit = expenseList.find(expense => expense.expenseId === parseInt(expenseDivId))
-    console.log(expenseToEdit)
+    // console.log(expenseToEdit)
     
     //populate the modal
     if(expenseToEdit){
@@ -216,6 +219,7 @@ function editSelectedExpenseDiv(Event){
                 modalOverlay.classList.add("hide")
                 addExpenseButtonModal.classList.remove("hide")
                 editExpenseButtonModal.classList.add("hide")
+                // alert("Edited succesfully")
             }
         }
     }
@@ -258,7 +262,7 @@ function updateExpenseList(newExpenseObject){
 
 // validation of the input
 function validateModalInput(){
-    const expenseAmount = document.querySelector('#expenseAmount').value.trim()
+    const expenseAmount = document.querySelector('#expenseAmount').value
     const expenseDescription = document.querySelector('#expenseDescription').value.trim()
     const expenseCategory = document.querySelector('#expenseCategory').value.trim()
     const expenseDate = document.querySelector('#inputDate').value.trim()
@@ -278,8 +282,9 @@ function validateModalInput(){
         isValid = false
         amountErr.textContent = 'Required.'
         amountErr.classList.remove('hide')
-
-    } else if (isNaN(expenseAmount) || parseFloat(expenseAmount) <= 0) {
+    } 
+    // else if (isNaN(expenseAmount) || parseFloat(expenseAmount) <= 0) 
+    else if (parseFloat(expenseAmount) <= 0) {
         isValid = false
         amountErr.textContent = 'Must be greater than 0.'
         amountErr.classList.remove('hide')
@@ -311,7 +316,7 @@ function validateModalInput(){
  
     // expenseDate needs to be validated
     if (!expenseDate) {
-        isValid = false;
+        isValid = false
         dateErr.textContent = 'Required.'
         dateErr.classList.remove('hide')
     } else{
@@ -348,6 +353,7 @@ function addNewExpense({expenseAmount,expenseDescription,expenseCategory,expense
     // render the chart
     updateChartData() 
     updateChartData2()
+    // alert("Added expense succesfully")
 }
 
 // save the expense but perform validation first
@@ -357,14 +363,13 @@ addExpenseButtonModal.addEventListener('click', () => {
         const expenseAmount = document.querySelector('#expenseAmount').value.trim()
         const expenseDescription = document.querySelector('#expenseDescription').value.trim()
         const expenseCategory = document.querySelector('#expenseCategory').value
-        const expenseDate = document.querySelector('#inputDate').value.split('-').reverse().join('-');
+        const expenseDate = document.querySelector('#inputDate').value.split('-').reverse().join('-')
         addNewExpense({expenseAmount,expenseDescription,expenseCategory,expenseDate})
 
         document.querySelector('#expenseAmount').value = ""
         document.querySelector('#expenseDescription').value = ""
         document.querySelector('#expenseCategory').value = ""
         document.querySelector('#inputDate').value = ""
-        console.log('end of modal');
         
         // clearModal()
     }
@@ -391,7 +396,7 @@ function loadFromLocalStorage(){
         expenseList = savedExpenseList
     }
 
-    const activeSection = localStorage.getItem("activeSection");
+    const activeSection = localStorage.getItem("activeSection")
 
     if (activeSection === "summary") {
         expenseListWrapperDiv.classList.add("hide")
@@ -420,7 +425,6 @@ function loadFromLocalStorage(){
 document.addEventListener("DOMContentLoaded", loadFromLocalStorage)
 
 // chart1: doughnut chart
-// Initialize the chart
 const ctx = document.getElementById('myChart')
 let myChart = new Chart(ctx, {
     type: 'doughnut',
@@ -441,8 +445,8 @@ let myChart = new Chart(ctx, {
     }
 })
 
-
-const ctx2 = document.getElementById('myChart2');
+// chart2: line chart
+const ctx2 = document.getElementById('myChart2')
 let myChart23 = new Chart(ctx2, {
     type: 'line', 
     data: {
@@ -480,7 +484,7 @@ let myChart23 = new Chart(ctx2, {
             }
         }
     }
-});
+})
 
 
 function updateChartData(){
@@ -506,12 +510,20 @@ function updateChartData(){
     ]
 
     // hide if no expenseDivs
+    // if(!expenseList.length){
+    //     canvasWrapper.classList.add("hide")
+    // } else{
+    //     canvasWrapper.classList.remove("hide")
+    //     myChart.update()
+    // }
+
     if(!expenseList.length){
-        canvasWrapper.classList.add("hide")
-    } else{
-        canvasWrapper.classList.remove("hide")
+        doughnutChart.classList.add("hide")
+    } else {
+        doughnutChart.classList.remove("hide")
         myChart.update()
     }
+
 }
 
 function updateChartData2() {
@@ -526,14 +538,16 @@ function updateChartData2() {
 
         if (!months.includes(monthYear)) {
             months.push(monthYear)
+            // new month, push 0 as totalExpense
             totalMonthlyExpenses.push(0)
         }
-
+        // add expense of month
         let monthIndex = months.indexOf(monthYear)
         totalMonthlyExpenses[monthIndex] += expense.expenseAmount
     })
-
+    // sort in terms of months.
     let sortedMonths = months.map(month => {
+        
         let [monthNumber, year] = month.split('-')
         return { monthNumber: parseInt(monthNumber), year: parseInt(year), month }
     })
@@ -542,19 +556,27 @@ function updateChartData2() {
     })
     .map(item => item.month)
 
+    //match month and totalexpenses
     let sortedTotalExpenses = sortedMonths.map(sortedMonth => {
         let monthIndex = months.indexOf(sortedMonth)
         return totalMonthlyExpenses[monthIndex]
     })
 
+    //pass label and data
     myChart23.data.labels = sortedMonths
     myChart23.data.datasets[0].data = sortedTotalExpenses
 
     // If no expenses, hide the chart
-    if (!expenseList.length) {
-        canvasWrapper.classList.add('hide')
-    } else {
-        canvasWrapper.classList.remove('hide')
-        myChart23.update()
+    // if (!expenseList.length) {
+    //     canvasWrapper.classList.add('hide')
+    // } else {
+    //     canvasWrapper.classList.remove('hide')
+    //     myChart23.update()
+    // }
+    if(!expenseList.length){
+        lineChart.classList.add('hide')
+    }  else {
+        lineChart.classList.remove('hide')
+        myChart23.update() 
     }
 }
