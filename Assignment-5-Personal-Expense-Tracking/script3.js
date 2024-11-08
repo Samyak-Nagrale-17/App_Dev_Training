@@ -16,39 +16,81 @@ const sortDescendingButton = document.querySelector('#sortDescending')
 
 // main expense list
 let expenseList = []
+let currentSort = null
 
 //sort by amount ascending
-sortAscendingButton.addEventListener('click', sortExpenseAscending)
+sortAscendingButton.addEventListener('click', () => {
+    // sortExpenseAscending()
+    // sortAscendingButton.classList.toggle('buttonSelected')
+    if (currentSort === 'ascending') {
+        resetSort()
+    } else {
+        sortExpenseAscending()
+        currentSort = 'ascending'
+        updateButtonStyles()
+    }
+})
 
 // sort by amount descending
-sortDescendingButton.addEventListener('click', sortExpenseDescending)
+sortDescendingButton.addEventListener('click', () => {
+    // sortExpenseDescending()
+    // sortDescendingButton.classList.toggle('buttonSelected')
+    if (currentSort === 'descending') {
+        resetSort()
+    } else {
+        sortExpenseDescending()
+        currentSort = 'descending'
+        updateButtonStyles() 
+    }
+})
 
+function updateButtonStyles() {
+    sortAscendingButton.classList.toggle('buttonSelected', currentSort === 'ascending')
+    sortDescendingButton.classList.toggle('buttonSelected', currentSort === 'descending')
+}
+
+function resetSort() {
+    currentSort = null
+    reloadExpenseList()
+    localStorage.removeItem('sortState')
+    updateButtonStyles()
+}
 
 function sortExpenseAscending(){
     // make a copy of expenselist
-    let tempExpenseList = expenseList
+    let tempExpenseList = [...expenseList]
     // sort it
-
     tempExpenseList = tempExpenseList.sort(
         (p1,p2) => (p1.expenseAmount < p2.expenseAmount) ? 1 : (p1.expenseAmount > p2.expenseAmount) ? -1:0)
     
-    // updateExpense list for all
-    tempExpenseList.forEach((item) => {
-        reloadExpenseList(item)
-    })
+    // add a default parameter to reloadExpenseList
+    tempReloadExpenseList(tempExpenseList)
+    currentSort = 'ascending'
+    localStorage.setItem('sortState', currentSort) 
+    updateButtonStyles()
 }
 
 function sortExpenseDescending(){
     // make a copy of expenselist
-    let tempExpenseList = expenseList
+    let tempExpenseList = [...expenseList]
     // sort it
 
     tempExpenseList = tempExpenseList.sort(
         (p1,p2) => (p1.expenseAmount > p2.expenseAmount) ? 1 : (p1.expenseAmount < p2.expenseAmount) ? -1:0)
 
-    // updateExpense list for all
-    tempExpenseList.forEach((item) => {
-        reloadExpenseList(item)
+    // add a default parameter to reloadExpenseList
+    tempReloadExpenseList(tempExpenseList)
+    currentSort = 'descending'
+    localStorage.setItem('sortState', currentSort)  
+    updateButtonStyles()
+}
+
+
+function tempReloadExpenseList(list = temp){
+    listDisplay.innerHTML = ""
+    // Use the specified list (sorted list or original list)
+    list.forEach((item) => {
+        updateExpenseList(item)
     })
 }
 
@@ -56,20 +98,20 @@ function sortExpenseDescending(){
 showExpenseListButton.addEventListener('click', () => {
     expenseListWrapperDiv.classList.remove('hide')
     chartWrapperDiv.classList.add('hide')
-    localStorage.setItem('activeSection', 'expenseList'); // Save state
+    localStorage.setItem('activeSection', 'expenseList')
 })
+
 
 // show summary
 showSummaryButton.addEventListener('click', () => {
     expenseListWrapperDiv.classList.add('hide')
     chartWrapperDiv.classList.remove('hide')
-    localStorage.setItem('activeSection', 'summary'); // Save state
+    localStorage.setItem('activeSection', 'summary')
 })
 
 // display the modal input onclick add expense button
 addExpenseButton.addEventListener('click', () => {
     modalOverlay.classList.toggle("hide")
-    // setDefaultDate() 
 })
 
 // close the modal input onclick cross icon
@@ -86,7 +128,18 @@ function clearModal(){
     document.querySelector('#expenseAmount').value = ""
     document.querySelector('#expenseDescription').value = ""
     document.querySelector('#expenseCategory').value = ""
-    document.querySelector('#inputDate').value = ""
+    // document.querySelector('#inputDate').value = ""
+    document.querySelector('#inputDate').value = new Date().toISOString().split("T")[0]
+
+    // clear the errors too
+    const amountErr = document.querySelector('#amountErr')
+    const descriptionErr = document.querySelector('#descriptionErr')
+    const dateErr = document.querySelector('#dateErr')
+    const categoryErr = document.querySelector('#categoryErr')
+    amountErr.classList.add('hide')
+    descriptionErr.classList.add('hide')
+    dateErr.classList.add('hide')
+    categoryErr.classList.add('hide')
 }
 
 // update the total expense when listDisplay is updated
@@ -122,28 +175,23 @@ function editSelectedExpenseDiv(Event){
     // modalOverlay.classList.toggle("hide")
 
     const expenseDiv = Event.target.closest("div.expenseDiv")
-    console.log(expenseDiv);
+    console.log(expenseDiv)
     
     const expenseDivId = expenseDiv.getAttribute("dataExpenseId")
-    console.log(expenseDivId);
-    
+    console.log(expenseDivId)
 
     // search for it in the object
     const expenseToEdit = expenseList.find(expense => expense.expenseId === parseInt(expenseDivId))
-    console.log(expenseToEdit);
+    console.log(expenseToEdit)
     
-    // modalOverlay.classList.toggle("hide")
-    // addExpenseButtonModal.classList.toggle("hide")
-    // editExpenseButtonModal.classList.toggle("hide")
-
     //populate the modal
     if(expenseToEdit){
         document.querySelector('#expenseAmount').value = expenseToEdit.expenseAmount
         document.querySelector('#expenseDescription').value = expenseToEdit.expenseDescription
         document.querySelector('#expenseCategory').value = expenseToEdit.expenseCategory
         // document.querySelector('#inputDate').value = expenseToEdit.expenseDate
-        const [day, month, year] = expenseToEdit.expenseDate.split('-');
-        document.querySelector('#inputDate').value = `${year}-${month}-${day}`; 
+        const [day, month, year] = expenseToEdit.expenseDate.split('-')
+        document.querySelector('#inputDate').value = `${year}-${month}-${day}` 
 
         modalOverlay.classList.toggle("hide")
         addExpenseButtonModal.classList.add("hide")
@@ -155,11 +203,10 @@ function editSelectedExpenseDiv(Event){
                 expenseToEdit.expenseDescription = document.querySelector('#expenseDescription').value
                 expenseToEdit.expenseCategory = document.querySelector('#expenseCategory').value
                 // expenseToEdit.expenseDate = document.querySelector('#inputDate').value
-                const inputDate = document.querySelector('#inputDate').value.split('-');
-                expenseToEdit.expenseDate = `${inputDate[2]}-${inputDate[1]}-${inputDate[0]}`;
+                const inputDate = document.querySelector('#inputDate').value.split('-')
+                expenseToEdit.expenseDate = `${inputDate[2]}-${inputDate[1]}-${inputDate[0]}`
 
                 saveToLocalStorage()
-
                 updateChartData()
                 updateChartData2()
                 reloadExpenseList() 
@@ -176,28 +223,8 @@ function editSelectedExpenseDiv(Event){
 
 //update the expenseList
 function updateExpenseList(newExpenseObject){
-
     //  create the same element
     let newExpenseDiv = document.createElement("div")
-
-    // newExpenseDiv.innerHTML = 
-
-    // `
-    // <div class="row1">
-    //     <div class="expenseDivDate">${newExpenseObject.expenseDate}</div>
-    // </div>
-    // <div class="row2">
-    //     <div class="expenseDivDescription">${newExpenseObject.expenseDescription}</div>
-    //     <div class="expenseDivAmount">$${newExpenseObject.expenseAmount}</div>
-    //     <div class="expenseDivCategory">${newExpenseObject.expenseCategory}</div>
-    //     <button class="editExpenseDiv">
-    //         <i class="fa-solid fa-pen-to-square"></i>
-    //     </button>
-    //     <button class="deleteExpenseDiv">
-    //         <i class="fa-solid fa-trash"></i>
-    //     </button>
-    // </div>
-    // `
 
     newExpenseDiv.innerHTML = 
     `
@@ -229,80 +256,71 @@ function updateExpenseList(newExpenseObject){
     listDisplay.appendChild(newExpenseDiv)  
 }
 
-
-// function setDefaultDate() {
-//     const dateInput = document.querySelector('#inputDate');
-//     const today = new Date();
-
-//     // Extract day, month, and year components
-//     const day = String(today.getDate()).padStart(2, '0'); // Ensure two-digit day
-//     const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based
-//     const year = today.getFullYear();
-
-//     // Format as DD-MM-YYYY
-//     const formattedDate = `${day}-${month}-${year}`;
-//     dateInput.value = formattedDate; // Set as default value
-// }
-
 // validation of the input
 function validateModalInput(){
     const expenseAmount = document.querySelector('#expenseAmount').value.trim()
     const expenseDescription = document.querySelector('#expenseDescription').value.trim()
-    const expenseCategory = document.querySelector('#expenseCategory').value
-    const expenseDate = document.querySelector('#inputDate').value
+    const expenseCategory = document.querySelector('#expenseCategory').value.trim()
+    const expenseDate = document.querySelector('#inputDate').value.trim()
 
-    const amountErr = document.querySelector('#amountErr');
-    const descriptionErr = document.querySelector('#descriptionErr');
-    const dateErr = document.querySelector('#dateErr');
+    const amountErr = document.querySelector('#amountErr')
+    const descriptionErr = document.querySelector('#descriptionErr')
+    const dateErr = document.querySelector('#dateErr')
+    const categoryErr = document.querySelector('#categoryErr')
     let isValid = true
 
-    amountErr.classList.add('hide');
-    descriptionErr.classList.add('hide');
-    dateErr.classList.add('hide');
+    amountErr.classList.add('hide')
+    descriptionErr.classList.add('hide')
+    dateErr.classList.add('hide')
+    categoryErr.classList.add('hide')
 
     if (!expenseAmount) {
-        isValid = false;
-        amountErr.textContent = 'Expense amount is required.';
-        amountErr.classList.remove('hide');
+        isValid = false
+        amountErr.textContent = 'Required.'
+        amountErr.classList.remove('hide')
 
     } else if (isNaN(expenseAmount) || parseFloat(expenseAmount) <= 0) {
-        isValid = false;
-        amountErr.textContent = 'Amount must be a positive number.';
-        amountErr.classList.remove('hide');
+        isValid = false
+        amountErr.textContent = 'Must be greater than 0.'
+        amountErr.classList.remove('hide')
     } else{
-        amountErr.classList.add('hide');
+        amountErr.classList.add('hide')
     }
     
-    const descriptionRegex = /^[a-zA-Z0-9\s]+$/;
+    const descriptionRegex = /^[a-zA-Z0-9$\s]+$/
     if (!expenseDescription) {
-        isValid = false;
-        descriptionErr.textContent = 'Description is required.';
-        descriptionErr.classList.remove('hide');
+        isValid = false
+        descriptionErr.textContent = 'Required.'
+        descriptionErr.classList.remove('hide')
 
     } else if (!descriptionRegex.test(expenseDescription)) {
-        isValid = false;
-        descriptionErr.textContent = 'Invalid description. Only letters, numbers, and spaces are allowed.';
-        descriptionErr.classList.remove('hide');
+        isValid = false
+        descriptionErr.textContent = 'Invalid description.'
+        descriptionErr.classList.remove('hide')
     } else{
-        descriptionErr.classList.add('hide');
+        descriptionErr.classList.add('hide')
     }
 
     if (!expenseCategory) {
-        isValid = false;
-        console.log('Expense category validation failed');
+        isValid = false
+        categoryErr.textContent = 'Required'
+        categoryErr.classList.remove('hide')
+    } else{
+        categoryErr.classList.add('hide')
     }
  
     // expenseDate needs to be validated
     if (!expenseDate) {
         isValid = false;
-        dateErr.textContent = 'Date is required.';
-        dateErr.classList.remove('hide');
+        dateErr.textContent = 'Required.'
+        dateErr.classList.remove('hide')
     } else{
-        dateErr.classList.add('hide');
+        dateErr.classList.add('hide')
     }
+
     return isValid
 }
- 
+
 // function to add a new expense
 function addNewExpense({expenseAmount,expenseDescription,expenseCategory,expenseDate}){
     // get a unique expense id
@@ -327,9 +345,9 @@ function addNewExpense({expenseAmount,expenseDescription,expenseCategory,expense
     // save in the localStorage
     clearModal()
     saveToLocalStorage()
-       // render the chart
-       updateChartData() 
-       updateChartData2()
+    // render the chart
+    updateChartData() 
+    updateChartData2()
 }
 
 // save the expense but perform validation first
@@ -350,12 +368,6 @@ addExpenseButtonModal.addEventListener('click', () => {
         
         // clearModal()
     }
-    // else{
-    //     alert('validation failed...')
-    // }
-
-    //addNewExpense()
-    // clear the all input fields. create a function for this purpose
 })
 
 // save the expense list in localStorage
@@ -382,14 +394,23 @@ function loadFromLocalStorage(){
     const activeSection = localStorage.getItem("activeSection");
 
     if (activeSection === "summary") {
-        expenseListWrapperDiv.classList.add("hide");
-        chartWrapperDiv.classList.remove("hide");
+        expenseListWrapperDiv.classList.add("hide")
+        chartWrapperDiv.classList.remove("hide")
     } else {
-        expenseListWrapperDiv.classList.remove("hide");
-        chartWrapperDiv.classList.add("hide");
+        expenseListWrapperDiv.classList.remove("hide")
+        chartWrapperDiv.classList.add("hide")
     }
 
-    reloadExpenseList()
+    // load and apply saved sorting state
+    const savedSortState = localStorage.getItem("sortState")
+    if (savedSortState === "ascending") {
+        sortExpenseAscending()
+    } else if (savedSortState === "descending") {
+        sortExpenseDescending()
+    } else {
+        reloadExpenseList()
+    }
+    // reloadExpenseList()
     calculateTotalExpenses()
     updateChartData()
     updateChartData2()
@@ -412,70 +433,36 @@ let myChart = new Chart(ctx, {
     },
     options:{
         plugins:{
-            title:{
-                display: true,
-                text: 'Total expenses by category'
-            }
+            // title:{
+            //     display: true,
+            //     text: 'Total expenses by category'
+            // }
         }
     }
 })
 
-// // chart2: bar chart
-// const {labels, data} = updateMonthlyTrendData()
 
-// const ctx2 = document.getElementById('myChart2')
-// let myChart23 = new Chart(ctx2, {
-//     type:'line',
-//     data: {
-//         labels: labels,
-//         datasets: [{
-//             label: 'Monthly Expenses',
-//             data: data,
-//             borderColor: 'rgba(75, 192, 192, 1)',
-//             backgroundColor: 'rgba(75, 192, 192, 0.2)',
-//             fill: true,
-//             lineTension: 0.2
-//         }]
-//     },
-//     options:{
-//         responsive: true,
-//                 scales: {
-//                     x: {
-//                         title: {
-//                             display: true,
-//                             text: 'Month'
-//                         }
-//                     },
-//                     y: {
-//                         title: {
-//                             display: true,
-//                             text: 'Total Expense ($)'
-//                         },
-//                         beginAtZero: true
-//                     }
-//                 }
-//     },
-// })
 const ctx2 = document.getElementById('myChart2');
 let myChart23 = new Chart(ctx2, {
-    type: 'line', // Line chart type
+    type: 'line', 
     data: {
-        labels: [], // Placeholder for months, will be populated dynamically
+        labels: [], 
         datasets: [{
-            label: 'Total Expenses', // Single dataset for total expenses
-            data: [], // Placeholder for total expenses for each month
-            borderColor: 'rgba(75, 192, 192, 1)', // Line color
-            backgroundColor: 'rgba(75, 192, 192, 0.2)', // Fill color
-            fill: true, // Fill the area under the line
-            tension: 0.1 // Smooth the line
+            label: 'Total Expenses', 
+            // placeholder for total expenses for each month
+            data: [], 
+            borderColor: 'rgba(75, 192, 192, 1)', 
+            backgroundColor: 'rgba(75, 192, 192, 0.2)', 
+            fill: true, 
+            tension: 0.1 
         }]
     },
     options: {
         plugins: {
-            title: {
-                display: true,
-                text: 'Monthly Total Expenses'
-            }
+            // title: {
+            //     display: true,
+            //     text: 'Monthly Total Expenses'
+            // }
         },
         scales: {
             y: {
@@ -496,21 +483,8 @@ let myChart23 = new Chart(ctx2, {
 });
 
 
-
-
 function updateChartData(){
-    // let processedData = {}
-
-    // expenseList.forEach((expense) => {
-    //     if(processedData[expense.expenseCategory]){
-    //         processedData[expense.expenseCategory] += expense.expenseAmount
-    //     } else {
-    //         processedData[expense.expenseCategory] = expense.expenseAmount
-    //     }
-    // })
-    // return processedData
-
-    // //array to hold the total expenses for each category
+    //object to hold the total expenses for each category
     let categoryTotals = {
         'Food': 0,
         'Fuel': 0,
@@ -522,9 +496,6 @@ function updateChartData(){
     expenseList.forEach(expense => {
         categoryTotals[expense.expenseCategory] += expense.expenseAmount
     })
-
-    console.log(expenseList)
-    console.log(categoryTotals);
     
     myChart.data.datasets[0].data = [
         categoryTotals.Food,
@@ -541,90 +512,49 @@ function updateChartData(){
         canvasWrapper.classList.remove("hide")
         myChart.update()
     }
-    // myChart.update()
 }
 
-// function updateMonthlyTrendData() {
-//     // Initialize an object to hold monthly totals
-//     let monthlyTotals = {};
-
-//     // Iterate over the expenses in expenseList
-//     expenseList.forEach(expense => {
-//         const date = new Date(expense.date); // Assuming expense.date is a valid date string
-//         const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`; // Format as "YYYY-MM"
-
-//         // Aggregate the total expenses for each month
-//         if (monthlyTotals[monthKey]) {
-//             monthlyTotals[monthKey] += expense.expenseAmount;
-//         } else {
-//             monthlyTotals[monthKey] = expense.expenseAmount;
-//         }
-//     });
-
-//     // Convert monthlyTotals to arrays for labels and data
-//     const labels = Object.keys(monthlyTotals).sort(); // Sorted list of months (e.g., ["2024-01", "2024-02", ...])
-//     const data = labels.map(month => monthlyTotals[month]); // Corresponding expense amounts
-
-//     // Log the processed data for debugging
-//     console.log("Monthly Labels:", labels);
-//     console.log("Monthly Data:", data);
-
-//     // Return the labels and data in an object for chart usage
-//     return { labels, data };
-// }
-
 function updateChartData2() {
-    let totalMonthlyExpenses = []; // Array to store the total expense for each month
-    let months = []; // Array to hold months or time periods
+    let totalMonthlyExpenses = []
+    let months = []
 
-    // Iterate over the expense list to calculate total expenses for each month
     expenseList.forEach(expense => {
-        // Extract the month and year from the date (dd-mm-yyyy)
-        let dateParts = expense.expenseDate.split('-'); // Split by '-'
-        let month = dateParts[1]; // Month part (mm)
-        let year = dateParts[2]; // Year part (yyyy)
-        let monthYear = `${month}-${year}`; // Format as 'mm-yyyy'
+        let dateParts = expense.expenseDate.split('-')
+        let month = dateParts[1]
+        let year = dateParts[2]
+        let monthYear = `${month}-${year}`
 
-        // If the month is not already in the months array, add it
         if (!months.includes(monthYear)) {
-            months.push(monthYear);
-            totalMonthlyExpenses.push(0); // Initialize total expense for the new month
+            months.push(monthYear)
+            totalMonthlyExpenses.push(0)
         }
 
-        // Find the index of the current month and add the expense amount to it
-        let monthIndex = months.indexOf(monthYear);
-        totalMonthlyExpenses[monthIndex] += expense.expenseAmount; // Sum the expense
-    });
+        let monthIndex = months.indexOf(monthYear)
+        totalMonthlyExpenses[monthIndex] += expense.expenseAmount
+    })
 
-    // Sort months in ascending order (from '01-2024' to '12-2024')
     let sortedMonths = months.map(month => {
-        // Split the month into 'mm' and 'yyyy' and convert them into a sortable format
-        let [monthNumber, year] = month.split('-');
-        return { monthNumber: parseInt(monthNumber), year: parseInt(year), month };
+        let [monthNumber, year] = month.split('-')
+        return { monthNumber: parseInt(monthNumber), year: parseInt(year), month }
     })
     .sort((a, b) => {
-        // Sort by year first, then by month
-        return a.year === b.year ? a.monthNumber - b.monthNumber : a.year - b.year;
+        return a.year === b.year ? a.monthNumber - b.monthNumber : a.year - b.year
     })
-    .map(item => item.month); // Get the original 'mm-yyyy' format
+    .map(item => item.month)
 
-    // Create a new total monthly expenses array based on sorted months
     let sortedTotalExpenses = sortedMonths.map(sortedMonth => {
-        let monthIndex = months.indexOf(sortedMonth);
-        return totalMonthlyExpenses[monthIndex];
-    });
+        let monthIndex = months.indexOf(sortedMonth)
+        return totalMonthlyExpenses[monthIndex]
+    })
 
-    // Update the chart labels (sorted months in 'mm-yyyy' format)
-    myChart23.data.labels = sortedMonths;
-
-    // Update the dataset with the sorted total expenses for each month
-    myChart23.data.datasets[0].data = sortedTotalExpenses;
+    myChart23.data.labels = sortedMonths
+    myChart23.data.datasets[0].data = sortedTotalExpenses
 
     // If no expenses, hide the chart
     if (!expenseList.length) {
-        canvasWrapper.classList.add('hide');
+        canvasWrapper.classList.add('hide')
     } else {
-        canvasWrapper.classList.remove('hide');
-        myChart23.update();
+        canvasWrapper.classList.remove('hide')
+        myChart23.update()
     }
 }

@@ -48,6 +48,7 @@ body{
 .navBarh2{
     color: var(--White);
     font-size: 1.6em;
+    /* font-size: 1.8em; */
 }
 
 #main{
@@ -58,18 +59,47 @@ body{
 }
 
 .chartWrapper{
-    /* border: 1px solid red; */
     height: 100%;
-    width: 100%;
-    text-align: center;
-    /* border: 1px solid var(--Gray); */
+    width: 90%;
+    padding: 1em;
+    gap: 1em;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* text-align: center;
+    display: flex;
+    justify-content: space-evenly; */
+}
+
+.chartWrapper h2{
+    font-size: 1.5em;
+}
+
+.subCanvas{
+    display: flex;
+    /* justify-content: space-evenly; */
+    /* border: 1px solid red; */
+    height: 80%;
+    justify-content: space-around;
+    gap: 4em;
 }
 
 .canvasWrapper{
-    width: 65%;
+    width: 34%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* border: 1px solid red; */
+    gap: 1em;
+}
+
+.canvasWrapper p{
+    font-size: 1.1em;
+}
+
+#lineChart{
+    width: 60%;
+    height: 100%;
 }
 
 .expenseListWrapper{
@@ -83,6 +113,16 @@ body{
     gap: 1em;
 }
 
+.expenseListWrapper h2, .expenseListWrapper h1{
+    margin-right: auto;
+}
+
+.expenseListWrapperHeader{
+    display: flex;
+    gap: 1em;
+    /* justify-content: space-between; */
+}
+
 .listDisplay{
     width: 100%;
     height: 100%;
@@ -90,41 +130,86 @@ body{
     flex-direction: column;
     gap: 0.6em;
     overflow-y: auto;
+    padding-right: 0.4em;
+}
+
+.listDisplay::-webkit-scrollbar{
+    width: 10px;
+}
+
+.listDisplay::-webkit-scrollbar-track{
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+.listDisplay::-webkit-scrollbar-thumb{
+    background: #888;
+    border-radius: 5px;
+}
+
+.listDisplay::-webkit-scrollbar-thumb:hover{
+    background: #555;
 }
 
 .expenseDiv{
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    /* flex-direction: column; */
     padding: 0.8em;
     border: 1px solid var(--Black);
     border-radius: 0.4em;
-    gap: 0.4em;
+    /* gap: 0.4em; */
+    font-size: 1.2em;
 }
 
-.expenseDiv .row1{
+/* .expenseDiv .row1{
     margin-right: auto;
 }
 
 .expenseDiv .row2{
     display: flex;
     justify-content: space-between;
-}
+} */
 
 .buttonWrapper{
     display: flex;
-    gap: 1em;
+    gap: 2em;
 }
 
 .expenseDivDescription{
     /* border: 1px solid red; */
-    width: 10em;
-    max-width: 14em;
+    min-width: 8em; 
+    width: 8em;
+    /* max-width: 14em; */
     text-align: left;
     /* overflow: clip; */
-    overflow: hidden; /* Hide overflow content */
-    white-space: nowrap; /* Prevent text from wrapping */
-    text-overflow: ellipsis; /* Truncate and add "..." for overflow */
+    overflow: hidden; 
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
 }
+
+.expenseDivAmount{
+    /* border: 1px solid red; */
+    text-align: left;
+    min-width: 8em; 
+    width: 8em;
+    overflow: hidden; 
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
+}
+
+.expenseDivCategory{
+    /* border: 1px solid red; */
+    margin-right: 4em;
+    text-align: left;
+}
+
+.expenseDivDate{
+    /* border: 1px solid red; */
+    text-align: left;
+    margin-right: 1em;
+}
+
 
 input.expenseDivDescription{
     border: none;
@@ -146,25 +231,64 @@ input.expenseDivDescription{
     cursor: pointer;
 }
 
-.totalExpensesWrapper{
-    margin-top: auto;
+.sortByWrapper{
     display: flex;
-    justify-content: space-between;
-    /* padding: 1.6em 1em; */
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
 }
 
+.sortByWrapper p{
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.sortByWrapper button{
+    border: none;
+    background-color: var(--White);
+    font-size: 1.1em;
+    padding: 0.4em;
+}
+
+.sortByWrapper button:hover{
+    cursor: pointer;
+    background-color: lightgray;
+    border-radius: 0.4em;
+}
+
+.totalExpensesWrapper{
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+    font-size: 1em;
+    gap: 1em;
+    /* font-weight: 600; */
+}
+
+.totalExpensesWrapper .totalExpenseText{
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.totalExpensesWrapper #totalExpensesSum{
+    font-size: 1.1em;
+}
 
 /* add expense button */
-/* #addExpenseButton{
+#addExpenseButton{
     border: none;
-    padding: 1em;
-    width: 90%;
+    padding: 1em 0;
+    width: 16%;
     font-weight: 700;
     font-size: 1em;
     cursor: pointer;
     border-radius: 0.4em;
-    background-color: var(--White);
-} */
+    color: var(--White);
+    background-color: var(--Dark-Blue);
+
+}
 
 .linkDiv{
     padding: 1em;
@@ -237,7 +361,13 @@ input.expenseDivDescription{
 
 .modal-wrapper input, .modal-wrapper select{
     font-size: 1em;
+    padding: 0.2em;
 } 
+
+.labelDetails{
+    display: flex;
+    justify-content: space-between;
+}
 
 #addExpenseButtonModal{
     border: none;
@@ -252,10 +382,58 @@ input.expenseDivDescription{
 
 #editExpenseButtonModal{
     border: none;
-    padding: 1em;
+    /* padding: 1em; */
+    padding: 0.6em;
     width: 40%;
-    font-weight: 700;
+    /* font-weight: 700; */
+    font-weight: 500;
     font-size: 0.9em;
     cursor: pointer;
+    color: var(--White);
+    background-color: var(--Dark-Blue);
+}  
+
+.expenseDivHeading{
+    padding: 0 1em;
+    display: flex;
+    gap: 10em;
+    text-align: center;
+    background-color: var(--Dark-Blue);
+    color: var(--White);
+    font-size: 1.2em;
+    padding: 0.8em;
 }
 
+.expenseDivHeading p{
+    text-align: center;
+}
+
+.userDetails{
+    margin-top: auto;
+    display: flex;
+    /* border: 1px white solid; */
+    /* padding: 0.6em; */
+    width: 90%;
+    gap: 1em;
+}
+
+.userDetails p{
+    font-size: 1.1em;
+    color: var(--White);
+    padding-top:1em;
+}
+
+.userDetails img{
+    width: 3.4em;
+}
+
+.errMsg{
+    color: red;
+    font-size: 0.8em;
+    font-weight: 500;
+}
+
+.sortByWrapper button.buttonSelected{
+    background-color: var(--Gray);
+    border-radius: 0.4em;
+}

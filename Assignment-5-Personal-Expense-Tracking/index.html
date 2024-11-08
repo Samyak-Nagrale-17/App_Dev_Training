@@ -19,7 +19,7 @@
         <!-- navbar -->
         <nav class="navbar"> 
             <h2 class="navBarh2">Expense Tracker</h2> 
-            <button id="addExpenseButton" class="linkDiv">Add Expense</button>
+            <!-- <button id="addExpenseButton" class="linkDiv">Add Expense</button> -->
 
             <!-- <div class="linkDiv">
                 <a href="">Expense List</a>
@@ -27,8 +27,13 @@
             <button id="showExpenseListButton" class="linkDiv">Expense List</button>
             <button id="showSummaryButton" class="linkDiv">Summary</button>
                 
+            <div class="userDetails">
+                <!-- <i class="fa-solid fa-user" style="color:#ffffff;"></i> -->
+                <img src="/man-user-circle-icon.png" alt="userIcon"> 
+                <p>User1234</p>                
+            </div>
         </nav> 
-
+    
         <!-- create a modal -->
         <div class="modal-overlay hide">
             <div class="modal-wrapper">
@@ -40,16 +45,31 @@
                 </p>
     
                 <div class="inputWrapper">
-                    <label for="expenseAmount">Expense amount</label>
+                    <div class="labelDetails">
+                        <label for="expenseAmount">Expense amount</label>
+                        <span id="amountErr" class="errMsg hide">Required</span>
+                    </div>
+                    <!-- <label for="expenseAmount">Expense amount</label>
+                    <span id="amountErr" class="errMsg hide">Required</span> -->
                     <input type="text" name="expenseAmount" id="expenseAmount">
                 </div>
                 
                 <div class="inputWrapper">
-                    <label for="expenseDescription">Expense description</label>
+                    <div class="labelDetails">
+                        <label for="expenseDescription">Expense description</label>
+                        <span id="descriptionErr" class="errMsg hide">Required</span>
+                    </div>
+                    <!-- <label for="expenseDescription">Expense description</label>
+                    <span id="descriptionErr" class="errMsg hide">Required</span> -->
                     <input type="text" name="expenseDescription" id="expenseDescription">
                 </div> 
                 <div class="inputWrapper">
-                    <label for="expenseCategory">Select a category</label>
+                    <div class="labelDetails">
+                        <span id="categoryErr" class="errMsg hide">Required</span>
+                        <label for="expenseCategory">Select a category</label>
+                    </div>
+                    <!-- <span id="categoryErr" class="errMsg hide">Required</span>
+                    <label for="expenseCategory">Select a category</label> -->
                     <select name="expenseCategory" id="expenseCategory">
                         <option value="Food">Food</option>
                         <option value="Fuel">Fuel</option>
@@ -59,7 +79,12 @@
                     </select>  
                 </div>
                 <div class="inputWrapper">
-                    <label for="inputDate">Expense Date</label>
+                    <div class="labelDetails">
+                        <label for="inputDate">Expense Date</label>
+                        <span id="dateErr" class="errMsg hide">Required</span>
+                    </div>
+                    <!-- <label for="inputDate">Expense Date</label>
+                    <span id="dateErr" class="errMsg hide">Required</span> -->
                     <input type="date" id="inputDate"> 
                 </div>
                 <button id="addExpenseButtonModal">Add Expense</button>
@@ -67,26 +92,92 @@
             </div>
         </div>
         
+
         <section id="main">
             <!-- chart -->
             <div class="chartWrapper hide">
-                <!-- <h2>Graph</h2> -->
+                <h2>Summary of expenses</h2>
 
-                <div class="canvasWrapper">
+                <div class="subCanvas">
+                    <div class="canvasWrapper" id="doughnutChart">
+                        <!-- add title to the chart -->
+                        <p>Total expenses by category</p>
+                        <canvas id="myChart">
+                        </canvas> 
+                    </div>
+                
+                    <div class="canvasWrapper" id="lineChart">
+                        <!-- add itle to the chart -->
+                        <p>Monthly total expenses</p>
+                        <canvas id="myChart2">
+                        </canvas> 
+                    </div>
+                </div>
+
+                <!-- <div class="canvasWrapper">
+                    <p></p>
                     <canvas id="myChart">
                     </canvas> 
                 </div>
+
+                <div class="canvasWrapper">
+                    <canvas id="myChart2">
+                    </canvas> 
+                </div> -->
+                
             </div>
 
             <!-- expense list -->
             <div class="expenseListWrapper">
+
+                <h1>Welcome,User1234</h1>
                 <h2>Expense List</h2>
+
+                <div class="expenseListWrapperHeader">
+                    <button id="addExpenseButton">Add Expense</button>
+                    
+                    <div class="sortByWrapper">
+                        <p>Sort By Amount</p>
+                        <button id="sortAscending"><i class="fa-solid fa-arrow-up-wide-short"></i></button>
+                        <button id="sortDescending"><i class="fa-solid fa-arrow-down-short-wide"></i></button>
+                    </div>  
+
+                    <div class="totalExpensesWrapper">
+                        <p class="totalExpenseText">Total Expenses:</p>
+                        <p id="totalExpensesSum"></p>  
+                    </div>
+                </div>
+
+                <!-- header for all -->
+                <div class="expenseDivHeading">
+                    <p>Description</p>
+                    <p>Amount</p>
+                    <p>Category</p>
+                    <p>Date</p>
+                    <p>Action</p>
+                </div>
 
                 <!-- list all expenses here -->
                 <div class="listDisplay">
-                    <!-- add all lists here -->
-                    
-                    <div class="expenseDiv">
+
+                    <!-- <div class="expenseDiv">
+                        <div class="expenseDivDescription">Petrol for car</div>
+                        <div class="expenseDivAmount">$100</div>
+                        <div class="expenseDivCategory">Food</div>
+                        <div class="expenseDivDate">05-11-2024</div>
+
+                        <div class="buttonWrapper">
+                            <button class="editExpenseDiv">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <button class="deleteExpenseDiv">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>  -->
+
+                    <!-- add all lists here -->                    
+                    <!-- <div class="expenseDiv">
                         
                         <div class="row1">
                             <div class="expenseDivDate">05-11-2024</div>
@@ -106,20 +197,20 @@
                                 </button>
                             </div>
                         </div>
-                    </div> 
+                    </div>  -->
 
                 </div>
 
-                <!-- total expenses -->
-                <div class="totalExpensesWrapper">
+                <!-- <div class="totalExpensesWrapper">
                     <p>Total Expenses</p>
-                    <!-- $100 -->
+                    
                     <p id="totalExpensesSum"></p>  
-                </div>
+                </div> -->
             </div>
         </section>
     </div>
 
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
+    <script src="script3.js"></script>
 </body>
 </html>
