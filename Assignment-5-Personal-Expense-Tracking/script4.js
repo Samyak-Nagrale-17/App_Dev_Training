@@ -519,7 +519,6 @@ function updateChartData(){
 
     if(!expenseList.length){
         doughnutChart.classList.add("hide")
-        document.querySelector('#dough')
     } else {
         doughnutChart.classList.remove("hide")
         myChart.update()
@@ -574,19 +573,10 @@ function updateChartData2() {
     //     canvasWrapper.classList.remove('hide')
     //     myChart23.update()
     // }
-    // if(!expenseList.length){
-    //     lineChart.classList.add('hide')
-    // }  else {
-    //     lineChart.classList.remove('hide')
-    //     myChart23.update() 
-    // }
-
     if(!expenseList.length){
-        lineChart.classList.add("hide")
-        document.querySelector('#lineChart .noDataMsg').remove('hide')
-    } else {
-        lineChart.classList.remove("hide")
-        document.querySelector('#lineChart .noDataMsg').add('hide')
-        myChart23.update()
+        lineChart.classList.add('hide')
+    }  else {
+        lineChart.classList.remove('hide')
+        myChart23.update() 
     }
 }

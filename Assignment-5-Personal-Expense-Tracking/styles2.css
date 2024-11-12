@@ -1,0 +1,458 @@
+:root{
+    --Light-gray:#F6F3E7;
+    --Dark-green:#182D27;
+    --Leafy-green:#48B4A0;
+    --Black:#000000;
+    --White: #ffffff;
+    --Gray: #808080;
+    /* --Dark-Blue:#091057; */
+    /* --Dark-Blue:#0094F6; */
+    --Dark-Blue:#0053B2;
+    --Dark-Blue2:#0053B2;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, sans-serif;
+}
+ 
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+.container{
+    /* margin: auto; */
+    /* width: 96%; */
+    /* border: 1px solid red; */
+
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    height: 100vh;
+    width: 100vw;
+}
+
+.navbar{
+    /* border: 1px solid red; */
+    height: 100%;
+    width: 16%;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    padding: 1em;
+    position: relative;
+    background-color: var(--Dark-Blue);
+    gap: 1em;
+}
+
+.navBarh2{
+    color: var(--White);
+    text-align: center;
+    /* font-size: 1.6em; */
+    font-size: 2em;
+}
+
+#main{
+    width: 84%;
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+}
+
+.chartWrapper{
+    height: 100%;
+    width: 90%;
+    padding: 1em;
+    gap: 1em;
+    display: flex;
+    flex-direction: column;
+    /* text-align: center;
+    display: flex;
+    justify-content: space-evenly; */
+}
+
+.chartWrapper h2{
+    font-size: 1.5em;
+}
+
+.subCanvas{
+    display: flex;
+    /* justify-content: space-evenly; */
+    /* border: 1px solid red; */
+    height: 80%;
+    justify-content: space-around;
+    gap: 4em;
+}
+
+.canvasWrapper{
+    width: 34%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* border: 1px solid red; */
+    gap: 1em;
+}
+
+.canvasWrapper p{
+    font-size: 1.1em;
+}
+
+#lineChart{
+    width: 60%;
+    height: 100%;
+}
+
+.expenseListWrapper{
+    height: 100%;
+    width: 90%;
+    text-align: center;
+    /* border: 1px solid var(--Gray); */
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    gap: 1em;
+}
+
+.expenseListWrapper h2, .expenseListWrapper h1{
+    margin-right: auto;
+}
+
+.expenseListWrapperHeader{
+    display: flex;
+    gap: 1em;
+    /* justify-content: space-between; */
+}
+
+.listDisplay{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6em;
+    overflow-y: auto;
+    padding-right: 0.4em;
+}
+
+.listDisplay::-webkit-scrollbar{
+    width: 10px;
+}
+
+.listDisplay::-webkit-scrollbar-track{
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+.listDisplay::-webkit-scrollbar-thumb{
+    background: #888;
+    border-radius: 5px;
+}
+
+.listDisplay::-webkit-scrollbar-thumb:hover{
+    background: #555;
+}
+
+.expenseDiv{
+    display: flex;
+    justify-content: space-between;
+    /* flex-direction: column; */
+    padding: 0.8em;
+    border: 1px solid var(--Black);
+    border-radius: 0.4em;
+    /* gap: 0.4em; */
+    font-size: 1.2em;
+}
+
+/* .expenseDiv .row1{
+    margin-right: auto;
+}
+.expenseDiv .row2{
+    display: flex;
+    justify-content: space-between;
+} */
+
+.buttonWrapper{
+    display: flex;
+    gap: 2em;
+}
+
+.expenseDivDescription{
+    /* border: 1px solid red; */
+    min-width: 8em; 
+    width: 8em;
+    /* max-width: 14em; */
+    text-align: left;
+    /* overflow: clip; */
+    overflow: hidden; 
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
+}
+
+.expenseDivAmount{
+    /* border: 1px solid red; */
+    text-align: left;
+    min-width: 8em; 
+    width: 8em;
+    overflow: hidden; 
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
+}
+
+.expenseDivCategory{
+    /* border: 1px solid red; */
+    margin-right: 4em;
+    text-align: left;
+}
+
+.expenseDivDate{
+    /* border: 1px solid red; */
+    text-align: left;
+    margin-right: 1em;
+}
+
+input.expenseDivDescription{
+    border: none;
+    font-size: 1em;
+    /* padding: 0.4em; */ 
+}
+
+.deleteExpenseDiv{
+    border: none;
+    background: none;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.editExpenseDiv{
+    border: none;
+    background: none;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.sortByWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.sortByWrapper p{
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.sortByWrapper button{
+    border: none;
+    background-color: var(--White);
+    font-size: 1.1em;
+    padding: 0.4em;
+}
+
+.sortByWrapper button:hover{
+    cursor: pointer;
+    background-color: lightgray;
+    border-radius: 0.4em;
+}
+
+.totalExpensesWrapper{
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+    font-size: 1em;
+    gap: 1em;
+    /* font-weight: 600; */
+}
+
+.totalExpensesWrapper .totalExpenseText{
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.totalExpensesWrapper #totalExpensesSum{
+    font-size: 1.1em;
+}
+
+/* add expense button */
+#addExpenseButton{
+    border: none;
+    padding: 1em 0;
+    width: 16%;
+    font-weight: 700;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 0.4em;
+    color: var(--White);
+    background-color: var(--Dark-Blue2);
+}
+
+.linkDiv{
+    padding: 1em;
+    width: 90%;
+    font-weight: 700;
+    font-size: 1em;
+    border-radius: 0.4em;
+    background-color: var(--White);
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
+.linkDiv:hover{
+    background-color: lightgray;
+}
+
+#modalHeading{
+    display: flex;
+    justify-content: space-between;
+}
+
+#closeButtonModal{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+#closeButtonModal i{
+    font-size: 1.6em;
+}
+
+.modal-overlay{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.hide{
+    display: none;
+}
+
+.modal-wrapper{
+    /* border: 1px solid gray; */
+    border-radius: 0.4em;
+    height: 70%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    justify-content: space-between;
+    gap: 0em;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: var(--White);
+    font-size: 1.4em;
+}
+
+.inputWrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1em;
+}
+
+.modal-wrapper input, .modal-wrapper select{
+    font-size: 1em;
+    padding: 0.2em;
+} 
+
+#expenseAmount::-webkit-outer-spin-button,
+#expenseAmount::-webkit-inner-spin-button{
+    margin: 0;
+    -webkit-appearance: none;
+}
+
+.labelDetails{
+    display: flex;
+    justify-content: space-between;
+}
+
+#addExpenseButtonModal{
+    border: none;
+    padding: 0.6em;
+    width: 40%;
+    font-weight: 500;
+    font-size: 0.9em;
+    cursor: pointer;
+    background-color: var(--Dark-Blue);
+    color: var(--White); 
+}
+
+#editExpenseButtonModal{
+    border: none;
+    /* padding: 1em; */
+    padding: 0.6em;
+    width: 40%;
+    /* font-weight: 700; */
+    font-weight: 500;
+    font-size: 0.9em;
+    cursor: pointer;
+    color: var(--White);
+    background-color: var(--Dark-Blue);
+}  
+
+.expenseDivHeading{
+    padding: 0 1em;
+    display: flex;
+    gap: 10em;
+    text-align: center;
+    background-color: var(--Dark-Blue2);
+    color: var(--White);
+    font-size: 1.2em;
+    padding: 0.8em;
+}
+
+.expenseDivHeading p{
+    text-align: center;
+}
+
+.userDetails{
+    margin-top: auto;
+    display: flex;
+    /* border: 1px white solid; */
+    /* padding: 0.6em; */
+    width: 90%;
+    gap: 1em;
+}
+
+.userDetails p{
+    font-size: 1.1em;
+    color: var(--White);
+    padding-top:1em;
+}
+
+.userDetails img{
+    width: 3.4em;
+}
+
+.errMsg{
+    color: red;
+    font-size: 0.8em;
+    font-weight: 500;
+}
+
+.sortByWrapper button.buttonSelected{
+    background-color: var(--Gray);
+    border-radius: 0.4em;
+}
+
+
+
+.listDisplayTable{
+    /* border: 1px solid red; */
+    background-color: lightcoral;
+}
+
+
+.expenseDivHeadingTable{
+    font-size: 2em;
+}
+
+/* .expenseDiv1{} */

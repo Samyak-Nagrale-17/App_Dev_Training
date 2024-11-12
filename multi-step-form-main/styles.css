@@ -1,0 +1,945 @@
+
+:root{
+  --Marine-blue: hsl(213, 96%, 18%);
+  --Purplish_blue: hsl(243, 100%, 62%); 
+  --Pastel_blue: hsl(228, 100%, 84%);
+  --Light_blue: hsl(206, 94%, 87%);
+  --Strawberry_red: hsl(354, 84%, 57%);
+  --Cool_gray: hsl(231, 11%, 63%);
+  --Light_gray: hsl(229, 24%, 87%);
+  --Magnolia: hsl(217, 100%, 97%);
+  --Alabaster: hsl(231, 100%, 99%);
+  --White: hsl(0, 0%, 100%);
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* font-size: 18px; */
+  font-family: "Ubuntu";
+}
+
+body{
+  background-color: var(--Magnolia);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 18px;
+}
+
+#multistepForm{
+  height: 75vh;
+  min-width: 65vw;
+  background-color: var(--White);
+  border-radius: 0.8em;
+  /* box-shadow: 1px 1px 8px var(--Light_gray), -1px 1px 8px var(--Light_gray); */
+}
+
+.formContainer{
+  display: flex;
+  height: inherit;
+  width: inherit;
+  padding: 0.8em;
+  gap: 6.2em;
+  position: relative;
+}
+
+.sidebar{
+  background-image: url("assets/images/bg-sidebar-desktop.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8em;
+  width: 28%;
+  padding: 1.8em 0 0 0;
+}
+
+.currStep{
+  display: flex;
+  padding: 0 0 0 1.8em;
+  align-items: center;
+  gap: 1em;
+  /* width: 60%; */
+}
+
+.currStep .currStepIcon{
+  color: var(--Magnolia);
+  border: 1px solid var(--Magnolia);
+  /* padding: 0.76em 0.9em;  */
+  width: 2.6em;
+  height: 2.6em;
+  font-size: 0.8em; 
+  border-radius: 50%;
+  font-weight: 600;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.currStep .currStepActive{
+  background-color: var(--Light_blue);
+  border: 1px solid var(--Pastel_blue);
+  color: var(--Marine-blue);
+  font-weight: 600;
+}
+
+.currStepDetails{
+  display: flex;
+  flex-direction: column;
+  color: var(--White);
+  /* font-size: 0.8em */
+  gap: 0.2em;
+}
+
+.currStepDetails span{
+  font-size: 0.7em; /* 0.65em*/
+  color: var(--Light_gray);
+  font-weight: 100;
+}
+
+.currStepDetails b{
+  font-size: 0.8em; /*0.7em*/
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.step{
+  display: none;
+  width: 28em;
+}
+
+.step1, .step2, .step3, .step4, .step5{
+  display: none;
+}
+.step.active{
+  display: block;
+}
+.step .header{
+  padding: 2em 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+}
+.step .header h1{
+    color: var(--Marine-blue);
+    font-size: 1.88em; /*1.6em*/
+}
+.step .header p{
+  color: var(--Cool_gray);
+  font-size: 0.92em; /*0.96em*/ 
+  font-weight: 400;
+}
+
+.userInputSection{
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  width: 100%;
+  height: 26.1em;
+}
+
+.userInputSection .formContentWrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 1.4em;
+}
+
+.userInput{
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+}
+
+.userInput .label{
+  display: flex;
+  justify-content: space-between;
+}
+
+.userInput .label label{
+  color: var(--Marine-blue);
+  font-size: 0.86em;
+  font-weight: 400;
+}
+
+.userInput .label .error{
+  color: var(--Strawberry_red);
+  font-size: 0.9em;
+  font-weight: 700;
+  display: none; 
+  max-width: auto;
+}
+
+.userInput input{
+  width: 100%;
+  height: 3.4em; /*3.2em*/
+  padding: 0 0 0 0.8em;
+  border: 1px solid var(--Light_gray);
+  border-radius: 0.4em;
+  font-size: 0.9em; /* 0.8em*/
+  font-weight: 500;
+  color: var(--Marine-blue);
+}
+
+.userInput input[type="text"]:focus{
+  color: var(--Marine-blue);
+}
+
+.userInput input:focus, .userInput input:hover{
+  /* border: 1px solid var(--Marine-blue); */
+  border: 1px solid var(--Purplish_blue);
+  outline: none;
+}
+
+.userInput input::-webkit-input-placeholder{
+  color: var(--Cool_gray); 
+} 
+
+.buttonContainer{
+  margin-top: auto;
+  width: 54%;
+  display: flex;
+  justify-content: space-between; 
+  cursor: default;
+  position: absolute;
+  bottom: 2em;
+  left: 19.5em;
+} 
+
+
+.hideButton{
+  visibility: hidden;
+}
+
+#prevButton{
+  background-color: transparent;
+  border: none;
+  font-size: 1em; /*0.9em*/
+  color: var(--Cool_gray); 
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0 0 0 3.6em;
+}
+
+#prevButton:hover{
+  color: var(--Marine-blue);
+}
+
+#nextButton{
+  border: none;
+  background-color: var(--Marine-blue);
+  color: var(--White);
+  padding: 0.8em 1.2em; /*1em 1.4em*/
+  font-size: 1em; /*0.9em*/
+  border-radius: 0.4em;
+  cursor: pointer;
+}
+
+#nextButton:hover{
+  /* background-color: var(--Purplish_blue); */
+  background-color: #174A8B;
+}
+
+
+#nextButton.confirm{
+  background-color: var(--Purplish_blue); 
+}
+
+#nextButton.confirm:hover{
+  background-color: #938cfe;
+}
+
+
+/* step 2  */
+.planCardWrapper{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1em;
+}
+
+.planCard{
+  border: 1px solid var(--Light_gray);
+  border-radius: 0.4em;
+  /* width: 7.4em; */
+  width: 30%;
+  min-height: 9.2em;
+  max-height: auto;
+  cursor: pointer;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2em;
+  overflow: hidden;
+}
+
+.planCard:hover{
+  border: 1px solid var(--Purplish_blue);
+}
+
+.planCard .img_wrapper{
+  width: 2.2em;
+  height: 2.2em;
+}
+
+.img_wrapper .img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.planCard p{
+  color: var(--Marine-blue);
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.planCard .priceTag{
+  color: var(--Cool_gray);
+  font-size: 0.8em;
+}
+
+.planDetails{ 
+  padding: 1em 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+  height: 90%;
+  max-height: auto;
+}
+
+.planDetails p{
+  color: var(--Marine-blue);  
+  font-weight: 500;
+}
+
+.planDetails .priceTag{
+  color: var(--Cool_gray);
+  font-size: 0.86em;
+  font-weight: 400;
+}
+
+.planDetails .offer{
+  padding: 0.2em 0 0 0;
+  font-size: 0.7em;
+  font-weight: 400;
+  /* color: var(--Purplish_blue); */
+} 
+
+.monthly,
+.yearly{
+  color: var(--Cool_gray);
+  font-weight: 500;
+  font-size: 0.88em;
+}
+
+.sw-active{
+  color: var(--Marine-blue);
+}
+
+/* toggle slider */
+/* SWITCH classes */
+.switcher {
+  background-color: var(--Alabaster);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.5em 0;
+  justify-content: center;
+  border-radius: 0.4em;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 10px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+
+/* ADD ONS */
+
+.step3 .userInputSection{
+  border: none;
+}
+
+.step3 form{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.8em;
+}
+
+.box{
+  border: 1px solid var(--Light_gray);
+  border-radius: 0.6em;
+  padding: 1.2em;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 1.2em;
+}
+
+.box:hover{
+  border: 1px solid var(--Purplish_blue);
+}
+
+.custom-check {
+  width: 1.125em; 
+  height: 1.125em; 
+  border: 1px solid var(--Cool_gray); 
+  padding: 0.375em; 
+  border-radius: 0.125em; 
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  /* margin-right: 0.625em; */
+}
+
+/* for svg as checkbx */
+.box input[type="checkbox"] {
+  display: none;
+}
+
+.box input[type="checkbox"]:checked + .custom-check {
+  background-image: url(assets/images/icon-checkmark.svg); 
+  /* background-size: contain; */
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center; 
+  background-color: var(--Purplish_blue);
+  padding: 6px;
+}
+
+.price{
+  margin-left: auto;
+}
+
+.ad-selected {
+  border: 1px solid var(--Purplish_blue);
+  background-color: var(--Alabaster); 
+  /* background-color: var(--Magnolia);  */
+}
+
+.step3 form input {
+  accent-color: var(--Purplish-blue);
+  transform: scale(1.3);
+  user-select: none;
+}
+
+.description{
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+
+.description label {
+  color: var(--Marine-blue);
+  font-weight: 500;
+  font-size: 0.92em;
+  user-select: none;
+}
+
+.description label:hover{
+  cursor: pointer;
+}
+
+.description small {
+  color: var(--Cool_gray);
+  font-weight: 500;
+  font-size: 0.82em;
+}
+
+.priceAddon{
+  margin-left: auto;
+  font-size: 0.82em;
+  color: var(--Purplish_blue);
+  font-weight: 400;
+}
+
+.price {
+  color: var(--Purplish-blue);
+}
+
+/* usedby both step 4 and 5 */
+.selected {
+  /* border: 1px solid var(--Marine-blue); */
+  border: 1px solid var(--Purplish_blue);
+  background-color: var(--Alabaster);
+}
+
+
+/* step 4*/
+.orderDetails{
+  /* background-color: var(--Magnolia); */
+  background-color: var(--Alabaster);
+  padding: 1.2em;
+  border-radius: 0.4em;
+}
+
+.planSummary{
+  display: flex;
+}
+
+.planSummaryText{
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+
+.planSummaryText .chosenPlan{
+  font-size: 1em; /*0.9em*/
+  color: var(--Marine-blue);
+  font-weight: 600;
+}
+
+.planSummaryText a{
+  font-size: 0.9em;
+  color: var(--Cool_gray);
+  /* font-weight: 500; */
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+.planSummaryText a:hover{
+  color: var(--Purplish_blue);
+}
+
+.planSummaryPrice{
+  margin-left: auto;
+  font-size: 1em; /*0.9em*/
+  color: var(--Marine-blue);
+  font-weight: 600;
+}
+
+hr{
+  margin: 1.6em 0;
+  border: 1px solid var(--Light_gray);
+}
+
+/* hide the hr */
+.hideHr{
+  margin: 0;
+  border: 0;
+}
+
+.addOnWrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  border: none;
+}
+
+.addOn{
+  display: flex;
+}
+
+.addOn .addOntext{
+  font-size: 0.9em; /*0.8em*/
+  color: var(--Cool_gray);
+  font-weight: 400;
+}
+
+.addOn .addOnPrice{
+  margin-left: auto;
+  font-size: 0.9em; /*0.8em*/
+  color: var(--Marine-blue);
+  font-weight: 500;
+}
+
+.total{
+  display: flex;
+  padding: 1.2em;
+}
+
+.orderText{
+  font-size: 0.9em;
+  color: var(--Cool_gray);
+}
+
+.totalPrice{
+  margin-left: auto;
+  color: var(--Purplish_blue);
+  font-size: 1.1em;
+  font-weight: 700;
+  /* align center */
+  text-align: center;
+}
+
+/* thank you message */ 
+.step5 img{
+  width: 18%;
+}
+
+.step5 .userInputSection{
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+}
+
+.step5 .header{
+  align-items: center;
+  gap: 1.4em;
+}
+
+.step5 .header p{
+  text-align: center;
+  line-height: 1.4;
+}
+
+
+/* The slider */
+/* Container for the switch */
+.switch {
+  position: relative;
+  display: inline-block; 
+  width: 60px;
+  height: 34px;
+  scale: 0.6;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Styling the slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background-color: #ccc; */
+  background-color: var(--Marine-blue);
+  transition: 0.4s;
+}
+
+/* The circle inside the slider */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+/* Changes when the checkbox is checked */
+input:checked + .slider {
+  background-color: var(--Marine-blue);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--Marine-blue);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Rounded corners for slider */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+/* media query for mobile screens */
+/* @media screen and (max-width: 500px) */
+@media screen and (max-width: 425px) {
+
+  *{
+    font-size: 16px;
+  }
+
+  .body{
+    height: 100vh;
+    width: 100vw; 
+  }
+
+  #multistepForm{
+    height: 100vh;
+    width: 100vw;
+    border-radius: 0;
+  }
+
+  .formContainer{
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    gap: 0; 
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--Magnolia);
+    position: relative;
+  }
+
+  .sidebar{
+    background-image: url(assets/images/bg-sidebar-mobile.svg);
+    background-size: cover;
+    width: 100%;
+    height: 26%;
+    flex-direction: row;
+    z-index: 0;
+    border-radius: 0;
+    align-items: flex-start;
+    justify-content:center;
+    padding: 0 0 0.4em 0;
+    gap: 0.2em;
+    position: absolute;
+    top: 0;
+    
+  }
+
+  .currStep{
+    /* padding: 1.6em 0.4em 1em 0.4em; */
+    padding: 1.6em 0.6em 1em 0.6em;
+    /* scale: 0.9; */
+  }
+
+  .currStep .currStepDetails{
+    display: none;
+  }
+
+  .currStep .currStepIcon{
+    font-size: 1em;
+  }
+
+  .allStepsWrapper{
+    width: 90%;
+    /* height: 60%; */
+    max-height: 100%;
+    z-index: 1;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    border-radius: 0.4em;
+    padding: 1.4em 1.2em;
+    position: absolute;
+    top: 6em;
+  }
+
+  .step1{
+    height: 56%;
+    padding: 0 0 1em 0;
+  }
+
+  .step{
+    position: relative;
+    height: 100%;
+  }
+
+  .step .header{
+    gap: 0.6em;
+    padding: 0;
+  }
+
+  .step .header p{
+    font-size: 1.1em; /*1em*/
+    font-weight: 400;
+    line-height: 1.4;
+  }
+  .step .userInputSection{
+    height: 100%;
+    width: 100%;
+    gap: 0;
+  }
+
+  .userInputSection .formContentWrapper{
+    height: 100%;
+  }
+
+  .userInput input{
+    font-size: 1em;
+  }
+
+  .userInput .label label{
+    font-size: 0.9em;
+  }
+
+  .step2{
+    display: none;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    min-height: 24em;
+    padding:  0 0 0 0;
+    /* max-height: auto; */
+  }
+
+  .step2 .userInputSection{
+    gap: 0.8em;
+    height: 100%;
+    max-height: auto;
+  } 
+  .step2 .planCardWrapper{
+    height: 100%;
+    flex-direction: column;
+    gap: 0.8em;
+  }
+
+  .selected {
+    border: 1px solid var(--Purplish_blue);
+    background-color: var(--Alabaster);
+  }
+
+  .planCardWrapper .planCard{
+    min-height: 1.8em; 
+    gap: 1.2em;
+    width: 100%;
+    flex-direction: row;
+    justify-content: start;
+    padding: 0.8em;
+  }
+
+  .planCard:hover{
+    border: 1px solid var(--Purplish_blue);
+  }
+ 
+  .planCard img{
+    width: 2.6em;
+  }
+
+  .planCard p{
+    font-size: 1.1em;
+  }
+
+  .planCard .priceTag{
+    font-size: 1em;
+  }
+
+  .planCard .offer{
+    font-size: 0.8em;
+  }
+
+  .monthly, .yearly{
+    font-size: 1em;
+  }
+
+  .description label{
+    font-size: 1em;
+  }
+
+  .description small{
+    font-size: 0.9em;
+    font-weight: 400; 
+  }
+
+  .planDetails{
+    padding: 0 0 0 0.4em;
+  }
+
+  .box .priceAddon{
+    font-size: 0.92em;
+  }
+
+  .step3 .userInputSection{
+    gap: 1em;
+  }
+  .step3 form{
+    gap: 1em;
+  }
+
+  /* step4 - finishing up */
+  .step4 .userInputSection{
+    gap: 0.8em;
+    /* border: 1px solid green; */
+    height: 100%;
+    max-height: auto;
+  }
+
+  .planSummaryText .chosenPlan{
+    font-weight: 500;
+  }
+
+  .planSummaryText a{
+    font-size: 1em;
+  }
+
+  .addOn .addOntext{
+    font-size: 1em;
+  }
+
+  .addOn .addOnPrice{
+    font-size: 1em;
+  }
+
+  .orderText{
+    font-size: 1em;
+  }
+
+  /* step5 */
+  .step5{
+    height: 20em;
+  }
+
+  .step5 .userInputSection{
+    gap: 2em;
+  }
+
+  .step5 img{
+    width: 24%;
+  }
+
+  .step5 .userInputSection .header p{
+    font-size:1.1em;
+    line-height: 1.4;
+    /* padding: 0 2em; */
+    text-align: center;
+  }
+
+  .buttonContainer{
+    background-color: var(--White);
+    display: flex; 
+    width: 100%;
+    height: 12%;
+    justify-content: space-between;
+    left: 0;
+    bottom: 0;
+    padding: 0.6em 1.4em 0.6em 1.1em;
+    display: flex;
+    align-items: center;
+  }
+
+  .buttonContainer #prevButton{
+    font-size: 1em;
+    height: 75%;
+    padding:  0 0 0 0.8em;
+  }
+
+  .buttonContainer #nextButton{
+    height: 75%;
+    padding: 0.4em 1em;
+    font-size: 1em;
+    background-color: var(--Marine-blue);
+  }
+
+  .buttonContainer #nextButton.confirm{
+    background-color: var(--Purplish_blue); 
+  }
+  
+  .buttonContainer #nextButton.confirm:hover{
+    background-color: #938cfe;
+  }
+}
