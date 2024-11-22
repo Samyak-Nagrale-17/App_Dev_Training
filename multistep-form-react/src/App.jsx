@@ -20,12 +20,12 @@ function App() {
     username: '',
     usermail: '',
     userphone: ''
-  });
+  })
 
   
 
   // ref for func
-  const validateStep = useRef(null); 
+  const validateStep = useRef(null)
 
   return (
     <div className="body">
@@ -67,7 +67,7 @@ function App() {
         </div>
       </form>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import '../App.css';
+import '../App.css'
 
 function Step3({ selectedPlan, setSelectedPlan }) {
 
@@ -7,21 +7,21 @@ function Step3({ selectedPlan, setSelectedPlan }) {
     { id: 1, name: 'Online service', description: 'Access to multiplayer games', priceMonthly: 1, priceYearly: 10 },
     { id: 2, name: 'Larger storage', description: 'Extra 1TB of cloud save', priceMonthly: 2, priceYearly: 20 },
     { id: 3, name: 'Customizable profile', description: 'Custom theme on your profile', priceMonthly: 2, priceYearly: 20 },
-  ];
+  ]
 
 
   const handleAddOnToggle = (addOn) => {
-    const updatedAddOns = selectedPlan.addOns ? [...selectedPlan.addOns] : []; 
-    const existingIndex = updatedAddOns.findIndex((item) => item.name === addOn.name);
+    const updatedAddOns = selectedPlan.addOns ? [...selectedPlan.addOns] : []
+    const existingIndex = updatedAddOns.findIndex((item) => item.name === addOn.name)
 
     if (existingIndex !== -1) {
-      updatedAddOns.splice(existingIndex, 1);
+      updatedAddOns.splice(existingIndex, 1)
     } else {
-      updatedAddOns.push(addOn);
+      updatedAddOns.push(addOn)
     }
 
-    setSelectedPlan({ ...selectedPlan, addOns: updatedAddOns });
-  };
+    setSelectedPlan({ ...selectedPlan, addOns: updatedAddOns })
+  }
 
   return (
     <div className="step active step3" data-step="3">
@@ -64,8 +64,8 @@ function Step3({ selectedPlan, setSelectedPlan }) {
         </form>
       </div>
     </div>
-  );
+  )
 }
 
-export default Step3;
+export default Step3
 

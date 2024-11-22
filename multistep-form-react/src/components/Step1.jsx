@@ -3,9 +3,9 @@ import '../App.css'
 import { useState,useEffect } from 'react'
 function Step1({selectedPlan, setSelectedPlan,validateStep}){
     
-    const [username, setUsername] = useState(selectedPlan.username || '');
-    const [useremail, setUseremail] = useState(selectedPlan.usermail || '');
-    const [userphone, setUserphone] = useState(selectedPlan.userphone || '');
+    const [username, setUsername] = useState(selectedPlan.username || '')
+    const [useremail, setUseremail] = useState(selectedPlan.usermail || '')
+    const [userphone, setUserphone] = useState(selectedPlan.userphone || '')
 
     const [errors, setErrors] = useState({
         username:'',
@@ -53,14 +53,14 @@ function Step1({selectedPlan, setSelectedPlan,validateStep}){
 
 
     const updateField = (field, value) => { 
-        setSelectedPlan(selectedPlan => ({ ...selectedPlan, [field]: value }));
+        setSelectedPlan(selectedPlan => ({ ...selectedPlan, [field]: value }))
     }
 
     useEffect(() => {
-        setUsername(selectedPlan.username || '');
-        setUseremail(selectedPlan.usermail || '');
-        setUserphone(selectedPlan.userphone || '');
-    }, [selectedPlan]);
+        setUsername(selectedPlan.username || '')
+        setUseremail(selectedPlan.usermail || '')
+        setUserphone(selectedPlan.userphone || '')
+    }, [selectedPlan])
 
 
     return(

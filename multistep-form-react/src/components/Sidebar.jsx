@@ -18,7 +18,7 @@ function IconStep({ currStepNumber, currStepTitle, currStepDescription, currentS
                 <b>{currStepDescription}</b>
             </div>
         </div>
-    );
+    )
 }
 
 function Sidebar({ currentStep , setCurrentStep}) {
@@ -56,8 +56,8 @@ function Sidebar({ currentStep , setCurrentStep}) {
                 setCurrentStep = {setCurrentStep}
             />
         </div>
-    );
+    )
 }
 
 
-export default Sidebar;
+export default Sidebar

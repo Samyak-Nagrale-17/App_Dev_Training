@@ -1,13 +1,12 @@
 /* eslint-disable react/prop-types */
-
 //
-import { useEffect } from 'react';
-import '../App.css';
+import { useEffect } from 'react'
+import '../App.css'
 
 function ButtonContainer({ currentStep, setCurrentStep, validateStep,selectedPlan, setSelectedPlan }) {
 
   const nextStep = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     // validate step1.if not valid, dont go to next step
     if (currentStep === 1 && !validateStep.current()) {
@@ -15,7 +14,7 @@ function ButtonContainer({ currentStep, setCurrentStep, validateStep,selectedPla
     }
     
     if (currentStep < 5) {
-      setCurrentStep(currentStep + 1);
+      setCurrentStep(currentStep + 1)
     }
 
     // reset form on thank you page
@@ -39,9 +38,9 @@ function ButtonContainer({ currentStep, setCurrentStep, validateStep,selectedPla
   }
 
   const prevStep = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (currentStep > 1) {
-      setCurrentStep(currentStep - 1);
+      setCurrentStep(currentStep - 1)
     }
   }
 
@@ -68,7 +67,7 @@ function ButtonContainer({ currentStep, setCurrentStep, validateStep,selectedPla
         </button>
       </div> 
     )
-  );
+  )
 }
 
-export default ButtonContainer;
+export default ButtonContainer

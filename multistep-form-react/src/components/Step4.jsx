@@ -1,17 +1,17 @@
 /* eslint-disable react/prop-types */
-import '../App.css';
+import '../App.css'
 
 function Step4({ selectedPlan, setSelectedPlan }) {
-  const { plan, planCost, duration, addOns } = selectedPlan;
+  const { plan, planCost, duration, addOns } = selectedPlan
 
-  const planCostValue = parseFloat(planCost.replace(/[^0-9.]/g, ''));
+  const planCostValue = parseFloat(planCost.replace(/[^0-9.]/g, ''))
 
   const addOnsTotal = addOns.reduce((sum, addOn) => {
-    const addOnPrice = duration === 'yearly' ? addOn.priceYearly : addOn.priceMonthly;
-    return sum + addOnPrice;
-  }, 0);
+    const addOnPrice = duration === 'yearly' ? addOn.priceYearly : addOn.priceMonthly
+    return sum + addOnPrice
+  }, 0)
 
-  const totalCost = planCostValue + addOnsTotal;
+  const totalCost = planCostValue + addOnsTotal
 
   return (
     <div className="step active step4" data-step="3">
@@ -62,7 +62,7 @@ function Step4({ selectedPlan, setSelectedPlan }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Step4;
+export default Step4

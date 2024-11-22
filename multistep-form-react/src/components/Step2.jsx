@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
-import { useEffect } from 'react';
-import '../App.css';
+import { useEffect } from 'react'
+import '../App.css'
 
 function Step2({ selectedPlan, setSelectedPlan }) {
   const planPrices = {
@@ -17,54 +17,54 @@ function Step2({ selectedPlan, setSelectedPlan }) {
       monthly: 15,
       yearly: 150,
     },
-  };
+  }
 
   const handlePlanSelect = (plan) => {
-    const planCost = planPrices[plan][selectedPlan.duration];
+    const planCost = planPrices[plan][selectedPlan.duration]
     setSelectedPlan({
       ...selectedPlan,
       plan,
       planCost: `$${planCost}/${selectedPlan.duration === 'monthly' ? 'mo' : 'yr'}`,
-    });
-  };
+    })
+  }
 
   const updatePriceAndOffers = (isChecked) => {
-    const planCardsDetails = document.querySelectorAll('.planDetails');
+    const planCardsDetails = document.querySelectorAll('.planDetails')
 
     planCardsDetails.forEach((plan) => {
-      const priceTag = plan.querySelector('.priceTag');
-      const newPrice = planPrices[plan.querySelector('p').textContent.trim()][isChecked ? 'yearly' : 'monthly'];
-      priceTag.textContent = `$${newPrice}/${isChecked ? 'yr' : 'mo'}`;
+      const priceTag = plan.querySelector('.priceTag')
+      const newPrice = planPrices[plan.querySelector('p').textContent.trim()][isChecked ? 'yearly' : 'monthly']
+      priceTag.textContent = `$${newPrice}/${isChecked ? 'yr' : 'mo'}`
 
       // 2 months offer
-      const existingOffer = plan.querySelector('.offer');
+      const existingOffer = plan.querySelector('.offer')
       if (isChecked && !existingOffer) {
-        const offer = document.createElement('p');
-        offer.className = 'offer';
-        offer.textContent = '2 months free';
-        plan.appendChild(offer);
+        const offer = document.createElement('p')
+        offer.className = 'offer'
+        offer.textContent = '2 months free'
+        plan.appendChild(offer)
       } else if (!isChecked && existingOffer) {
-        existingOffer.remove();
+        existingOffer.remove()
       }
-    });
-  };
+    })
+  }
 
   const handleDurationToggle = (event) => {
-    const isChecked = event.target.checked;
-    const updatedDuration = isChecked ? 'yearly' : 'monthly';
-    const updatedPlanPrice = planPrices[selectedPlan.plan][updatedDuration];
+    const isChecked = event.target.checked
+    const updatedDuration = isChecked ? 'yearly' : 'monthly'
+    const updatedPlanPrice = planPrices[selectedPlan.plan][updatedDuration]
     setSelectedPlan({
       ...selectedPlan,
       duration: updatedDuration,
       planCost: `$${updatedPlanPrice}/${isChecked ? 'yr' : 'mo'}`,
-    });
-  };
+    })
+  }
 
 
   // check dependency
   useEffect(() => {
-    updatePriceAndOffers(selectedPlan.duration === 'yearly');    
-  }, [selectedPlan.duration]);
+    updatePriceAndOffers(selectedPlan.duration === 'yearly')
+  }, [selectedPlan.duration])
 
   return (
     <div className="step active step2" data-step="1">
@@ -128,7 +128,7 @@ function Step2({ selectedPlan, setSelectedPlan }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Step2;
+export default Step2
