@@ -1,6 +1,5 @@
-  
 :root{
-  --Marine-blue: hsl(213, 96%, 18%);
+  --Marine_blue: hsl(213, 96%, 18%);
   --Purplish_blue: hsl(243, 100%, 62%); 
   --Pastel_blue: hsl(228, 100%, 84%);
   --Light_blue: hsl(206, 94%, 87%);
@@ -16,11 +15,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* font-size: 18px; */
   font-family: "Ubuntu";
 }
 
-body{
+.body{
   background-color: var(--Magnolia);
   display: flex;
   justify-content: center;
@@ -46,9 +44,12 @@ body{
   position: relative;
 }
 
+
+/* SIDEBAR CSS STARTS */
 .sidebar{
   background-image: url("assets/images/bg-sidebar-desktop.svg");
   background-size: cover;
+  /* background-size: contain; */
   background-repeat: no-repeat;
   border-radius: 0.4rem;
   display: flex;
@@ -75,16 +76,27 @@ body{
   font-size: 0.8em; 
   border-radius: 50%;
   font-weight: 600;
-
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.currStepIcon:hover{
+  cursor: pointer;
+}
+
 .currStep .currStepActive{
   background-color: var(--Light_blue);
   border: 1px solid var(--Pastel_blue);
-  color: var(--Marine-blue);
+  color: var(--Marine_blue);
+  font-weight: 600;
+}
+
+/* change */
+.currStepActive{
+  background-color: var(--Light_blue);
+  border: 1px solid var(--Pastel_blue);
+  color: var(--Marine_blue);
   font-weight: 600;
 }
 
@@ -108,6 +120,70 @@ body{
   letter-spacing: 1px;
 }
 
+/* SIDEBAR CSS ENDS */
+
+
+/* BUTTON CONTAINER CSS STARTS */
+.buttonContainer{
+  margin-top: auto;
+  width: 54%;
+  display: flex;
+  justify-content: space-between; 
+  cursor: default;
+  position: absolute;
+  bottom: 2em;
+  left: 19.5em;
+} 
+
+#prevButton{
+  background-color: transparent;
+  border: none;
+  font-size: 1em; /*0.9em*/
+  color: var(--Cool_gray); 
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0 0 0 3.6em;
+}
+
+#prevButton:hover{
+  color: var(--Marine_blue);
+}
+
+#nextButton{
+  border: none;
+  background-color: var(--Marine_blue);
+  color: var(--White);
+  padding: 0.8em 1.2em; /*1em 1.4em*/
+  font-size: 1em; /*0.9em*/
+  border-radius: 0.4em;
+  cursor: pointer;
+}
+
+#nextButton:hover{
+  /* background-color: var(--Purplish_blue); */
+  background-color: #174A8B;
+}
+
+
+.hideButton{
+  visibility: hidden;
+}
+
+.hideButton2{
+  display: none;
+}
+
+#nextButton.confirm{
+  background-color: var(--Purplish_blue); 
+}
+
+#nextButton.confirm:hover{
+  background-color: #938cfe;
+}
+/* BUTTON CONTAINER CSS ENDS */
+
+
+/* COMMON CSS FOR ALL STEPS STARTS*/
 .step{
   display: none;
   width: 28em;
@@ -116,6 +192,7 @@ body{
 .step1, .step2, .step3, .step4, .step5{
   display: none;
 }
+
 .step.active{
   display: block;
 }
@@ -126,7 +203,7 @@ body{
   gap: 0.4em;
 }
 .step .header h1{
-    color: var(--Marine-blue);
+    color: var(--Marine_blue);
     font-size: 1.88em; /*1.6em*/
 }
 .step .header p{
@@ -134,6 +211,7 @@ body{
   font-size: 0.92em; /*0.96em*/ 
   font-weight: 400;
 }
+
 
 .userInputSection{
   display: flex;
@@ -148,6 +226,11 @@ body{
   flex-direction: column;
   gap: 1.4em;
 }
+/* COMMON CSS FOR ALL STEPS ENDS*/
+
+
+
+/* STEP-1 CSS STARTS */
 
 .userInput{
   display: flex;
@@ -161,16 +244,16 @@ body{
 }
 
 .userInput .label label{
-  color: var(--Marine-blue);
+  color: var(--Marine_blue);
   font-size: 0.86em;
   font-weight: 400;
 }
 
 .userInput .label .error{
   color: var(--Strawberry_red);
-  font-size: 0.9em;
+  font-size: 0.8em;
   font-weight: 700;
-  display: none; 
+  /* display: none;  */
   max-width: auto;
 }
 
@@ -182,15 +265,14 @@ body{
   border-radius: 0.4em;
   font-size: 0.9em; /* 0.8em*/
   font-weight: 500;
-  color: var(--Marine-blue);
+  color: var(--Marine_blue);
 }
 
 .userInput input[type="text"]:focus{
-  color: var(--Marine-blue);
+  color: var(--Marine_blue);
 }
 
 .userInput input:focus, .userInput input:hover{
-  /* border: 1px solid var(--Marine-blue); */
   border: 1px solid var(--Purplish_blue);
   outline: none;
 }
@@ -199,68 +281,17 @@ body{
   color: var(--Cool_gray); 
 } 
 
-.buttonContainer{
-  margin-top: auto;
-  width: 54%;
-  display: flex;
-  justify-content: space-between; 
-  cursor: default;
-  position: absolute;
-  bottom: 2em;
-  left: 19.5em;
-} 
+/* STEP-1 CSS ENDS */
 
 
-.hideButton{
-  visibility: hidden;
-}
-
-#prevButton{
-  background-color: transparent;
-  border: none;
-  font-size: 1em; /*0.9em*/
-  color: var(--Cool_gray); 
-  font-weight: 500;
-  cursor: pointer;
-  padding: 0 0 0 3.6em;
-}
-
-#prevButton:hover{
-  color: var(--Marine-blue);
-}
-
-#nextButton{
-  border: none;
-  background-color: var(--Marine-blue);
-  color: var(--White);
-  padding: 0.8em 1.2em; /*1em 1.4em*/
-  font-size: 1em; /*0.9em*/
-  border-radius: 0.4em;
-  cursor: pointer;
-}
-
-#nextButton:hover{
-  /* background-color: var(--Purplish_blue); */
-  background-color: #174A8B;
-}
-
-
-#nextButton.confirm{
-  background-color: var(--Purplish_blue); 
-}
-
-#nextButton.confirm:hover{
-  background-color: #938cfe;
-}
-
-
-/* step 2  */
+/* STEP-2 CSS STARTS */
 .planCardWrapper{
   display: flex;
   justify-content: space-between;
   width: 100%;
   gap: 1em;
 }
+
 
 .planCard{
   border: 1px solid var(--Light_gray);
@@ -292,10 +323,10 @@ body{
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
+} 
 
 .planCard p{
-  color: var(--Marine-blue);
+  color: var(--Marine_blue);
   font-size: 0.9em;
   font-weight: 500;
 }
@@ -315,7 +346,7 @@ body{
 }
 
 .planDetails p{
-  color: var(--Marine-blue);  
+  color: var(--Marine_blue);  
   font-weight: 500;
 }
 
@@ -339,8 +370,9 @@ body{
   font-size: 0.88em;
 }
 
+
 .sw-active{
-  color: var(--Marine-blue);
+  color: var(--Marine_blue);
 }
 
 /* toggle slider */
@@ -361,6 +393,7 @@ body{
   height: 10px;
 }
 
+
 /* Hide default HTML checkbox */
 .switch input {
   opacity: 0;
@@ -368,9 +401,69 @@ body{
   height: 0;
 }
 
+.switch {
+  position: relative;
+  display: inline-block; 
+  width: 60px;
+  height: 34px;
+  scale: 0.6;
+}
 
-/* ADD ONS */
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
 
+/* Styling the slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background-color: #ccc; */
+  background-color: var(--Marine_blue);
+  transition: 0.4s;
+}
+
+/* The circle inside the slider */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+/* Changes when the checkbox is checked */
+input:checked + .slider {
+  background-color: var(--Marine_blue);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--Marine_blue);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Rounded corners for slider */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+/* STEP-2 CSS ENDS */
+
+/* STEP-3 CSS STARTS */
 .step3 .userInputSection{
   border: none;
 }
@@ -446,7 +539,7 @@ body{
 }
 
 .description label {
-  color: var(--Marine-blue);
+  color: var(--Marine_blue);
   font-weight: 500;
   font-size: 0.92em;
   user-select: none;
@@ -469,13 +562,12 @@ body{
   font-weight: 400;
 }
 
-.price {
-  color: var(--Purplish-blue);
-}
+/* STEP-3 CSS ENDS */
+
+/* STEP-4 CSS STARTS */
 
 /* usedby both step 4 and 5 */
 .selected {
-  /* border: 1px solid var(--Marine-blue); */
   border: 1px solid var(--Purplish_blue);
   background-color: var(--Alabaster);
 }
@@ -501,7 +593,7 @@ body{
 
 .planSummaryText .chosenPlan{
   font-size: 1em; /*0.9em*/
-  color: var(--Marine-blue);
+  color: var(--Marine_blue);
   font-weight: 600;
 }
 
@@ -520,7 +612,7 @@ body{
 .planSummaryPrice{
   margin-left: auto;
   font-size: 1em; /*0.9em*/
-  color: var(--Marine-blue);
+  color: var(--Marine_blue);
   font-weight: 600;
 }
 
@@ -552,10 +644,16 @@ hr{
   font-weight: 400;
 }
 
+.addOntext{
+  font-size: 0.9em; /*0.8em*/
+  color: var(--Cool_gray);
+  font-weight: 400;
+}
+
 .addOn .addOnPrice{
   margin-left: auto;
   font-size: 0.9em; /*0.8em*/
-  color: var(--Marine-blue);
+  color: var(--Marine_blue);
   font-weight: 500;
 }
 
@@ -578,7 +676,10 @@ hr{
   text-align: center;
 }
 
-/* thank you message */ 
+/* STEP-4 CSS ENDS */
+
+
+/* STEP-5 CSS STARTS */
 .step5 img{
   width: 18%;
 }
@@ -598,348 +699,4 @@ hr{
   text-align: center;
   line-height: 1.4;
 }
-
-
-/* The slider */
-/* Container for the switch */
-.switch {
-  position: relative;
-  display: inline-block; 
-  width: 60px;
-  height: 34px;
-  scale: 0.6;
-}
-
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* Styling the slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /* background-color: #ccc; */
-  background-color: var(--Marine-blue);
-  transition: 0.4s;
-}
-
-/* The circle inside the slider */
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  transition: 0.4s;
-}
-
-/* Changes when the checkbox is checked */
-input:checked + .slider {
-  background-color: var(--Marine-blue);
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px var(--Marine-blue);
-}
-
-input:checked + .slider:before {
-  transform: translateX(26px);
-}
-
-/* Rounded corners for slider */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-
-
-/* media query for mobile screens */
-/* @media screen and (max-width: 500px) */
-@media screen and (max-width: 425px) {
-
-  *{
-    font-size: 16px;
-  }
-
-  .body{
-    height: 100vh;
-    width: 100vw; 
-  }
-
-  #multistepForm{
-    height: 100vh;
-    width: 100vw;
-    border-radius: 0;
-  }
-
-  .formContainer{
-    flex-direction: column;
-    height: 100vh;
-    width: 100vw;
-    gap: 0; 
-    padding: 0;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--Magnolia);
-    position: relative;
-  }
-
-  .sidebar{
-    background-image: url(assets/images/bg-sidebar-mobile.svg);
-    background-size: cover;
-    width: 100%;
-    height: 26%;
-    flex-direction: row;
-    z-index: 0;
-    border-radius: 0;
-    align-items: flex-start;
-    justify-content:center;
-    padding: 0 0 0.4em 0;
-    gap: 0.2em;
-    position: absolute;
-    top: 0;
-    
-  }
-
-  .currStep{
-    /* padding: 1.6em 0.4em 1em 0.4em; */
-    padding: 1.6em 0.6em 1em 0.6em;
-    /* scale: 0.9; */
-  }
-
-  .currStep .currStepDetails{
-    display: none;
-  }
-
-  .currStep .currStepIcon{
-    font-size: 1em;
-  }
-
-  .allStepsWrapper{
-    width: 90%;
-    /* height: 60%; */
-    max-height: 100%;
-    z-index: 1;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    border-radius: 0.4em;
-    padding: 1.4em 1.2em;
-    position: absolute;
-    top: 6em;
-  }
-
-  .step1{
-    height: 56%;
-    padding: 0 0 1em 0;
-  }
-
-  .step{
-    position: relative;
-    height: 100%;
-  }
-
-  .step .header{
-    gap: 0.6em;
-    padding: 0;
-  }
-
-  .step .header p{
-    font-size: 1.1em; /*1em*/
-    font-weight: 400;
-    line-height: 1.4;
-  }
-  .step .userInputSection{
-    height: 100%;
-    width: 100%;
-    gap: 0;
-  }
-
-  .userInputSection .formContentWrapper{
-    height: 100%;
-  }
-
-  .userInput input{
-    font-size: 1em;
-  }
-
-  .userInput .label label{
-    font-size: 0.9em;
-  }
-
-  .step2{
-    display: none;
-    /* display: flex; */
-    justify-content: center;
-    align-items: center;
-    min-height: 24em;
-    padding:  0 0 0 0;
-    /* max-height: auto; */
-  }
-
-  .step2 .userInputSection{
-    gap: 0.8em;
-    height: 100%;
-    max-height: auto;
-  } 
-  .step2 .planCardWrapper{
-    height: 100%;
-    flex-direction: column;
-    gap: 0.8em;
-  }
-
-  .selected {
-    border: 1px solid var(--Purplish_blue);
-    background-color: var(--Alabaster);
-  }
-
-  .planCardWrapper .planCard{
-    min-height: 1.8em; 
-    gap: 1.2em;
-    width: 100%;
-    flex-direction: row;
-    justify-content: start;
-    padding: 0.8em;
-  }
-
-  .planCard:hover{
-    border: 1px solid var(--Purplish_blue);
-  }
- 
-  .planCard img{
-    width: 2.6em;
-  }
-
-  .planCard p{
-    font-size: 1.1em;
-  }
-
-  .planCard .priceTag{
-    font-size: 1em;
-  }
-
-  .planCard .offer{
-    font-size: 0.8em;
-  }
-
-  .monthly, .yearly{
-    font-size: 1em;
-  }
-
-  .description label{
-    font-size: 1em;
-  }
-
-  .description small{
-    font-size: 0.9em;
-    font-weight: 400; 
-  }
-
-  .planDetails{
-    padding: 0 0 0 0.4em;
-  }
-
-  .box .priceAddon{
-    font-size: 0.92em;
-  }
-
-  .step3 .userInputSection{
-    gap: 1em;
-  }
-  .step3 form{
-    gap: 1em;
-  }
-
-  /* step4 - finishing up */
-  .step4 .userInputSection{
-    gap: 0.8em;
-    /* border: 1px solid green; */
-    height: 100%;
-    max-height: auto;
-  }
-
-  .planSummaryText .chosenPlan{
-    font-weight: 500;
-  }
-
-  .planSummaryText a{
-    font-size: 1em;
-  }
-
-  .addOn .addOntext{
-    font-size: 1em;
-  }
-
-  .addOn .addOnPrice{
-    font-size: 1em;
-  }
-
-  .orderText{
-    font-size: 1em;
-  }
-
-  /* step5 */
-  .step5{
-    height: 20em;
-  }
-
-  .step5 .userInputSection{
-    gap: 2em;
-  }
-
-  .step5 img{
-    width: 24%;
-  }
-
-  .step5 .userInputSection .header p{
-    font-size:1.1em;
-    line-height: 1.4;
-    /* padding: 0 2em; */
-    text-align: center;
-  }
-
-  .buttonContainer{
-    background-color: var(--White);
-    display: flex; 
-    width: 100%;
-    height: 12%;
-    justify-content: space-between;
-    left: 0;
-    bottom: 0;
-    padding: 0.6em 1.4em 0.6em 1.1em;
-    display: flex;
-    align-items: center;
-  }
-
-  .buttonContainer #prevButton{
-    font-size: 1em;
-    height: 75%;
-    padding:  0 0 0 0.8em;
-  }
-
-  .buttonContainer #nextButton{
-    height: 75%;
-    padding: 0.4em 1em;
-    font-size: 1em;
-    background-color: var(--Marine-blue);
-  }
-
-  .buttonContainer #nextButton.confirm{
-    background-color: var(--Purplish_blue); 
-  }
-  
-  .buttonContainer #nextButton.confirm:hover{
-    background-color: #938cfe;
-  }
-}
+/* STEP-5 CSS ENDS */
