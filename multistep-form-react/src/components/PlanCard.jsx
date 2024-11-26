@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
-// import React from 'react'
 
-function PlanCard({ planData, selectedPlan, onSelect, isYearly }) {
+function PlanCard({ planData, selectedPlan, selected, isYearly }) {
   const { name, icon, monthly, yearly } = planData
   const isSelected = selectedPlan.plan === name
   const duration = selectedPlan.duration
@@ -10,10 +9,10 @@ function PlanCard({ planData, selectedPlan, onSelect, isYearly }) {
   return (
     <div 
       className={`planCard ${isSelected ? 'selected' : ''}`}
-      onClick={() => onSelect(name)}
+      onClick={() => selected(name)}
     >
       <div className="img_wrapper">
-        <img src={icon} alt={name.toLowerCase()} />
+        <img src={icon} alt={name} />
       </div>
       <div className="planDetails">
         <p>{name}</p>

@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-// import { useEffect } from 'react'
+
 import '../App.css'
 import PlanCard from './PlanCard' 
 
-function Step2({ selectedPlan, setSelectedPlan }) {
+function Step2({ selectedPlan, setSelectedPlan, validateStep, currentStep, setCurrentStep }) {
+  // plan data for each card
   const plans = [
     {
       name: 'Arcade',
@@ -64,14 +66,14 @@ function Step2({ selectedPlan, setSelectedPlan }) {
                 key={planData.name}
                 planData={planData}
                 selectedPlan={selectedPlan}
-                onSelect={handlePlanSelect}
+                selected={handlePlanSelect}
                 isYearly={selectedPlan.duration === 'yearly'}
               />
             ))}
           </div>
         </form>
 
-        {/* Switcher */}
+        {/* switcher */}
         <div className="switcher">
           <p className={`monthly ${selectedPlan.duration === 'monthly' ? 'sw-active' : ''}`}>Monthly</p>
           <label className="switch">

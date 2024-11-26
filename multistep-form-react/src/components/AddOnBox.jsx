@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-// import React from 'react'
 
 function AddOnBox({ addOn, selectedPlan, setSelectedPlan }) {
   const handleAddOnToggle = () => {
@@ -7,10 +6,9 @@ function AddOnBox({ addOn, selectedPlan, setSelectedPlan }) {
     const existingIndex = updatedAddOns.findIndex((item) => item.name === addOn.name)
 
     if (existingIndex !== -1) {
-      // Remove add-on if already selected
+      // remove add-on if present
       updatedAddOns.splice(existingIndex, 1)
     } else {
-      // Add new add-on if not already selected
       updatedAddOns.push(addOn)
     }
     
@@ -26,7 +24,6 @@ function AddOnBox({ addOn, selectedPlan, setSelectedPlan }) {
     >
       <input
         type="checkbox"
-        id={addOn.name.replace(/\s+/g, '').toLowerCase()}
         checked={selectedPlan.addOns.findIndex((item) => item.name === addOn.name) !== -1}
         readOnly 
       />

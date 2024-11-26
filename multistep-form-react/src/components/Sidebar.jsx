@@ -1,21 +1,16 @@
 /* eslint-disable react/prop-types */
-// 2 components here
-// the sidebar and the 4 steps inside the sidebar
 
-// import './App.css'
-// import { useState,useContext } from 'react'
 import '../App.css'
 
-
 function IconStep({ currStepNumber, currStepTitle, currStepDescription, currentStep, setCurrentStep }) {
-    const handleCurrentStepIcononClick = () => setCurrentStep(currentStep = currStepNumber)
+    const handleCurrentStepIconClick = () => setCurrentStep(currentStep = currStepNumber)
 
     return (
         <div className="currStep">
             {/* conditionally add currStepActive class */}
             <div className={`currStepIcon ${currentStep === currStepNumber ? 'currStepActive' : ''}`}
-                onClick={handleCurrentStepIcononClick}
-            >
+                onClick={handleCurrentStepIconClick}
+            > 
                 {currStepNumber}
             </div>
             <div className="currStepDetails">

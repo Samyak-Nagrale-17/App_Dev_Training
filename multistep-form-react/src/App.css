@@ -48,8 +48,8 @@
 /* SIDEBAR CSS STARTS */
 .sidebar{
   background-image: url("assets/images/bg-sidebar-desktop.svg");
-  background-size: cover;
-  /* background-size: contain; */
+  /* background-size: cover; */
+  background-size: contain;
   background-repeat: no-repeat;
   border-radius: 0.4rem;
   display: flex;
@@ -79,6 +79,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.currStepIcon:hover{
+  cursor: pointer;
 }
 
 .currStep .currStepActive{

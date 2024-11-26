@@ -1,11 +1,11 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
 
-// import React from 'react'
 import AddOnBox from './AddOnBox'
 import '../App.css'
 
-function Step3({ selectedPlan, setSelectedPlan }) {
+function Step3({ selectedPlan, setSelectedPlan, validateStep, currentStep, setCurrentStep }) {
   const addOnsList = [
     { name: 'Online service', description: 'Access to multiplayer games', priceMonthly: 1, priceYearly: 10 },
     { name: 'Larger storage', description: 'Extra 1TB of cloud save', priceMonthly: 2, priceYearly: 20 },

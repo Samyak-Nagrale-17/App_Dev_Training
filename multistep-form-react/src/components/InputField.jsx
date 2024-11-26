@@ -1,10 +1,8 @@
 /* eslint-disable react/prop-types */
-// import React from 'react'
 import '../App.css'
-
 function InputField({ label, type, placeholder, value, onChange, error, restrictNumbersOnly }) {
   
-  // handle key events only if restrictNumbersOnly is true
+  //accpet only numbers
   const handleKeyDown = (e) => {
     if (!/[0-9+\-() ]/.test(e.key) && !['Backspace', 'Tab'].includes(e.key)) {
       e.preventDefault()
@@ -20,9 +18,9 @@ function InputField({ label, type, placeholder, value, onChange, error, restrict
       <input
         type={type}
         placeholder={placeholder}
-        value={value}
+        value={value} 
         onChange={onChange}
-        onKeyDown={restrictNumbersOnly ? handleKeyDown : null}  
+        onKeyDown={restrictNumbersOnly && handleKeyDown }  
       />
     </div>
   )

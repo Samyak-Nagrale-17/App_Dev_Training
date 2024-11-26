@@ -17,7 +17,7 @@ function App() {
 
   const [selectedPlan, setSelectedPlan] = useState(() => {
     const savedPlan = localStorage.getItem('selectedPlan')
-    return savedPlan
+    return savedPlan 
       ? JSON.parse(savedPlan)
       : {
           plan: 'Arcade',
@@ -43,7 +43,7 @@ function App() {
   // common props shared across steps
   const commonProps = { selectedPlan, setSelectedPlan, validateStep, currentStep, setCurrentStep }
 
-  const renderStep = () => {
+  const renderFormSteps = () => {
     switch (currentStep) {
       case 1:
         return <Step1 {...commonProps} />
@@ -65,13 +65,9 @@ function App() {
       <form id="multistepForm">
         <div className="formContainer">
           <Sidebar currentStep={currentStep} setCurrentStep={setCurrentStep} />
-          {renderStep()}
+          {renderFormSteps()} 
           <ButtonContainer
-            currentStep={currentStep}
-            setCurrentStep={setCurrentStep}
-            validateStep={validateStep}
-            selectedPlan={selectedPlan}
-            setSelectedPlan={setSelectedPlan}
+            {...commonProps} 
           />
         </div>
       </form>

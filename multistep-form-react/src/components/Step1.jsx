@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react'
 import InputField from './InputField' 
 import '../App.css'
 
-function Step1({ selectedPlan, setSelectedPlan, validateStep }) {
-  // Initialize state with values from selectedPlan
+function Step1({ selectedPlan, setSelectedPlan, validateStep, currentStep, setCurrentStep }) {
+  // init state with values from selectedPlan
   const [username, setUsername] = useState(selectedPlan.username || '')
   const [useremail, setUseremail] = useState(selectedPlan.usermail || '')
   const [userphone, setUserphone] = useState(selectedPlan.userphone || '')
@@ -15,6 +16,7 @@ function Step1({ selectedPlan, setSelectedPlan, validateStep }) {
     let isValid = true
     const newErrors = { username: '', useremail: '', userphone: '' }
     const defaultErrorMessage = 'This field is required'
+    
     // username validation
     if (!username.trim()) {
       newErrors.username = defaultErrorMessage
@@ -46,7 +48,6 @@ function Step1({ selectedPlan, setSelectedPlan, validateStep }) {
     return isValid
   }
 
-  // expose validation function to parent
   validateStep.current = validateInputs
 
   useEffect(() => {
@@ -64,39 +65,43 @@ function Step1({ selectedPlan, setSelectedPlan, validateStep }) {
         </div>
 
         <form className="step1form">
-          <InputField
-            label="Name"
-            type={"text"}
-            placeholder="e.g. Stephen King"
-            value={username}
-            onChange={(e) => { 
-              setUsername(e.target.value) 
-              setSelectedPlan(prev => ({ ...prev, username: e.target.value })) }}
-            error={errors.username}
-          />
+        <div className="formContentWrapper">
+            <InputField 
+              label="Name"
+              type={"text"}
+              placeholder="e.g. Stephen King"
+              value={username}
+              onChange={(e) => { 
+                console.log(e.target) 
+                setUsername(e.target.value) 
+                setSelectedPlan(prev => ({ ...prev, username: e.target.value })) }}
+              error={errors.username}
+            />
 
-          <InputField
-            label="Email Address"
-            type={"email"}
-            placeholder="e.g. stephenking@lorem.com"
-            value={useremail}
-            onChange={(e) => { 
-              setUseremail(e.target.value) 
-              setSelectedPlan(prev => ({ ...prev, usermail: e.target.value })) }}
-            error={errors.useremail}
-          />
+            <InputField
+              label="Email Address"
+              type={"email"}
+              placeholder="e.g. stephenking@lorem.com"
+              value={useremail}
+              onChange={(e) => {
+                console.log(e.target) 
+                setUseremail(e.target.value) 
+                setSelectedPlan(prev => ({ ...prev, usermail: e.target.value })) }}
+              error={errors.useremail}
+            />
 
-          <InputField
-            label="Phone Number"
-            type={"text"}
-            placeholder="e.g. +1 234 567 890"
-            value={userphone}
-            onChange={(e) => { 
-              setUserphone(e.target.value) 
-              setSelectedPlan(prev => ({ ...prev, userphone: e.target.value })) }}
-            error={errors.userphone}
-            restrictNumbersOnly={true} 
-          />
+            <InputField
+              label="Phone Number"
+              type={"text"}
+              placeholder="e.g. +1 234 567 890"
+              value={userphone}
+              onChange={(e) => { 
+                setUserphone(e.target.value) 
+                setSelectedPlan(prev => ({ ...prev, userphone: e.target.value })) }}
+              error={errors.userphone}
+              restrictNumbersOnly={true} 
+            />
+          </div>
         </form>
       </div>
     </div>

@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import '../App.css'
 
-function Step5(){
+function Step5({ selectedPlan, setSelectedPlan, validateStep, currentStep, setCurrentStep }){
     return(
         <div className="step active step5" data-step="4">    
                 <div className="userInputSection">
