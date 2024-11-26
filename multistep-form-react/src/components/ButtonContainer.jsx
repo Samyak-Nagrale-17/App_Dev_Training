@@ -5,7 +5,7 @@ import '../App.css'
 function ButtonContainer({ currentStep, setCurrentStep, validateStep, selectedPlan ,setSelectedPlan}) {
 
   const nextStep = (e) => {
-    // console.log(selectedPlan)
+    console.log(selectedPlan)
     e.preventDefault()
 
     // validation for step1
@@ -13,9 +13,8 @@ function ButtonContainer({ currentStep, setCurrentStep, validateStep, selectedPl
       return 
     }
     
-    // check if all fields filled before submission
-    if (currentStep === 4) {
-      // from selectedPlan
+    // check if step1 filled before submission
+    if (currentStep === 3) {
       const { username, usermail, userphone } = selectedPlan
       if (!username || !usermail || !userphone) {
         return 
@@ -36,7 +35,7 @@ function ButtonContainer({ currentStep, setCurrentStep, validateStep, selectedPl
         username: null,
         usermail: null,
         userphone: null,
-      })
+      }) 
     }
   }
 

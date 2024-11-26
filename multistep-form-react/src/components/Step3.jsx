@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-/* eslint-disable react/jsx-key */
 
 import AddOnBox from './AddOnBox'
 import '../App.css'
@@ -23,8 +22,7 @@ function Step3({ selectedPlan, setSelectedPlan, validateStep, currentStep, setCu
         <form className="stepForm">
           {addOnsList.map((addOn) => (
             <AddOnBox
-              // key for child warning
-              // key={addOn.name}
+              key={addOn.name}
               addOn={addOn}
               selectedPlan={selectedPlan}
               setSelectedPlan={setSelectedPlan}

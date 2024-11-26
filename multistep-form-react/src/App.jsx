@@ -41,7 +41,7 @@ function App() {
   const validateStep = useRef(null)
 
   // common props shared across steps
-  const commonProps = { selectedPlan, setSelectedPlan, validateStep, currentStep, setCurrentStep }
+  const commonProps = {selectedPlan, setSelectedPlan, validateStep, currentStep, setCurrentStep}
 
   const renderFormSteps = () => {
     switch (currentStep) {
@@ -64,7 +64,8 @@ function App() {
     <div className="body">
       <form id="multistepForm">
         <div className="formContainer">
-          <Sidebar currentStep={currentStep} setCurrentStep={setCurrentStep} />
+          {/* <Sidebar currentStep={currentStep} setCurrentStep={setCurrentStep} /> */}
+          <Sidebar {...commonProps}/>
           {renderFormSteps()} 
           <ButtonContainer
             {...commonProps} 

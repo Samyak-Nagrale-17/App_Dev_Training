@@ -4,7 +4,7 @@ function InputField({ label, type, placeholder, value, onChange, error, restrict
   
   //accpet only numbers
   const handleKeyDown = (e) => {
-    if (!/[0-9+\-() ]/.test(e.key) && !['Backspace', 'Tab'].includes(e.key)) {
+    if (!/[0-9+\-() ]/.test(e.key) && !['Backspace', 'Tab','ArrowRight', 'ArrowLeft'].includes(e.key)) {
       e.preventDefault()
     }
   }

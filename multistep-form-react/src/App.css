@@ -251,7 +251,7 @@
 
 .userInput .label .error{
   color: var(--Strawberry_red);
-  font-size: 0.8em;
+  font-size: 0.86em;
   font-weight: 700;
   /* display: none;  */
   max-width: auto;
@@ -400,7 +400,6 @@
   height: 10px;
 }
 
-
 /* Hide default HTML checkbox */
 .switch input {
   opacity: 0;
@@ -444,6 +443,7 @@
   left: 4px;
   bottom: 4px;
   background-color: white;
+  /* transition: 0.4s; */
   transition: 0.4s;
 }
 
@@ -645,12 +645,17 @@ hr{
   display: flex;
 }
 
-.addOn .addOntext{
+.addOn .addOnText{
   font-size: 0.9em; /*0.8em*/
   color: var(--Cool_gray);
   font-weight: 400;
 }
 
+.addOnText{
+  font-size: 0.9em; /*0.8em*/
+  color: var(--Cool_gray);
+  font-weight: 400;
+}
 .addOn .addOnPrice{
   margin-left: auto;
   font-size: 0.9em; /*0.8em*/
