@@ -1,0 +1,33 @@
+.userInput{
+    /* width: 100%; */
+    width: 16rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.userInput .label{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.userInput input{
+    width: 100%;
+    padding: 0 0 0 0.4rem;
+    height: 2rem;
+    border-radius: 0.4rem;
+    border: 1px solid gray;
+}
+
+.userInput input:focus{
+    outline: none;
+    border: 1px solid #0F172A;
+}
+
+.error {
+    color: red;
+    font-size: 1rem;
+    /* margin-top: 4px; */
+}
+  

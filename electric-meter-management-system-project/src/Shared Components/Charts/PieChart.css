@@ -1,0 +1,17 @@
+.chart-container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+h2{
+    text-align: center;
+}
+
+.pie{
+    height: 100%;
+    width: 100%;
+}
+

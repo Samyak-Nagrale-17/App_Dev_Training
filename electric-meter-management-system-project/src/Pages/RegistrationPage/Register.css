@@ -1,0 +1,95 @@
+.registerWrapper{
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0.7rem;
+    gap: 1rem;
+}
+
+.title-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.title-wrapper h1{
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+
+.login-link-wrapper p{
+    color: gray;
+}
+
+.login-link{
+    text-decoration: none;
+}
+
+.login-link:visited{
+    text-decoration: none;
+}
+
+
+
+.registerContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-self: center;
+    align-items: center;
+    gap: 2.6rem 0;
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  
+    background-color: white;   
+}
+
+.registerContainer h1{
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+.registrationForm{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+
+.group{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    gap: 1rem;
+}
+
+.subgroup{
+    display: flex;
+    gap: 1rem;
+}
+
+.registerButton{
+    /* width: 50%; */
+    height: 2rem;
+    background-color: #4338CA;
+    border: 1px solid #4338CA;
+    color: white;
+    border-radius: 0.4rem;
+    font-size: 1rem;
+}
+
+.registerButton:hover{
+    background-color: white;
+    color: #4338CA;
+}
+
+.inputGroupHeading{
+    width: 100%;
+    border-bottom: 2px solid gray;
+    font-weight: 600;
+}
