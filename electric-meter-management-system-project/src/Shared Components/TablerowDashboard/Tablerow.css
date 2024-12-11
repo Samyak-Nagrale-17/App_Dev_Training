@@ -52,48 +52,37 @@
 }
 
 tr:nth-child(even) {
-    background-color: white;
+    background-color: #f1f1f1;
 }
 
 .userdata-table tr{
     padding: 0.4rem 0;
-    background-color: white;
 }
 
 .userdata-table td{
     text-align: center;
 }   
 
-.action-row{
+.actionRow{
     display: flex;
     justify-content: center;
     gap: 1rem;
-    background-color: white;
-    /* border: 1px solid red; */
-    /* text-align: center; */
-    border: none;
 }
 
-.table-button{
+.tableButton{
     padding: 0.2rem 0.4rem;
     background-color: inherit;
 }
 
-.button-container{
+.buttonContainer{
     display: flex;
     gap: 0.2rem;
 }
 
-#edit-table-button:hover{
+#editTableButton:hover{
     color: #4338CA;
 }
 
-#delete-table-button:hover{
+#deleteTableButton:hover{
     color: red;
-}
-
-.button-row{
-    /* border: 1px solid red; */
-    background-color: white;
-    border: none;
 }

@@ -1,20 +1,27 @@
 /* eslint-disable react/prop-types */
-import { Line } from "react-chartjs-2";
-import './LineChart.css';
+import './BarChart.css'
+import { Bar } from "react-chartjs-2";
 
-function LineChart({ chartData }) {
+function BarChart({ chartData }) {
   return (
     <div className="chart-container">
-      <Line
-        className="line-chart"
+      <Bar
+        className='bar-chart'
         data={chartData}
+        // data={{
+        //   ...chartData,
+        //   datasets: chartData.datasets.map(dataset => ({
+        //     ...dataset,
+        //     backgroundColor: 'rgba(75, 192, 192, 0.6)'  
+        //   }))
+        // }}
         options={{
-          responsive: true, 
-          maintainAspectRatio: false, 
+          responsive: true,
+          maintainAspectRatio: false,
           plugins: {
             title: {
               display: true,
-              text: "Monthly Consumption Trend"
+              text: "Bill Amount Trend"
             },
             legend: {
               display: false
@@ -25,12 +32,12 @@ function LineChart({ chartData }) {
               title: {
                 display: true,
                 text: 'Time'
-              } 
+              }
             },
             y: {
               title: {
                 display: true,
-                text: 'Consumption (in units)'
+                text: 'Bill amount (in $)'
               }
             }
           }
@@ -40,4 +47,4 @@ function LineChart({ chartData }) {
   );
 }
 
-export default LineChart;
+export default BarChart;

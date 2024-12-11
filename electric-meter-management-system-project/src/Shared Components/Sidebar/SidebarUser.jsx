@@ -1,36 +1,33 @@
-import './Sidebar.css'
-import { useNavigate } from 'react-router'
+import './Sidebar.css';
+import { useNavigate, useLocation } from 'react-router';
 
 const SidebarUser = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
 
-    const navigate = useNavigate()
-    
-    const handleRecordsButtonClick = () => {
-        navigate('/userdashoard/records')
-    }
+    const isActive = (path) => location.pathname === path;
 
-    const handleConsumptionButtonClick = () => {
-        navigate('/userdashoard/home')
-        // navigate('/userdashoard/consumption')
-    }
-
-
-  return (
-    <div className="container">
-            <button className = {'sidebar-button '} onClick={handleRecordsButtonClick} >
-            {/* <button className = {'sidebar-button ' + (isMarked) ?'button-active' : ''} onClick={handleUserDataButtonClick} > */}
-            <i className="fa-solid fa-house"></i>
-                User records
+    return (
+        <div className="container">
+            <button
+                className={`sidebar-button ${isActive('/userdashoard/records') ? 'button-active' : ''}`}
+                onClick={() => navigate('/userdashoard/records')}
+            >
+                <i className="fa-solid fa-house"></i>
+                User Records
             </button>
-            
-            <button className= {'sidebar-button '} onClick={handleConsumptionButtonClick} >
-            <i className="fa-solid fa-gauge-simple"></i>    
+
+            <button
+                className={`sidebar-button ${isActive('/userdashoard/home') ? 'button-active' : ''}`}
+                onClick={() => navigate('/userdashoard/home')}
+            >
+                <i className="fa-solid fa-gauge-simple"></i>
                 Consumption
             </button>
 
-            <p>Welcome, User</p>
-        </div> 
-  )
-}
+            {/* <p>Welcome, User</p> */}
+        </div>
+    );
+};
 
-export default SidebarUser
+export default SidebarUser;

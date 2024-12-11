@@ -1,4 +1,5 @@
-.login-wrapper{
+.loginWrapper{
+
     height: 70%;
     width: 70%;
     display: flex;
@@ -6,64 +7,54 @@
     justify-content: center;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);     
-    /* overflow: hidden; */
+
 }
 
-.login-image{
+.loginImage{
     height: 100%;
     width: 60%;
     background-color: white;
     border-radius: 10px 0 0 10px ;
 }
 
-.login-image img{
+.loginImage img{
     height: 100%;
     width: 100%;
     border-radius: 10px 0 0 10px ;
 }
 
-.login-container{
+.loginContainer{
     width: 40%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    justify-self: center;
     align-items: center;
-    gap: 1rem;
-    padding: 2rem;
+    gap: 1em;
+    padding: 2em;
     border-radius: 0 10px 10px 0;
     background-color: white;
+
 }
 
-.login-container h1{
+.loginContainer h1{
     text-align: center;
-    font-size: 1.32rem;
+    font-size: 1.4rem;
 }
 
-/* .logoMain{
+.logoMain{
     height: 3.2rem;
-} */
-
-/* .logo-container{
-    height: 3.2rem;
-} */
-
-.logo-container img{
-    height: 100%;
-}
-
-.logo-container p{
-    font-size: 2rem;
 }
 
 
-.login-form{
+.loginForm{
     display: flex;
     flex-direction: column;
     gap: 2em;
 }
 
-.register-link{
+.registerLink{
     text-decoration: none;
 }
 
@@ -71,7 +62,7 @@
     text-decoration: none;
 }
 
-.login-submit-button{
+.loginSubmitButton{
     height: 2rem;
     background-color: #4338CA;
     border: 1px solid #4338CA;
@@ -80,7 +71,7 @@
     font-size: 1rem;
 }
 
-.login-submit-button:hover{
+.loginSubmitButton:hover{
     background-color: white;
     color: #4338CA;
 }
@@ -89,4 +80,21 @@
     color: red;
 }
 
+.logoContainer{
+    scale: 1.1;
+}
 
+.logoContainer p{
+    /* color: red; */
+    font-size: 2rem;
+    color: #4338CA;
+}
+
+.loginContainer h1{
+    /* color: red; */
+    font-size: 1.2rem;
+}
+
+.link-text{
+    color: gray;
+}

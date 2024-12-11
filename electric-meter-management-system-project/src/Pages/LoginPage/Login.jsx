@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import './Login.css'
 import { useState } from 'react'
 import InputField from '../../Shared Components/InputFieldForm/InputField'
@@ -5,6 +6,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import main_logo from '../../assets/images/Screenshot_2024-12-02_124754-removebg-preview.png'
 import login_image from '../../assets/images/bg-login-1-filter.jpg'
 import axios from 'axios'
+import { toast } from 'react-toastify'  
+import BASE_URL from '../../config/apiConfig'
+import bcrypt from "bcryptjs-react";
+
 
 function Login() {
   const navigate = useNavigate()
@@ -24,7 +29,7 @@ function Login() {
 
     if (useremail.trim() === '') {
       setEmailError('Required')
-      isValid = false
+      isValid = false 
     } else if (!/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/i.test(useremail)) {
       setEmailError('Invalid email')
       isValid = false
@@ -38,117 +43,75 @@ function Login() {
     return isValid
   }
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault()
+  const handleSubmit = async (e) => {
+    e.preventDefault()
 
-  //   const userData = {
-  //     email: useremail,
-  //     password: password
-  //   }
-  //   const url = 'https://a612-103-22-140-65.ngrok-free.app/api/auth/login'
-  //   const response = await fetch( url , {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(userData)
-  //     } 
-  //   )
-
-  //   const data = await response.json()
-  //   // console.log( "data : ",data)
-
-  //   localStorage.setItem("token" , data.token)
-  //   // console.log( "token from localStorage" , localStorage.getItem("token"))
-    
-  //   if(validateForm()){
-  //     if(data.role_id === 1){
-  //       navigate('/admindashboard/userdata')
-  //     } 
-  //     else if(data.role_id === 2){
-  //       navigate('/userdashoard/home')
-  //     }
-  //   }
-
-  //   // if(data.role_id === 1){
-  //   //   navigate('/admindashboard/userdata')
-  //   // } 
-  //   // else if(data.role_id === 2){
-  //   //   navigate('/userdashoard/home')
-  //   // }
-
-  //   // // store the token in localstorage
-  //   // localStorage.setItem("token", data.token)
-
-  //   // // call the validate
-  //   // if(validateForm()){
-  //   //   if(data.role_id === 1){
-  //   //     navigate('/admindashboard/userdata')
-  //   //   } 
-  //   //   else if(data.role_id === 2){
-  //   //     navigate('/userdashoard/home')
-  //   //   }
-  //   // }
-
-  //   // if (validateForm()) {  
-  //   //   if (useremail === 'admin@admin.com' && password === 'admin') {
-  //   //     navigate('/admindashboard/userdata')
-  //   //   } else {
-  //   //     navigate('/userdashoard/home')
-  //   //   }
-  //   // }
-  // }
+    if (!validateForm()) {
+      return
+    }
 
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+    const hashsedPassword = await bcrypt.hash(password,10)
+    // console.log(hashsedPassword)
+    const userData = {
+      email: useremail,
+      password: password,
+      // password:hashsedPassword,
+    }
 
-  if (!validateForm()) {
-    return;  
+    try {
+      const url = `${BASE_URL}/api/auth/login`;
+
+      const response = await axios.post(url, userData,{
+
+      })
+
+      const data = response.data
+      localStorage.setItem('token', data.token)
+      localStorage.setItem('current_login_user_id', data.user_id)
+
+      toast.success('Login successful!', {
+        position: "top-right", 
+        autoClose: 2000, 
+      })
+
+      setTimeout(() => {
+        if (data.role_id === 1) {
+          navigate('/admindashboard/userdata')
+        } else if (data.role_id === 2) {
+          navigate('/userdashoard/home')
+        }
+      }, 2000)
+    } catch (error) {
+      console.error('Login failed:', error.response?.data || error.message)
+      setApiError(error.response?.data?.message || error.message || 'An error occurred')
+
+      toast.error(apiError || 'Login failed', {
+        position: "top-right",
+        autoClose: 5000,  
+      })
+    }
   }
-
-  const userData = {
-    email: useremail,
-    password: password,
-  };
-
-  try {
-    const url = 'https://a612-103-22-140-65.ngrok-free.app/api/auth/login';
-    const response = await axios.post(url, userData);
-
-    const data = response.data;
-    localStorage.setItem("token", data.token);
-
-    if (data.role_id === 1) {
-      navigate('/admindashboard/userdata');
-    } else if (data.role_id === 2) {
-      navigate('/userdashoard/home');
-    } 
-  } catch (error) {
-    console.error('Login failed:', error.response?.data || error.message);
-    setApiError(error.response?.data?.message || error.message || 'An error occurred');
-
-  }
-}
 
   return (
-    <div className="login-wrapper">
-      <div className='login-image'>
+    <div className="loginWrapper">
+      <div className='loginImage'>
         <img src={login_image} alt="" />
       </div>
 
-      <div className="login-container">
-        <div className="logo-container">
+      <div className="loginContainer">
+        <div className="logoContainer">
           <img src={main_logo} alt="main_logo" />
           <p>Power Monitor</p>
         </div>
 
         <h1>Sign in to your account</h1>
-        <form className='login-form' onSubmit={handleSubmit}>
+        <form className='loginForm' onSubmit={handleSubmit}>
           <InputField 
             label="Email ID"
             error={emailError}
             type='email'
+            placeholder='e.g. john.doe@gmail.com'
             value={useremail}
             onChange={(e) => setUseremail(e.target.value)}
           />
@@ -165,11 +128,11 @@ const handleSubmit = async (e) => {
             {apiError && <p>{apiError}</p>}
           </div>
 
-          <button type='submit' className='login-submit-button'>Log In</button>
+          <button type='submit' className='loginSubmitButton'>Log In</button>
         </form>
 
         <div>
-          <p>Not a user? <Link to='/register' className='register-link'>Register now</Link></p>
+          <p className='link-text'>Not a user? <Link to='/register' className='registerLink'>Register now</Link></p>
         </div>
 
       </div>

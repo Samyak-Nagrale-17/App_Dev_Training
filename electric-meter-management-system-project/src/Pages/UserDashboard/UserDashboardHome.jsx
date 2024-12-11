@@ -1,5 +1,4 @@
 import './UserDashboard.css'
-// import SidebarUser from '../../Shared Components/Sidebar/Sidebar'
 import SidebarUser from '../../Shared Components/Sidebar/SidebarUser'
 import Navbar from '../../Shared Components/Navbar/Navbar'
 import UserConsumptionDashboard from '../../Shared Components/UserConsumptionDashboard/UserConsumptionDashboard'

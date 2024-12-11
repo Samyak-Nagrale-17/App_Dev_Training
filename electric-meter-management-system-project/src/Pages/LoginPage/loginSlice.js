@@ -15,9 +15,7 @@ export const loginSlice = createSlice({
         updateUserpassword: (state,action) => {
             state.userpassword = action.payload
         },
-        // updateUserrole: (state, action) => {
-        // 
-        // }
+
     }
 
 })

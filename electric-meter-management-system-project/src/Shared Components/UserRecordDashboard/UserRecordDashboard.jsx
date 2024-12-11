@@ -1,236 +1,148 @@
-// import { useState } from 'react'
-// import './UserRecordDashboard.css'
-// import TablerowRecord from '../TablerowDashboard/TablerowRecord'
 
-// const UserRecordDashboard = () => {
-
-//   const [records, setRecords] = useState([
-//     {id:1, date:'2024-12-2', reading: 100, amount:'$100',billStatus: 0},
-//     {id:2, date:'2024-11-12',reading: 120, amount:'$110',billStatus: 0},
-//     {id:3, date:'2024-10-14', reading: 92,amount:'$90',billStatus: 1},
-//     {id:4, date:'2024-09-10', reading: 101,amount:'$104',billStatus: 1},
-//     {id:5, date:'2024-08-4', reading: 93,amount:'$96',billStatus: 1},
-
-//   ])
-
-//   return (
-//     <div className='userrecord-container'>
-//       <div className="title-bar">
-
-
-//         <div className='title-heading-wrapper'>
-//           <span className="title">Your records</span>
-//           <span className='title-description'>A list of electricity consumption records</span>
-//         </div>
-
-
-//         <div className="search-container">
-//           <button className="add-user-button" onClick={() => openModal()}>Add Record</button>
-
-//           <div className="search-bar-wrapper">
-//           <input 
-//               className='search-bar'
-//               type="text" 
-//               // placeholder='Search by email ...'
-//           />
-//               <div className='search-icon-wrapper'>
-//                 <i className="fa-solid fa-magnifying-glass"></i>
-//               </div>
-//           </div>
-//         </div>
-//       </div>
-
-//       <div className='table-wrapper'>
-//         <table className='userrecord-table'>
-//           <thead>
-//             <tr>
-//               <th>Date</th>
-//               <th>Consumption</th>
-//               <th>Bill Amount</th>
-//               <th>Payment Status</th>
-//             </tr>
-//           </thead>
-//           <tbody>
-//             {records.map((record) => (
-//               <TablerowRecord
-//                 key={record.id}
-//                 record={record}
-//                 onEdit={''}
-//                 onDelete={''}
-//               />
-//             ))} 
-//           </tbody>
-//         </table>
-//       </div>
-
-//     </div>
-//   )
-// }
-
-// export default UserRecordDashboard
-
-
-
-
-
-
-
-// import { useState } from 'react';
-// import './UserRecordDashboard.css';
-// import TablerowRecord from '../TablerowDashboard/TablerowRecord';
-// // import RecordModal from '../RecordModal/RecordModal'; // Import the new modal component
-// import UserDetailsModal from '../UserModal/UserDetailsModal';
-
-// const UserRecordDashboard = () => {
-//   const [records, setRecords] = useState([
-//     { id: 1, date: '2024-12-02', reading: 100, amount: '$100', billStatus: 0 },
-//     { id: 2, date: '2024-11-12', reading: 120, amount: '$110', billStatus: 0 },
-//     { id: 3, date: '2024-10-14', reading: 92, amount: '$90', billStatus: 1 },
-//     { id: 4, date: '2024-09-10', reading: 101, amount: '$104', billStatus: 1 },
-//     { id: 5, date: '2024-08-04', reading: 93, amount: '$96', billStatus: 1 },
-//   ]);
-
-//   const [isModalOpen, setModalOpen] = useState(false);
-//   const [currentRecord, setCurrentRecord] = useState(null); // To handle edit functionality
-
-//   const openModal = (record = null) => {
-//     setCurrentRecord(record);
-//     setModalOpen(true);
-//   };
-
-//   const closeModal = () => {
-//     setModalOpen(false);
-//     setCurrentRecord(null);
-//   };
-
-//   const handleSaveRecord = (newRecord) => {
-//     if (newRecord.id) {
-//       // Edit existing record
-//       setRecords(records.map((rec) => (rec.id === newRecord.id ? newRecord : rec)));
-//     } else {
-//       // Add new record
-//       const newId = records.length > 0 ? Math.max(...records.map((rec) => rec.id)) + 1 : 1;
-//       setRecords([...records, { ...newRecord, id: newId }]);
-//     }
-//     closeModal();
-//   };
-
-//   return (
-//     <div className="userrecord-container">
-//       <div className="title-bar">
-//         <div className="title-heading-wrapper">
-//           <span className="title">Your Records</span>
-//           <span className="title-description">A list of electricity consumption records</span>
-//         </div>
-
-//         <div className="search-container">
-//           <button className="add-user-button" onClick={() => openModal()}>Add Record</button>
-//           <div className="search-bar-wrapper">
-//             <input className="search-bar" type="text" placeholder="Search by date ..." />
-//             <div className="search-icon-wrapper">
-//               <i className="fa-solid fa-magnifying-glass"></i>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-
-//       <div className="table-wrapper">
-//         <table className="userrecord-table">
-//           <thead>
-//             <tr>
-//               <th>Date</th>
-//               <th>Consumption</th>
-//               <th>Bill Amount</th>
-//               <th>Payment Status</th>
-//               {/* <th>Actions</th> */}
-//             </tr>
-//           </thead>
-//           <tbody>
-//             {records.map((record) => (
-//               <TablerowRecord
-//                 key={record.id}
-//                 record={record}
-//                 onEdit={() => openModal(record)}
-//                 onDelete={() => setRecords(records.filter((r) => r.id !== record.id))}
-//               />
-//             ))}
-//           </tbody>
-//         </table>
-//       </div>
-
-//       <UserDetailsModal
-//         isOpen={isModalOpen}
-//         onClose={closeModal}
-//         onSave={handleSaveRecord}
-//         initialData={currentRecord}
-//       />
-//     </div>
-//   );
-// };
-
-// export default UserRecordDashboard;
-
-
-
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './UserRecordDashboard.css';
 import TablerowRecord from '../TablerowDashboard/TablerowRecord';
 import UserDetailsModal from '../UserModal/UserDetailsModal';
+import BASE_URL from '../../config/apiConfig';
+import axios from 'axios';
 
 const UserRecordDashboard = () => {
-  const [records, setRecords] = useState([
-    { id: 1, date: '2024-12-02', reading: 100, amount: '$100', billStatus: 0 },
-    { id: 2, date: '2024-11-12', reading: 120, amount: '$110', billStatus: 0 },
-    { id: 3, date: '2024-10-14', reading: 92, amount: '$90', billStatus: 1 },
-    { id: 4, date: '2024-09-10', reading: 101, amount: '$104', billStatus: 1 },
-    { id: 5, date: '2024-08-04', reading: 93, amount: '$96', billStatus: 1 },
-  ]);
-
+  const [records, setRecords] = useState([]);
+  const [filteredRecords, setFilteredRecords] = useState([]);
   const [isModalOpen, setModalOpen] = useState(false);
   const [currentRecord, setCurrentRecord] = useState(null);
+  const [meterOptions, setMeterOptions] = useState([]);
+  const [selectedMeter, setSelectedMeter] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const openModal = () => {
-    setCurrentRecord(null); 
+    setCurrentRecord(null);
     setModalOpen(true);
   };
 
   const closeModal = () => {
     setModalOpen(false);
-    setCurrentRecord(null); 
+    setCurrentRecord(null);
   };
 
-
-
-  //updated handleSaveRecord:
-  const handleSaveRecord = (newRecord) => {
-    if (newRecord.id) {
-      setRecords(records.map((rec) => (rec.id === newRecord.id ? newRecord : rec)));
-    } else {
-      const newId = records.length > 0 ? Math.max(...records.map((rec) => rec.id)) + 1 : 1;
-      const recordToAdd = {
-        ...newRecord,
-        amount: newRecord.billAmount, 
-        reading: newRecord.consumption, 
-        billStatus: newRecord.paymentStatus === 'Paid' ? 1 : 0,
-      };
-      setRecords([...records, { ...recordToAdd, id: newId }]);
-    }
+  const handleSaveRecord = () => {
+    fetchAllUserRecords();
     closeModal();
   };
-  
 
+  const fetchAllUserRecords = async () => {
+    const userToken = localStorage.getItem('token');
+    const currentUserId = localStorage.getItem('current_login_user_id');
+    const url = `${BASE_URL}/api/auth/user-dashboard-readings/${currentUserId}`;
+
+    try {
+      const response = await axios.get(url, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userToken}`,
+          'ngrok-skip-browser-warning': '6024',
+        },
+      });
+
+      const responseData = response.data.data;
+
+      const seenRecords = {};
+      const uniqueRecords = responseData.filter((record) => {
+        const key = `${record.user_meter_map_id}-${record.reading_date}`;
+        if (!seenRecords[key]) {
+          seenRecords[key] = true;
+          return true;
+        }
+        return false;
+      });
+
+      const uniqueMeters = uniqueRecords
+        .map((record) => record.meter_number)
+        .filter((value, index, self) => self.indexOf(value) === index);
+
+      setRecords(uniqueRecords);
+      setMeterOptions(uniqueMeters);
+      setFilteredRecords(uniqueRecords);
+    } catch (error) {
+      console.error('Error: ', error.message || error.response);
+    }
+  };
+
+  const handleMeterChange = (e) => {
+    const selectedMeter = e.target.value;
+    setSelectedMeter(selectedMeter);
+
+    if (selectedMeter) {
+      setFilteredRecords(
+        records.filter((record) => record.meter_number === selectedMeter)
+      );
+    } else {
+      setFilteredRecords(records);
+    }
+  };
+
+  const handleSearchChange = (e) => {
+    const query = e.target.value.toLowerCase();
+    setSearchQuery(query);
+    const filtered = records.filter((record) => {
+      const formattedDate = new Date(record.reading_date)
+        .toISOString()
+        .split('T')[0]
+        .toLowerCase();
+      const consumption = record.consumption.toString().toLowerCase();
+      const billAmount = record.bill_amount.toString().toLowerCase();
+      const paymentStatus = (record.is_bill_paid === 0 ? 'pending' : 'paid').toLowerCase();
+      return (
+        formattedDate.includes(query) ||
+        consumption.includes(query) ||
+        billAmount.includes(query) ||
+        paymentStatus.includes(query)
+      );
+    });
+    setFilteredRecords(filtered);
+  };
+
+  useEffect(() => {
+    fetchAllUserRecords();
+  }, []);
 
   return (
     <div className="userrecord-container">
       <div className="title-bar">
         <div className="title-heading-wrapper">
           <span className="title">Your Records</span>
-          <span className="title-description">A list of electricity consumption records</span>
+          <span className="title-description">
+            A list of electricity consumption records
+          </span>
         </div>
         <div className="search-container">
-          <button className="add-user-button" onClick={openModal}>Add Record</button>
+          <button className="add-user-button-record" onClick={openModal}>
+            Add record
+          </button>
+
+          <div className="meter-dropdown">
+            <label>Select meter</label>
+            <select
+              name="meter-select"
+              value={selectedMeter}
+              onChange={handleMeterChange}
+            >
+              {meterOptions.map((meter) => (
+                <option key={meter} value={meter}>
+                  {meter}
+                </option>
+              ))}
+            </select>
+          </div>
+
           <div className="search-bar-wrapper">
-            <input className="search-bar" type="text" placeholder="Search by date ..." />
+            <input
+              className="search-bar"
+              type="text"
+              placeholder="Search"
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
             <div className="search-icon-wrapper">
               <i className="fa-solid fa-magnifying-glass"></i>
             </div>
@@ -246,16 +158,13 @@ const UserRecordDashboard = () => {
               <th>Consumption</th>
               <th>Bill Amount</th>
               <th>Payment Status</th>
-              {/* <th>Actions</th> */}
             </tr>
           </thead>
           <tbody>
-            {records.map((record) => (
+            {filteredRecords.map((record) => (
               <TablerowRecord
-                key={record.id}
+                key={`${record.user_meter_map_id}-${record.reading_date}`}
                 record={record}
-                onEdit={() => openModal(record)}
-                onDelete={() => setRecords(records.filter((r) => r.id !== record.id))}
               />
             ))}
           </tbody>
@@ -267,6 +176,7 @@ const UserRecordDashboard = () => {
         onClose={closeModal}
         onSave={handleSaveRecord}
         initialData={currentRecord}
+        selectedMeter={selectedMeter}
       />
     </div>
   );

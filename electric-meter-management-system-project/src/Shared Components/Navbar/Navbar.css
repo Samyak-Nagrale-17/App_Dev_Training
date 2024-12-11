@@ -1,45 +1,80 @@
-.navbar-container{
+.navbarContainer{
     display: flex;
     justify-content: space-between;
-    padding: 0.4rem 1rem 0.4rem 1rem;
+    padding: 0.4rem 2rem;
     align-items: center;
     background-color: white;
     border-bottom: 1px solid black;
-    /* border: 1px solid red; */
 }
 
-.logo-container{
+.logoContainer{
     display: flex;
     align-items: center;
     padding: 0.2rem 0;
 }
 
-.logo-container img{
+.logoContainer img{
     height: 2.8rem;
 }
 
-.logo-container p{
+.logoContainer p{
     padding-left: 1rem;
     font-size: 1.2rem;
     font-weight: 600;
 }
 
-.login-button{
+
+.button-wrapper{
+    display: flex;
+    gap: 0.6rem;
+}
+
+
+.userprofile-button{
+    /* background-color: inherit; */
     display: flex;
     justify-content: center;
     align-items: center;
     /* padding: 1rem; */
-    padding: 0.6rem 1rem;
+    padding: 0.8rem 1rem;
     /* height: 2rem; */
     /* background-color: #0F172A; */
-    background-color: #4338CA;
-    border: 1px solid #4338CA;
+    /* background-color: #4338CA; */
+    /* border: 1px solid #4338CA; */
     color: white;
     border-radius: 0.4rem;
     font-size: 1rem;
-}
 
-.login-button:hover{
+
     background-color: white;
     color: #4338CA;
+}
+
+.userprofile-button i, .loginButton i{
+    font-size: 1.2rem;
+}
+
+.loginButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 1rem; */
+    padding: 0.8rem 1rem;
+    /* height: 2rem; */
+    /* background-color: #0F172A; */
+    /* background-color: #4338CA; */
+    /* border: 1px solid #4338CA; */
+    color: white;
+    border-radius: 0.4rem;
+    font-size: 1rem;
+
+
+    background-color: white;
+    color: #4338CA;
+
+}
+
+.loginButton:hover, .userprofile-button:hover{
+    background-color: #4338CA;
+    color: white;
 }

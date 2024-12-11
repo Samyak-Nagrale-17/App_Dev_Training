@@ -37,6 +37,9 @@
 
 .button-active{
     /* background-color: white; */
-    background-color: #0F172A;
-    color: white;
+    /* background-color: #0F172A; */
+    /* color: white; */
+    color: #4338CA;
+    background-color: white;
 }
+

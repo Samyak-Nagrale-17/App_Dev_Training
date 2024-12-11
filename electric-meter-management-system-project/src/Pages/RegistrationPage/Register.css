@@ -8,6 +8,16 @@
     gap: 1rem;
 }
 
+
+.logoContainer{
+    scale: 1.1;
+}
+
+.logoContainer p{
+    /* color: red; */
+    font-size: 2rem;
+}
+
 .title-wrapper{
     display: flex;
     flex-direction: column;
@@ -16,7 +26,7 @@
 }
 
 .title-wrapper h1{
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 600;
 }
 
